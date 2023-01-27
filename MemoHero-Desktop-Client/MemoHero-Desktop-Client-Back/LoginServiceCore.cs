@@ -1,14 +1,14 @@
 ﻿using Auth0.OidcClient;
 using System.Threading.Tasks;
 
-namespace LoginService
+namespace ClientBack
 {
     public class LoginServiceCore
     {
         private const string domain = "dev-qxkjr-8h.us.auth0.com";
         private const string clientId = "tpUZcdeRhUZqSOseouBJjDdijnhuE3Tt";
         private const string redirectUri = "https://dev-qxkjr-8h.us.auth0.com/desktop-client";
-        private Auth0Client client;
+        private readonly Auth0Client client;
 
         public LoginServiceCore()
         {

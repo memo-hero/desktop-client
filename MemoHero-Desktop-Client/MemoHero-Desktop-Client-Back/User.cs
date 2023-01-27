@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 
-namespace LoginService
+namespace ClientBack
 {
     public class User
     {

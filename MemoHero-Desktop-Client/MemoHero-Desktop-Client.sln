@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoHero-Desktop-Client", "MemoHero-Desktop-Client\MemoHero-Desktop-Client.csproj", "{F6BD80A8-DDE6-4CB2-985D-9A18B642543B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginService", "LoginService\LoginService.csproj", "{0BA64F1E-059F-4657-A61E-9644D93A1117}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoHero-Desktop-Client-Back", "MemoHero-Desktop-Client-Back\MemoHero-Desktop-Client-Back.csproj", "{06389211-5A25-4BDE-A00E-7EF275873642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{F6BD80A8-DDE6-4CB2-985D-9A18B642543B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6BD80A8-DDE6-4CB2-985D-9A18B642543B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6BD80A8-DDE6-4CB2-985D-9A18B642543B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BA64F1E-059F-4657-A61E-9644D93A1117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BA64F1E-059F-4657-A61E-9644D93A1117}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BA64F1E-059F-4657-A61E-9644D93A1117}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BA64F1E-059F-4657-A61E-9644D93A1117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06389211-5A25-4BDE-A00E-7EF275873642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06389211-5A25-4BDE-A00E-7EF275873642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06389211-5A25-4BDE-A00E-7EF275873642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06389211-5A25-4BDE-A00E-7EF275873642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

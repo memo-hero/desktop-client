@@ -1,5 +1,5 @@
 ﻿using Auth0.OidcClient;
-using LoginService;
+using ClientBack;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace MemoHero_Desktop_Client
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         LoginServiceCore client = new LoginServiceCore();
 
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
