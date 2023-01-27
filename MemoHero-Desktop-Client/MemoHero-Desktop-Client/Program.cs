@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MemoHeroDesktopClient.UI.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MemoHero_Desktop_Client
+namespace MemoHeroDesktopClient
 {
     static class Program
     {

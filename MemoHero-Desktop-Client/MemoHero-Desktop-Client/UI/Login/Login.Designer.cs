@@ -1,5 +1,7 @@
 ﻿
-namespace MemoHero_Desktop_Client
+using ClientBack;
+
+namespace MemoHeroDesktopClient.UI.Login
 {
     partial class Login
     {
@@ -29,6 +31,8 @@ namespace MemoHero_Desktop_Client
         /// </summary>
         private void InitializeComponent()
         {
+            this.client = ClientBack.Infrastructure.Services.ClientBackServiceProvider.GetLoginService();
+
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -53,7 +57,7 @@ namespace MemoHero_Desktop_Client
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -61,8 +65,9 @@ namespace MemoHero_Desktop_Client
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
 
         }

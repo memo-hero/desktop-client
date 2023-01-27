@@ -5,14 +5,14 @@ namespace ClientBack
 {
     public class User
     {
-        readonly string GivenName;
-        readonly string FamilyName;
-        readonly string Nickname;
-        readonly string Name;
-        readonly string Picture;
-        readonly string Locale;
-        readonly string Email;
-        readonly bool Verified;
+        public readonly string GivenName;
+        public readonly string FamilyName;
+        public readonly string Nickname;
+        public readonly string Name;
+        public readonly string Picture;
+        public readonly string Locale;
+        public readonly string Email;
+        public readonly bool Verified;
 
         public User(ClaimsPrincipal user)
         {

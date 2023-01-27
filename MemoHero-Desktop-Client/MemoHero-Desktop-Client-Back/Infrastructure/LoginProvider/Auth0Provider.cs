@@ -1,22 +1,24 @@
 ﻿using Auth0.OidcClient;
+using ClientBack.Infrastructure.LoginProvider;
 using System.Threading.Tasks;
 
 namespace ClientBack
 {
-    public class LoginServiceCore
+    internal class Auth0Provider : ILoginService
     {
         private const string domain = "dev-qxkjr-8h.us.auth0.com";
         private const string clientId = "tpUZcdeRhUZqSOseouBJjDdijnhuE3Tt";
         private const string redirectUri = "https://dev-qxkjr-8h.us.auth0.com/desktop-client";
         private readonly Auth0Client client;
 
-        public LoginServiceCore()
+        internal Auth0Provider()
         {
             var clientOptions = new Auth0ClientOptions
             {
                 Domain = domain,
                 ClientId = clientId,
-                RedirectUri = redirectUri
+                RedirectUri = redirectUri,
+                Scope = "offline_access"
             };
 
             clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;
