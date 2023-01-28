@@ -1,6 +1,4 @@
-﻿using ClientBack.Infrastructure.LoginProvider;
-using LiteDB;
-using System;
+﻿using LiteDB;
 
 namespace ClientBack.Infrastructure.Repository
 {
@@ -33,18 +31,5 @@ namespace ClientBack.Infrastructure.Repository
             var login = col.FindOne(x => x.Id == lastUser);
             return login;
         }
-    }
-
-    internal interface ILoginRepository
-    {
-        void Store(LoginResult loginResult);
-        Login Retrieve(string lastUser);
-    }
-
-    public class Login
-    {
-        public string Id { get; set; }
-        public DateTimeOffset Expiration { get; set; }
-        public Auth0User User { get; set; }
     }
 }
