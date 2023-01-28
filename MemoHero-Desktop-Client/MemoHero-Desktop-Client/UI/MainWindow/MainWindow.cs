@@ -1,5 +1,5 @@
 ﻿using ClientBack.Domain;
-using ClientBack.Infrastructure.HTTP;
+using ClientBack.Domain.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,10 +22,11 @@ namespace MemoHeroDesktopClient.UI.MainMenu
             this.user = user;
         }
 
-        private async void MainWindow_Load(object sender, EventArgs e)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
-            var client = new HttpClientService();
-            var card = await client.GetCardByIdAsync("test", "6604be12-3273-45e4-b5e9-77574ad56637");
+            label1.Text = user.Nickname;
+            //var client = new HttpClientService();
+            //var card = await client.GetCardByIdAsync("test", "6604be12-3273-45e4-b5e9-77574ad56637");
         }
     }
 }

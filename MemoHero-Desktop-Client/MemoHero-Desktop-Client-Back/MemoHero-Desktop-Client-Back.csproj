@@ -51,11 +51,15 @@
   <ItemGroup>
     <Compile Include="Core\LoginModule.cs" />
     <Compile Include="Core\MemoHeroCore.cs" />
-    <Compile Include="Domain\Card.cs" />
-    <Compile Include="Domain\Category.cs" />
-    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Cards\Card.cs" />
+    <Compile Include="Domain\Cards\Category.cs" />
+    <Compile Include="Domain\User\User.cs" />
+    <Compile Include="Infrastructure\Helpers\HashTool.cs" />
+    <Compile Include="Domain\User\CategoryProperty.cs" />
     <Compile Include="Infrastructure\HTTP\HttpClientService.cs" />
-    <Compile Include="Domain\StudyMetadata.cs" />
+    <Compile Include="Domain\Cards\StudyMetadata.cs" />
+    <Compile Include="Infrastructure\HTTP\IMemoHeroRestClient.cs" />
+    <Compile Include="Domain\User\UserStats.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />
     <Compile Include="Infrastructure\LoginProvider\ILoginService.cs" />
     <Compile Include="Infrastructure\LoginProvider\LoginResult.cs" />
@@ -78,6 +82,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json.Bson">
       <Version>1.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>108.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

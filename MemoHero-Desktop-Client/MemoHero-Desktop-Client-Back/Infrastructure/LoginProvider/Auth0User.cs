@@ -1,5 +1,4 @@
-﻿using ClientBack.Domain;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 
 namespace ClientBack.Infrastructure.LoginProvider
@@ -31,17 +30,6 @@ namespace ClientBack.Infrastructure.LoginProvider
             Locale = claims.Find(x => x.Type == "locale").Value;
             Email = claims.Find(x => x.Type == "email").Value;
             Verified = claims.Find(x => x.Type == "email_verified").Value == "True";
-        }
-
-        internal User ToUser()
-        {
-            return new User
-            {
-                Nickname = Nickname,
-                Email = Email,
-                Picture = Picture,
-                Locale = Locale
-            };
         }
     }
 }

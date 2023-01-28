@@ -1,4 +1,6 @@
-﻿using ClientBack.Infrastructure.LoginProvider;
+﻿using ClientBack.Infrastructure.Helpers;
+using ClientBack.Infrastructure.HTTP;
+using ClientBack.Infrastructure.LoginProvider;
 using ClientBack.Infrastructure.Repository;
 using ClientBack.Infrastructure.Services;
 using System;
@@ -11,12 +13,26 @@ namespace ClientBack.Core
         private readonly string envVarName = "memohero-lastlogin-user";
         private readonly ILoginService loginService = ClientBackServiceProvider.LoginService;
         private readonly ILoginRepository repository = ClientBackServiceProvider.LoginRepository;
+        private readonly IMemoHeroRestClient restClient = ClientBackServiceProvider.RestClient;
 
         internal async Task<LoginResult> Login()
         {
             var lastUser = Environment.GetEnvironmentVariable("memohero-lastlogin-user", EnvironmentVariableTarget.User);
-            if (lastUser == null) return await NewUserLoginAsync();
-            else return await ExistingUserLoginAsync(lastUser);
+
+            LoginResult loginResult;
+            if (lastUser == null) loginResult = await NewUserLoginAsync();
+            else loginResult = await ExistingUserLoginAsync(lastUser);
+
+            if (loginResult == null) return loginResult;
+
+            // Now that we have the user's email, we can hash it and see if it exist in the service
+            var userId = HashTool.SHA256_hash(loginResult.user.Email);
+            var user = await restClient.RetrieveUser(userId);
+            if (user == null) user = await restClient.CreateUser(new NewUser(userId));
+
+            // Now that we have both the auth0 user and the service user, we return both
+            loginResult.storedUser = user;
+            return loginResult;
         }
 
         private async Task<LoginResult> ExistingUserLoginAsync(string lastUser)

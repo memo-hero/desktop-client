@@ -1,4 +1,4 @@
-﻿namespace ClientBack.Domain
+﻿namespace ClientBack.Domain.Cards
 {
     public enum Category
     {

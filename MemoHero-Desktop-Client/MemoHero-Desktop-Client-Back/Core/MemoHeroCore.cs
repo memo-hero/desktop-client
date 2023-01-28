@@ -1,7 +1,4 @@
-﻿using ClientBack.Domain;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ClientBack.Domain.User;
 using System.Threading.Tasks;
 
 namespace ClientBack.Core
@@ -19,7 +16,7 @@ namespace ClientBack.Core
         {
             var result = await loginModule.Login();
             
-            return result?.user.ToUser();
+            return result?.ToUser();
         }
 
         public void Logout()
