@@ -24,24 +24,6 @@ namespace ClientBack.Core
 
         public async Task<User> Login()
         {
-            //var result2 = await loginService.Login();
-            //if(result2.expiration == null) Environment.SetEnvironmentVariable("memohero-lastlogin-user", null, EnvironmentVariableTarget.User);
-            //var lastUser = Environment.GetEnvironmentVariable("memohero-lastlogin-user", EnvironmentVariableTarget.User);
-
-            //if (lastUser != null)
-            //{
-            //    var exp = repository.Retrieve(lastUser);
-            //    if (exp == null || exp.Expiration < DateTime.Now)
-            //    {
-            //        await LoginAlt();
-            //    }
-            //}
-            //else
-            //{
-            //    var result = await LoginAlt();
-            //    Environment.SetEnvironmentVariable("memohero-lastlogin-user", result.user.Email, EnvironmentVariableTarget.User);
-            //}
-
             var result = await loginModule.Login();
             
             return result?.user.ToUser();
