@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ClientBack.Infrastructure.LoginProvider
 {
-    public interface ILoginService
+    internal interface ILoginService
     {
-        Task<User> Login();
+        Task<LoginResult> Login();
         void Logout();
     }
 }

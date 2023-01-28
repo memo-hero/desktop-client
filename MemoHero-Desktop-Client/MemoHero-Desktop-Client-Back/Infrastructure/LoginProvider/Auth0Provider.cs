@@ -17,18 +17,21 @@ namespace ClientBack
             {
                 Domain = domain,
                 ClientId = clientId,
-                RedirectUri = redirectUri,
-                Scope = "offline_access"
+                RedirectUri = redirectUri
             };
 
             clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;
             client = new Auth0Client(clientOptions);
         }
 
-        public async Task<User> Login()
+        public async Task<LoginResult> Login()
         {
             var loginResult = await client.LoginAsync();
-            return new User(loginResult.User);
+            return new LoginResult
+            {
+                user = loginResult.IsError ? null : new Auth0User(loginResult.User),
+                expiration = loginResult.AccessTokenExpiration
+            };
         }
 
         public async void Logout()

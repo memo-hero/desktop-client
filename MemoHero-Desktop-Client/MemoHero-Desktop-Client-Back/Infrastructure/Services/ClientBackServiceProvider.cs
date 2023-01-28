@@ -1,17 +1,15 @@
 ﻿using ClientBack.Infrastructure.LoginProvider;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ClientBack.Infrastructure.Repository;
+using LiteDB;
+using System.IO;
 
 namespace ClientBack.Infrastructure.Services
 {
-    public static class ClientBackServiceProvider
+    internal static class ClientBackServiceProvider
     {
-        public static ILoginService GetLoginService()
-        {
-            return new Auth0Provider();
-        }
+        private static readonly LiteDatabase LiteDatabase = new LiteDatabase($@"{ Directory.GetCurrentDirectory() }\memohero.db");
+
+        internal static ILoginService LoginService = new Auth0Provider();
+        internal static ILoginRepository LoginRepository = new LiteDbLoginRepository(LiteDatabase);
     }
 }

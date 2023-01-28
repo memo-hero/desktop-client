@@ -31,8 +31,6 @@ namespace MemoHeroDesktopClient.UI.Login
         /// </summary>
         private void InitializeComponent()
         {
-            this.client = ClientBack.Infrastructure.Services.ClientBackServiceProvider.GetLoginService();
-
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -45,7 +43,7 @@ namespace MemoHeroDesktopClient.UI.Login
             this.button1.TabIndex = 0;
             this.button1.Text = "login";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 

@@ -1,5 +1,4 @@
-﻿using ClientBack.Infrastructure.LoginProvider;
-using MemoHeroDesktopClient.Domain;
+﻿using ClientBack.Core;
 using MemoHeroDesktopClient.UI.MainMenu;
 using System;
 using System.Windows.Forms;
@@ -8,26 +7,26 @@ namespace MemoHeroDesktopClient.UI.Login
 {
     public partial class Login : Form
     {
-        private ILoginService client;
+        private MemoHeroCore memoCore = new MemoHeroCore();
 
         public Login()
         {
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void Button1_Click(object sender, EventArgs e)
         {
-            var user = await client.Login();
+            var user = await memoCore.Login();
             if(user != null)
             {
-                var window = new MainWindow(User.FromLoginUser(user));
-                window.Show();
+                MainWindow mainMenu = new MainWindow(user);
+                mainMenu.Show();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            client.Logout();
+            memoCore.Logout();
         }
 
         private void Login_Load(object sender, EventArgs e)
