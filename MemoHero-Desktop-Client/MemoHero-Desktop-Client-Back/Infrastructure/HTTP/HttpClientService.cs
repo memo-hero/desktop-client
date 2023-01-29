@@ -1,11 +1,8 @@
-﻿using ClientBack.Domain;
-using ClientBack.Domain.Cards;
+﻿using ClientBack.Domain.Cards;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace ClientBack.Infrastructure.HTTP
