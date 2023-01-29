@@ -1,5 +1,4 @@
 ﻿using ClientBack.Domain.Cards;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -9,19 +8,20 @@ namespace ClientBack.Infrastructure.HTTP
 {
     internal class HttpClientService : IMemoHeroRestClient
     {
-        static RestClient client;
+        private static RestClient client;
+        private readonly ISerializer serializer;
         private readonly string baseUrl = "http://localhost:8080/";
 
-        public HttpClientService()
+        public HttpClientService(ISerializer serializer)
         {
             client = new RestClient(baseUrl);
+            this.serializer = serializer;
         }
 
         public async Task<StoredUser> CreateUser(NewUser newUser)
         {
-            var body = JsonConvert.SerializeObject(newUser, Formatting.None);
             var request = new RestRequest("users")
-                .AddStringBody(body, DataFormat.Json);
+                .AddStringBody(serializer.Serialize(newUser), DataFormat.Json);
             
             return await client.PostAsync<StoredUser>(request);
         }
@@ -44,9 +44,10 @@ namespace ClientBack.Infrastructure.HTTP
             var request = new RestRequest("users/{userId}/cards").AddUrlSegment("userId", userId);
             try
             {
-                return await client.GetAsync<List<Card>>(request);
+                var result = await client.GetAsync(request);
+                return serializer.Deserialize<List<Card>>(result.Content);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new List<Card>();
             }
@@ -69,14 +70,9 @@ namespace ClientBack.Infrastructure.HTTP
 
         public async void CreateCard(string userId, NewCard newCard)
         {
-            // TODO: Inyectar el serializador
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
-
-            var body = JsonConvert.SerializeObject(newCard, Formatting.None, settings);
             var request = new RestRequest("users/{userId}/cards")
                 .AddUrlSegment("userId", userId)
-                .AddStringBody(body, DataFormat.Json);
+                .AddStringBody(serializer.Serialize(newCard), DataFormat.Json);
 
             try
             {

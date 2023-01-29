@@ -62,7 +62,9 @@
     <Compile Include="Domain\Cards\StudyMetadata.cs" />
     <Compile Include="Infrastructure\HTTP\IMemoHeroRestClient.cs" />
     <Compile Include="Domain\User\UserStats.cs" />
+    <Compile Include="Infrastructure\HTTP\ISerializer.cs" />
     <Compile Include="Infrastructure\HTTP\NewCard.cs" />
+    <Compile Include="Infrastructure\HTTP\NewtonSoftSerializer.cs" />
     <Compile Include="Infrastructure\HTTP\NewUser.cs" />
     <Compile Include="Infrastructure\HTTP\StoredUser.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />

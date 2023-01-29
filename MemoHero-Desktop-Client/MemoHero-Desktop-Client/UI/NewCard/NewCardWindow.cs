@@ -10,7 +10,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
 {
     public partial class NewCardWindow : DevExpress.XtraEditors.XtraForm
     {
-        MemoHeroCore memoCore;
+        readonly MemoHeroCore memoCore;
         public NewCardWindow(MemoHeroCore memoCore)
         {
             InitializeComponent();
