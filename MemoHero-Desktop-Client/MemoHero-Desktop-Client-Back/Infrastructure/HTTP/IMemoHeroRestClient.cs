@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using ClientBack.Domain.Cards;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ClientBack.Infrastructure.HTTP
 {
     interface IMemoHeroRestClient
     {
         Task<StoredUser> CreateUser(NewUser newUser);
-        Task<StoredUser> RetrieveUser(string id);
+        Task<StoredUser> RetrieveUser(string userId);
+        Task<List<Card>> GetUserCards(string userId);
     }
 }

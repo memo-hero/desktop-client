@@ -52,6 +52,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="UI\Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>

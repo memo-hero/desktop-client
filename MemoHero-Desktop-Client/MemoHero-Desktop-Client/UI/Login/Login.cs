@@ -1,4 +1,5 @@
 ﻿using ClientBack.Core;
+using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.UI.MainMenu;
 using System;
 using System.Windows.Forms;
@@ -7,7 +8,7 @@ namespace MemoHeroDesktopClient.UI.Login
 {
     public partial class Login : Form
     {
-        private MemoHeroCore memoCore = new MemoHeroCore();
+        private MemoHeroCore memoCore = MemoHeroServices.Core;
 
         public Login()
         {
