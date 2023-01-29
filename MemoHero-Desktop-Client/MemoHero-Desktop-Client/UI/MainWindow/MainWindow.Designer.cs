@@ -1,7 +1,7 @@
 ﻿
-namespace MemoHeroDesktopClient.UI.MainMenu
+namespace MemoHeroDesktopClient.UI.MainWindow
 {
-    partial class MainWindow
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -29,27 +29,61 @@ namespace MemoHeroDesktopClient.UI.MainMenu
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.gridCards = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnNewCard = new DevExpress.XtraEditors.SimpleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCards)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelControl1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.labelControl1.Location = new System.Drawing.Point(443, 98);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(63, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "labelControl1";
             // 
-            // MainWindow
+            // gridCards
+            // 
+            this.gridCards.Location = new System.Drawing.Point(36, 240);
+            this.gridCards.MainView = this.gridView1;
+            this.gridCards.Name = "gridCards";
+            this.gridCards.Size = new System.Drawing.Size(1193, 334);
+            this.gridCards.TabIndex = 1;
+            this.gridCards.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridCards;
+            this.gridView1.Name = "gridView1";
+            // 
+            // btnNewCard
+            // 
+            this.btnNewCard.Location = new System.Drawing.Point(149, 129);
+            this.btnNewCard.Name = "btnNewCard";
+            this.btnNewCard.Size = new System.Drawing.Size(75, 23);
+            this.btnNewCard.TabIndex = 2;
+            this.btnNewCard.Text = "Create New Card";
+            this.btnNewCard.Click += new System.EventHandler(this.btnNewCard_Click);
+            // 
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Name = "MainWindow";
+            this.ClientSize = new System.Drawing.Size(1278, 688);
+            this.Controls.Add(this.btnNewCard);
+            this.Controls.Add(this.gridCards);
+            this.Controls.Add(this.labelControl1);
+            this.Name = "MainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
+            this.Load += new System.EventHandler(this.MainMenu_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCards)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -57,6 +91,9 @@ namespace MemoHeroDesktopClient.UI.MainMenu
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.GridControl gridCards;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton btnNewCard;
     }
 }

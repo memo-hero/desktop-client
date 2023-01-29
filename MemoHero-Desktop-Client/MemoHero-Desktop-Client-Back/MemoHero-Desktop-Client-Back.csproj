@@ -49,8 +49,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CardsModule.cs" />
     <Compile Include="Core\LoginModule.cs" />
     <Compile Include="Core\MemoHeroCore.cs" />
+    <Compile Include="Core\UserModule.cs" />
     <Compile Include="Domain\Cards\Card.cs" />
     <Compile Include="Domain\Cards\Category.cs" />
     <Compile Include="Domain\User\User.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Domain\Cards\StudyMetadata.cs" />
     <Compile Include="Infrastructure\HTTP\IMemoHeroRestClient.cs" />
     <Compile Include="Domain\User\UserStats.cs" />
+    <Compile Include="Infrastructure\HTTP\NewCard.cs" />
     <Compile Include="Infrastructure\HTTP\NewUser.cs" />
     <Compile Include="Infrastructure\HTTP\StoredUser.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />

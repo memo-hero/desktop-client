@@ -35,6 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -53,11 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
-    <Compile Include="UI\Login\Login.cs">
+    <Compile Include="UI\Login\LoginSplash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Login\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="UI\Login\LoginSplash.Designer.cs">
+      <DependentUpon>LoginSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MainWindow\MainWindow.cs">
       <SubType>Form</SubType>
@@ -67,8 +78,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\Login\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="UI\NewCard\NewCardWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewCard\NewCardWindow.Designer.cs">
+      <DependentUpon>NewCardWindow.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UI\Login\LoginSplash.resx">
+      <DependentUpon>LoginSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainWindow\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -83,6 +101,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\NewCard\NewCardWindow.resx">
+      <DependentUpon>NewCardWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,7 +125,9 @@
       <Version>4.1.4</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MemoHero-Desktop-Client-Back\MemoHero-Desktop-Client-Back.csproj">
       <Project>{06389211-5a25-4bde-a00e-7ef275873642}</Project>

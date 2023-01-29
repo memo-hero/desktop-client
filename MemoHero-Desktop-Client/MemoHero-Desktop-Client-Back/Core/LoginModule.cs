@@ -15,9 +15,30 @@ namespace ClientBack.Core
         private readonly ILoginRepository repository = ClientBackServiceProvider.LoginRepository;
         private readonly IMemoHeroRestClient restClient = ClientBackServiceProvider.RestClient;
 
+        internal bool IsLoggedIn()
+        {
+            var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
+            if (lastUser == null) return false;
+
+            var login = repository.Retrieve(lastUser);
+            if (login == null) return false;
+            return login.Expiration > DateTime.Now;
+        }
+
+        internal LoginResult GetUserFromLocalDb()
+        {
+            var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
+            var login = repository.Retrieve(lastUser);
+
+            return new LoginResult
+            {
+                user = login.User
+            };
+        }
+
         internal async Task<LoginResult> Login()
         {
-            var lastUser = Environment.GetEnvironmentVariable("memohero-lastlogin-user", EnvironmentVariableTarget.User);
+            var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
 
             LoginResult loginResult;
             if (lastUser == null) loginResult = await NewUserLoginAsync();
@@ -25,13 +46,6 @@ namespace ClientBack.Core
 
             if (loginResult == null) return loginResult;
 
-            // Now that we have the user's email, we can hash it and see if it exist in the service
-            var userId = HashTool.SHA256_hash(loginResult.user.Email);
-            var user = await restClient.RetrieveUser(userId);
-            if (user == null) user = await restClient.CreateUser(new NewUser(userId));
-
-            // Now that we have both the auth0 user and the service user, we return both
-            loginResult.storedUser = user;
             return loginResult;
         }
 

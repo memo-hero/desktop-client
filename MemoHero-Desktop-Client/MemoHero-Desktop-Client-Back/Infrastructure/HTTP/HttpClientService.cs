@@ -66,5 +66,26 @@ namespace ClientBack.Infrastructure.HTTP
                 return null;
             }
         }
+
+        public async void CreateCard(string userId, NewCard newCard)
+        {
+            // TODO: Inyectar el serializador
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+
+            var body = JsonConvert.SerializeObject(newCard, Formatting.None, settings);
+            var request = new RestRequest("users/{userId}/cards")
+                .AddUrlSegment("userId", userId)
+                .AddStringBody(body, DataFormat.Json);
+
+            try
+            {
+                var result = await client.PostAsync(request);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
