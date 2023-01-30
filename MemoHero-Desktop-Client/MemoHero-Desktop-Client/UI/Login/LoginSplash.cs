@@ -15,8 +15,15 @@ namespace MemoHeroDesktopClient.UI.Login
             InitializeComponent();
         }
 
-        private void LoginSplash_Load(object sender, EventArgs e)
+        private async void LoginSplash_Load(object sender, EventArgs e)
         {
+            if (!await memoCore.IsServiceOnline())
+            {
+                Close();
+            }
+
+
+
             var isLogged = memoCore.IsLoggedIn();
 
             if (isLogged)

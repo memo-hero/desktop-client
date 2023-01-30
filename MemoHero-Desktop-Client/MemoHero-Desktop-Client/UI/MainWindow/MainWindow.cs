@@ -33,8 +33,11 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         {
             var cards = await memoCore.GetUserCards(user.Id);
             BindingList<Card> list = new BindingList<Card>(cards);
-
             gridCards.DataSource = list;
+
+            gridViewCards.Columns.Remove(gridViewCards.Columns.Where(x=> x.CustomizationSearchCaption == "Study Metadata").FirstOrDefault());
+            gridViewCards.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn());
+
         }
 
         private void cardBindingSource_CurrentChanged(object sender, EventArgs e)

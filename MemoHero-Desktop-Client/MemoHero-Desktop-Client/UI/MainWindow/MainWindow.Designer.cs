@@ -31,10 +31,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gridCards = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewCards = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.btnNewCard = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridCards)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -48,17 +48,17 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // gridCards
             // 
             this.gridCards.Location = new System.Drawing.Point(36, 240);
-            this.gridCards.MainView = this.gridView1;
+            this.gridCards.MainView = this.gridViewCards;
             this.gridCards.Name = "gridCards";
             this.gridCards.Size = new System.Drawing.Size(1193, 334);
             this.gridCards.TabIndex = 1;
             this.gridCards.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridViewCards});
             // 
-            // gridView1
+            // gridViewCards
             // 
-            this.gridView1.GridControl = this.gridCards;
-            this.gridView1.Name = "gridView1";
+            this.gridViewCards.GridControl = this.gridCards;
+            this.gridViewCards.Name = "gridViewCards";
             // 
             // btnNewCard
             // 
@@ -83,7 +83,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridCards)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,7 +93,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridCards;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewCards;
         private DevExpress.XtraEditors.SimpleButton btnNewCard;
     }
 }

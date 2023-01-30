@@ -21,6 +21,12 @@ namespace ClientBack.Core
             userModule = new UserModule(ClientBackServiceProvider.RestClient);
         }
 
+        public async Task<bool> IsServiceOnline()
+        {
+            var client = ClientBackServiceProvider.RestClient;
+            return await client.IsServiceOnline();
+        }
+
         public bool IsLoggedIn()
         {
             return loginModule.IsLoggedIn();

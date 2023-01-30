@@ -83,5 +83,20 @@ namespace ClientBack.Infrastructure.HTTP
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public async Task<bool> IsServiceOnline()
+        {
+            var request = new RestRequest("healthz");
+            
+            try
+            {
+                var result = await client.PostAsync(request);
+                return result.StatusCode == System.Net.HttpStatusCode.OK;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
