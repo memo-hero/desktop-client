@@ -4,5 +4,6 @@
     {
         public int Level { get; set; }
         public int Exp { get; set; }
+        public int Needed { get; set; }
     }
 }

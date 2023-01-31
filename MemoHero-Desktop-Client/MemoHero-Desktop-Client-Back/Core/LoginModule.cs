@@ -81,6 +81,8 @@ namespace ClientBack.Core
         internal void Logout()
         {
             loginService.Logout();
+            var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
+            repository.RemoveLastLogin(lastUser);
         }
     }
 }

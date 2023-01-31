@@ -31,5 +31,12 @@ namespace ClientBack.Infrastructure.Repository
             var login = col.FindOne(x => x.Id == lastUser);
             return login;
         }
+
+        public void RemoveLastLogin(string lastUser)
+        {
+            var col = database.GetCollection<Login>(tableName);
+
+            col.Delete(lastUser);
+        }
     }
 }

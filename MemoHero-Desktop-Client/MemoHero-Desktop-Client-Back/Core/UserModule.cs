@@ -19,7 +19,7 @@ namespace ClientBack.Core
             // Now that we have the user's email, we can hash it and see if it exist in the service
             user.Id = HashTool.SHA256_hash(user.Email);
             var storedUser = await restClient.RetrieveUser(user.Id);
-            if (user == null) storedUser = await restClient.CreateUser(new NewUser(user.Id));
+            if (storedUser == null) storedUser = await restClient.CreateUser(new NewUser(user.Id));
 
             // Now that we have both the auth0 user and the service user, we return both
             user.Stats = storedUser.Stats;

@@ -22,16 +22,13 @@ namespace MemoHeroDesktopClient.UI.Login
                 Close();
             }
 
-
-
             var isLogged = memoCore.IsLoggedIn();
 
             if (isLogged)
             {
                 user = memoCore.GetLocalUser();
+                GoToMainWindow();
             }
-
-            GoToMainWindow();
         }
 
         private async void loginButton_Click(object sender, EventArgs e)

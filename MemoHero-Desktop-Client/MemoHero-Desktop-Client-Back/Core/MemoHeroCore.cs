@@ -14,6 +14,8 @@ namespace ClientBack.Core
         private readonly CardsModule cardsModule;
         private readonly UserModule userModule;
 
+        public List<Card> UserCards;
+
         public MemoHeroCore()
         {
             loginModule = new LoginModule();
@@ -47,9 +49,10 @@ namespace ClientBack.Core
             return currentUser;
         }
 
-        public async Task<List<Card>> GetUserCards(string userId)
+        public async Task<bool> GetUserCards(string userId)
         {
-            return await cardsModule.GetUserCards(userId);
+            UserCards = await cardsModule.GetUserCards(userId);
+            return true;
         }
 
         public async Task<User> GetUserInfo(User user)
