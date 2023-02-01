@@ -1,5 +1,11 @@
-﻿using MemoHeroDesktopClient.UI.Login;
+﻿using ClientBack.Core;
+using ClientBack.Domain.User;
+using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
+using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.UI.Login;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient

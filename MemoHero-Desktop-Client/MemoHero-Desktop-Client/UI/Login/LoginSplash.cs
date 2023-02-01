@@ -1,5 +1,6 @@
 ﻿using ClientBack.Core;
 using ClientBack.Domain.User;
+using DevExpress.XtraSplashScreen;
 using MemoHeroDesktopClient.Infrastructure;
 using System;
 
@@ -13,9 +14,10 @@ namespace MemoHeroDesktopClient.UI.Login
         public LoginSplash()
         {
             InitializeComponent();
+            SplashScreenManager.ShowForm(typeof(SplashScreen));
         }
 
-        private async void LoginSplash_Load(object sender, EventArgs e)
+        private async void Start()
         {
             if (!await memoCore.IsServiceOnline())
             {
@@ -29,6 +31,12 @@ namespace MemoHeroDesktopClient.UI.Login
                 user = memoCore.GetLocalUser();
                 GoToMainWindow();
             }
+            loginButton.Enabled = true;
+        }
+
+        private void LoginSplash_Load(object sender, EventArgs e)
+        {
+            Start();
         }
 
         private async void loginButton_Click(object sender, EventArgs e)
@@ -41,11 +49,13 @@ namespace MemoHeroDesktopClient.UI.Login
         {
             if(user != null)
             {
+                SplashScreenManager.CloseForm();
                 var mainWindow = new MainWindow.MainMenu(this, memoCore, user);
                 user = await memoCore.GetUserInfo(user);
                 mainWindow.Show();
                 Hide();
             }
+            loginButton.Enabled = true;
         }
     }
 }

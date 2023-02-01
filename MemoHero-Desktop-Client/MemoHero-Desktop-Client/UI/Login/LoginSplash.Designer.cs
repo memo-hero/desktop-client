@@ -36,7 +36,8 @@ namespace MemoHeroDesktopClient.UI.Login
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(121, 378);
+            this.loginButton.Enabled = false;
+            this.loginButton.Location = new System.Drawing.Point(88, 378);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(110, 33);
             this.loginButton.TabIndex = 0;
@@ -46,7 +47,7 @@ namespace MemoHeroDesktopClient.UI.Login
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(44, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(264, 360);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -57,13 +58,13 @@ namespace MemoHeroDesktopClient.UI.Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 433);
+            this.ClientSize = new System.Drawing.Size(296, 424);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.loginButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginSplash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginSplash";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.LoginSplash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

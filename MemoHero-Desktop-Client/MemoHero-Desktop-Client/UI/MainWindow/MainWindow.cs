@@ -2,8 +2,12 @@
 using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using MemoHeroDesktopClient.UI.NewCard;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
@@ -16,6 +20,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private readonly MemoHeroCore memoCore;
         private readonly User user;
         private readonly XtraForm login;
+        private GridViewService gridViewService;
 
         public MainMenu(XtraForm login, MemoHeroCore memoCore, User user)
         {
@@ -27,17 +32,15 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private async void MainMenu_Load(object sender, EventArgs e)
         {
-            if(await memoCore.GetUserCards(user.Id))
+            gridViewService = new GridViewService(gridCards);
+            if (await memoCore.GetUserCards(user.Id))
             {
-                BindingList<Card> list = new BindingList<Card>(memoCore.UserCards);
-                gridCards.DataSource = list;
+                var cards = memoCore.UserCards.Select(c => new GridableCard(c)).ToList();
+                gridViewService.SetDataSource(memoCore.UserCards);
             }
 
             lblWelcome.Text = $"Welcome { user.Nickname }!";
-            picture.LoadAsync(user.Picture);
-
-            gridViewCards.Columns.Remove(gridViewCards.Columns.Where(x => x.CustomizationSearchCaption == "Study Metadata").FirstOrDefault());
-            gridViewCards.Columns.Add(new DevExpress.XtraGrid.Columns.GridColumn());
+            //lblDueCardsCount.Text = $"You have cards { "test" } due";
 
             UpdateStats();
         }
@@ -84,7 +87,18 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         {
             memoCore.Logout();
             Close();
-            login.Show();
+        }
+
+        private void btnCardEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void gridCards_DoubleClick(object sender, EventArgs e)
+        {
+            var row = gridViewCards.GetRow(gridViewCards.FocusedRowHandle);
+            var id = (row as GridableCard).Id;
+            var test = gridViewService.GetCard(row as GridableCard);
         }
     }
 
@@ -98,6 +112,56 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             if (neededExp == 0) return 0;
 
             return (currentExp * 100 / neededExp);
+        }
+    }
+
+    class GridViewService
+    {
+        private readonly GridControl gridViewCards;
+        private List<Card> cards;
+        private List<GridableCard> gridableCards;
+
+        public GridViewService(GridControl gridViewCards)
+        {
+            this.gridViewCards = gridViewCards;
+        }
+
+        internal void SetDataSource(List<Card> list)
+        {
+            cards = list;
+            gridableCards = list.Select(c => new GridableCard(c)).ToList();
+            gridViewCards.DataSource = new BindingList<GridableCard>(gridableCards);
+        }
+
+        internal Card GetCard(GridableCard gridableCard)
+        {
+            return cards.FirstOrDefault(c => c.Id == gridableCard.Id);
+        }
+    }
+
+    class GridableCard
+    {
+        public string Id { get; set; }
+        public string Front { get; set; }
+        public string Back { get; set; }
+        public string Tags { get; set; }
+        public DateTime DueDate { get; set; }
+
+        public GridableCard(Card card)
+        {
+            Id = card.Id;
+            Front = card.Front;
+            Back = card.Back;
+            Tags = string.Join(", ", card.Tags);
+            DueDate = UnixTimeStampToDateTime(card.DueDate);
+        }
+
+        private static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {
+            // Unix timestamp is seconds past epoch
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddDays(unixTimeStamp).ToLocalTime();
+            return dateTime;
         }
     }
 }

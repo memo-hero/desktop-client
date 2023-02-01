@@ -56,7 +56,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.lblScienceLevel = new DevExpress.XtraEditors.LabelControl();
             this.lblScience = new DevExpress.XtraEditors.LabelControl();
             this.expScience = new DevExpress.XtraEditors.ProgressBarControl();
-            this.picture = new System.Windows.Forms.PictureBox();
+            this.lblDueCardsCount = new DevExpress.XtraEditors.LabelControl();
+            this.btnCardEdit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridCards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -65,7 +66,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             ((System.ComponentModel.ISupportInitialize)(this.expHistory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expLanguages.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expScience.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWelcome
@@ -87,15 +87,17 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.gridCards.TabIndex = 1;
             this.gridCards.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCards});
+            this.gridCards.DoubleClick += new System.EventHandler(this.gridCards_DoubleClick);
             // 
             // gridViewCards
             // 
             this.gridViewCards.GridControl = this.gridCards;
             this.gridViewCards.Name = "gridViewCards";
+            this.gridViewCards.OptionsBehavior.ReadOnly = true;
             // 
             // btnNewCard
             // 
-            this.btnNewCard.Location = new System.Drawing.Point(12, 120);
+            this.btnNewCard.Location = new System.Drawing.Point(542, 79);
             this.btnNewCard.Name = "btnNewCard";
             this.btnNewCard.Size = new System.Drawing.Size(75, 23);
             this.btnNewCard.TabIndex = 2;
@@ -108,9 +110,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
             this.ribbonControl.SearchEditItem,
-            this.btnLogOut});
+            this.btnLogOut,
+            this.btnCardEdit});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 2;
+            this.ribbonControl.MaxItemId = 3;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageUserStatus,
@@ -149,6 +152,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnCardEdit);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
@@ -304,20 +308,29 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.expScience.Size = new System.Drawing.Size(296, 18);
             this.expScience.TabIndex = 19;
             // 
-            // picture
+            // lblDueCardsCount
             // 
-            this.picture.Location = new System.Drawing.Point(378, 72);
-            this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(100, 100);
-            this.picture.TabIndex = 22;
-            this.picture.TabStop = false;
+            this.lblDueCardsCount.Appearance.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDueCardsCount.Appearance.Options.UseFont = true;
+            this.lblDueCardsCount.Location = new System.Drawing.Point(12, 108);
+            this.lblDueCardsCount.Name = "lblDueCardsCount";
+            this.lblDueCardsCount.Size = new System.Drawing.Size(156, 33);
+            this.lblDueCardsCount.TabIndex = 24;
+            this.lblDueCardsCount.Text = "labelControl1";
+            // 
+            // btnCardEdit
+            // 
+            this.btnCardEdit.Caption = "Edit Selected Card";
+            this.btnCardEdit.Id = 2;
+            this.btnCardEdit.Name = "btnCardEdit";
+            this.btnCardEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCardEdit_ItemClick);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1278, 688);
-            this.Controls.Add(this.picture);
+            this.Controls.Add(this.lblDueCardsCount);
             this.Controls.Add(this.lblScienceLevel);
             this.Controls.Add(this.lblScience);
             this.Controls.Add(this.expScience);
@@ -337,6 +350,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.Controls.Add(this.btnNewCard);
             this.Controls.Add(this.gridCards);
             this.Controls.Add(this.lblWelcome);
+            this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
@@ -350,7 +364,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             ((System.ComponentModel.ISupportInitialize)(this.expHistory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.expLanguages.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.expScience.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,6 +398,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraEditors.LabelControl lblScienceLevel;
         private DevExpress.XtraEditors.LabelControl lblScience;
         private DevExpress.XtraEditors.ProgressBarControl expScience;
-        private System.Windows.Forms.PictureBox picture;
+        private DevExpress.XtraEditors.LabelControl lblDueCardsCount;
+        private DevExpress.XtraBars.BarButtonItem btnCardEdit;
     }
 }
