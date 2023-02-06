@@ -4,6 +4,7 @@ using ClientBack.Domain.User;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.NewCard;
 using System;
 using System.Collections;
@@ -77,12 +78,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             login.Hide();
         }
 
-        private void btnNewCard_Click(object sender, EventArgs e)
-        {
-            var newCardWindow = new NewCardWindow(memoCore);
-            newCardWindow.Show();
-        }
-
         private void btnLogOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             memoCore.Logout();
@@ -91,14 +86,21 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void btnCardEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            var row = gridViewCards.GetRow(gridViewCards.FocusedRowHandle);
+            var selectedCard = gridViewService.GetCardFromGridableCard(row as GridableCard);
+            var newCardWindow = new EditCardWindow(memoCore, ref selectedCard);
+            newCardWindow.Show();
         }
 
         private void gridCards_DoubleClick(object sender, EventArgs e)
         {
-            var row = gridViewCards.GetRow(gridViewCards.FocusedRowHandle);
-            var id = (row as GridableCard).Id;
-            var test = gridViewService.GetCard(row as GridableCard);
+            
+        }
+
+        private void btnCreateCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var newCardWindow = new NewCardWindow(memoCore);
+            newCardWindow.Show();
         }
     }
 
@@ -133,7 +135,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             gridViewCards.DataSource = new BindingList<GridableCard>(gridableCards);
         }
 
-        internal Card GetCard(GridableCard gridableCard)
+        internal Card GetCardFromGridableCard(GridableCard gridableCard)
         {
             return cards.FirstOrDefault(c => c.Id == gridableCard.Id);
         }

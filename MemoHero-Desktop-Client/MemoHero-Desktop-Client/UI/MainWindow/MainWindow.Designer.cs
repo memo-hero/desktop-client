@@ -32,9 +32,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.lblWelcome = new DevExpress.XtraEditors.LabelControl();
             this.gridCards = new DevExpress.XtraGrid.GridControl();
             this.gridViewCards = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.btnNewCard = new DevExpress.XtraEditors.SimpleButton();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnLogOut = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCardEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCreateCard = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageUserStatus = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -57,7 +58,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.lblScience = new DevExpress.XtraEditors.LabelControl();
             this.expScience = new DevExpress.XtraEditors.ProgressBarControl();
             this.lblDueCardsCount = new DevExpress.XtraEditors.LabelControl();
-            this.btnCardEdit = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridCards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -95,15 +95,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.gridViewCards.Name = "gridViewCards";
             this.gridViewCards.OptionsBehavior.ReadOnly = true;
             // 
-            // btnNewCard
-            // 
-            this.btnNewCard.Location = new System.Drawing.Point(542, 79);
-            this.btnNewCard.Name = "btnNewCard";
-            this.btnNewCard.Size = new System.Drawing.Size(75, 23);
-            this.btnNewCard.TabIndex = 2;
-            this.btnNewCard.Text = "Create New Card";
-            this.btnNewCard.Click += new System.EventHandler(this.btnNewCard_Click);
-            // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
@@ -111,9 +102,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonControl.ExpandCollapseItem,
             this.ribbonControl.SearchEditItem,
             this.btnLogOut,
-            this.btnCardEdit});
+            this.btnCardEdit,
+            this.btnCreateCard});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 3;
+            this.ribbonControl.MaxItemId = 4;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageUserStatus,
@@ -129,6 +121,20 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnLogOut.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.icons8_logout_52;
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogOut_ItemClick);
+            // 
+            // btnCardEdit
+            // 
+            this.btnCardEdit.Caption = "Edit Selected Card";
+            this.btnCardEdit.Id = 2;
+            this.btnCardEdit.Name = "btnCardEdit";
+            this.btnCardEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCardEdit_ItemClick);
+            // 
+            // btnCreateCard
+            // 
+            this.btnCreateCard.Caption = "Create Card";
+            this.btnCreateCard.Id = 3;
+            this.btnCreateCard.Name = "btnCreateCard";
+            this.btnCreateCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCreateCard_ItemClick);
             // 
             // ribbonPageUserStatus
             // 
@@ -152,6 +158,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnCreateCard);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnCardEdit);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "ribbonPageGroup2";
@@ -318,13 +325,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.lblDueCardsCount.TabIndex = 24;
             this.lblDueCardsCount.Text = "labelControl1";
             // 
-            // btnCardEdit
-            // 
-            this.btnCardEdit.Caption = "Edit Selected Card";
-            this.btnCardEdit.Id = 2;
-            this.btnCardEdit.Name = "btnCardEdit";
-            this.btnCardEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCardEdit_ItemClick);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,7 +347,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.Controls.Add(this.lblArts);
             this.Controls.Add(this.expArts);
             this.Controls.Add(this.ribbonControl);
-            this.Controls.Add(this.btnNewCard);
             this.Controls.Add(this.gridCards);
             this.Controls.Add(this.lblWelcome);
             this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
@@ -374,7 +373,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraEditors.LabelControl lblWelcome;
         private DevExpress.XtraGrid.GridControl gridCards;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewCards;
-        private DevExpress.XtraEditors.SimpleButton btnNewCard;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageUserStatus;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
@@ -400,5 +398,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraEditors.ProgressBarControl expScience;
         private DevExpress.XtraEditors.LabelControl lblDueCardsCount;
         private DevExpress.XtraBars.BarButtonItem btnCardEdit;
+        private DevExpress.XtraBars.BarButtonItem btnCreateCard;
     }
 }

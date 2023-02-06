@@ -6,16 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MemoHeroDesktopClient.UI.NewCard
+namespace MemoHeroDesktopClient.UI.EditCard
 {
-    public partial class NewCardWindow : DevExpress.XtraEditors.XtraForm
+    public partial class EditCardWindow : DevExpress.XtraEditors.XtraForm
     {
         private readonly MemoHeroCore memoCore;
+        private readonly Card card;
 
-        public NewCardWindow(MemoHeroCore memoCore)
+        public EditCardWindow(MemoHeroCore memoCore, ref Card card)
         {
             InitializeComponent();
             this.memoCore = memoCore;
+            this.card = card;
         }
 
         private void tokenTags_ValidateToken(object sender, TokenEditValidateTokenEventArgs e)

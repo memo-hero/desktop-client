@@ -14,7 +14,6 @@ namespace MemoHeroDesktopClient.UI.Login
         public LoginSplash()
         {
             InitializeComponent();
-            SplashScreenManager.ShowForm(typeof(SplashScreen));
         }
 
         private async void Start()
@@ -49,7 +48,6 @@ namespace MemoHeroDesktopClient.UI.Login
         {
             if(user != null)
             {
-                SplashScreenManager.CloseForm();
                 var mainWindow = new MainWindow.MainMenu(this, memoCore, user);
                 user = await memoCore.GetUserInfo(user);
                 mainWindow.Show();

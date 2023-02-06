@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
+    <Compile Include="UI\EditCard\EditCardWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditCard\EditCardWindow.Designer.cs">
+      <DependentUpon>EditCardWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Login\LoginSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
       <DependentUpon>NewCardWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UI\EditCard\EditCardWindow.resx">
+      <DependentUpon>EditCardWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Login\LoginSplash.resx">
       <DependentUpon>LoginSplash.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
