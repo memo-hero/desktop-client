@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -66,6 +66,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\UICore.cs" />
+    <Compile Include="CustomControls\CardListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CardListControl.Designer.cs">
+      <DependentUpon>CardListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserStatsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\UserStatsControl.Designer.cs">
+      <DependentUpon>UserStatsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="UI\EditCard\EditCardWindow.cs">
       <SubType>Form</SubType>
@@ -79,6 +92,7 @@
     <Compile Include="UI\Login\LoginSplash.Designer.cs">
       <DependentUpon>LoginSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\GridableCard.cs" />
     <Compile Include="UI\MainWindow\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +107,12 @@
     <Compile Include="UI\NewCard\NewCardWindow.Designer.cs">
       <DependentUpon>NewCardWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomControls\CardListControl.resx">
+      <DependentUpon>CardListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\UserStatsControl.resx">
+      <DependentUpon>UserStatsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UI\EditCard\EditCardWindow.resx">
       <DependentUpon>EditCardWindow.cs</DependentUpon>
@@ -153,10 +173,9 @@
     <None Include="Resources\icons8-logout-26.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icon.ico" />
     <Content Include="Logo.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -48,8 +48,8 @@ namespace MemoHeroDesktopClient.UI.Login
         {
             if(user != null)
             {
-                var mainWindow = new MainWindow.MainMenu(this, memoCore, user);
                 user = await memoCore.GetUserInfo(user);
+                var mainWindow = new MainWindow.MainMenu(this, memoCore, user);
                 mainWindow.Show();
                 Hide();
             }
