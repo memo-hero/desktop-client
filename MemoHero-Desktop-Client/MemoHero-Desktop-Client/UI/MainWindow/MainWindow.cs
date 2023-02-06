@@ -1,12 +1,8 @@
 ﻿using ClientBack.Core;
-using ClientBack.Domain.User;
 using DevExpress.XtraBars.Ribbon;
-using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.UI.NewCard;
 using System;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient.UI.MainWindow
@@ -15,25 +11,16 @@ namespace MemoHeroDesktopClient.UI.MainWindow
     {
         private readonly MemoHeroCore memoCore;
         private readonly UICore uiCore;
-        private readonly User user;
-        private readonly XtraForm login;
 
         public MainMenu(UICore uiCore)
         {
             InitializeComponent();
-            //this.memoCore = memoCore;
-            //this.user = user;
             this.uiCore = uiCore;
-            //this.login = login;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            //if (await memoCore.GetUserCards(user.Id))
-            //{
-            //    var cards = memoCore.UserCards.Select(c => new GridableCard(c)).ToList();
-            //    uiCore.SetCardListControl(memoCore.UserCards);
-            //}
+            uiCore.InitializeControls();
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)

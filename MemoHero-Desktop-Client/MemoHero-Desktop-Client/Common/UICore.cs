@@ -6,6 +6,7 @@ using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.UI.Login;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,15 +14,20 @@ namespace MemoHeroDesktopClient.Common
 {
     internal class UICore
     {
+        // Forms
         internal readonly LoginSplash login;
         internal readonly UI.MainWindow.MainMenu mainMenu;
 
+        // Events
         internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
         internal event UserLoginHandler UserLoggedIn;
 
         private readonly MemoHeroCore memoCore = MemoHeroServices.Core;
-        //private readonly Panel panel;
+
+        // User Data
         private User user;
+        
+        // Controls
         private Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
         private UserStatsControl userStatsControl;
         private CardListControl cardListControl;
@@ -30,24 +36,20 @@ namespace MemoHeroDesktopClient.Common
         {
             login = new LoginSplash(this);
             mainMenu = new UI.MainWindow.MainMenu(this);
-            SetupPanel(mainMenu.mainPanel);
         }
 
-        private void SetupPanel(Panel panel)
+        internal void InitializeControls()
         {
+            var panel = mainMenu.mainPanel;
+
             userStatsControl = new UserStatsControl(user);
             customControls.Add("ribbonPageUserStatus", userStatsControl);
             panel.Controls.Add(userStatsControl);
 
             cardListControl = new CardListControl();
-            cardListControl.SetDataSource(cards);
+            cardListControl.SetDataSource(memoCore.UserCards);
             customControls.Add("ribbonPageCards", cardListControl);
             panel.Controls.Add(cardListControl);
-        }
-
-        internal void SetCardListControl(List<Card> cards)
-        {
-            
         }
 
         internal void UpdatePanel(string currentPageName)
@@ -69,11 +71,6 @@ namespace MemoHeroDesktopClient.Common
             mainMenu.Hide();
             login.loginButton.Enabled = true;
             login.Show();
-        }
-
-        internal void Login()
-        {
-            StartLoginProcess(true);
         }
 
         internal async void StartLoginProcess(bool manualLogin)
@@ -99,6 +96,7 @@ namespace MemoHeroDesktopClient.Common
             if (user != null)
             {
                 user = await memoCore.GetUserInfo(user);
+                await memoCore.GetUserCards(user.Id);
                 mainMenu.Show();
                 login.Hide();
                 
@@ -106,11 +104,6 @@ namespace MemoHeroDesktopClient.Common
             }
 
             OnUserLoggedIn(true);
-        }
-
-        private void ShowMainMenuOnSuccessfulLogin()
-        {
-
         }
 
         protected virtual void OnUserLoggedIn(bool failed) => UserLoggedIn(this, new UserLoginResultArgs(failed));
