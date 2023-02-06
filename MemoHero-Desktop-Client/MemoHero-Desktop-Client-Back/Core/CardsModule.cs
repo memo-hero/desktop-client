@@ -20,10 +20,10 @@ namespace ClientBack.Core
             return await restClient.GetUserCards(userId);
         }
 
-        internal void CreateCard(User currentUser, Card newCard)
+        internal async Task<CreateCardResult> CreateCard(User currentUser, Card newCard)
         {
             var card = NewCard.FromCard(newCard);
-            restClient.CreateCard(currentUser.Id, card);
+            return await restClient.CreateCard(currentUser.Id, card);
         }
     }
 }

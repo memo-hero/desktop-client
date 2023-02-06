@@ -1,5 +1,4 @@
-﻿using ClientBack.Core;
-using DevExpress.XtraBars.Ribbon;
+﻿using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.UI.NewCard;
 using System;
@@ -9,7 +8,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 {
     internal partial class MainMenu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        private readonly MemoHeroCore memoCore;
         private readonly UICore uiCore;
 
         public MainMenu(UICore uiCore)
@@ -43,8 +41,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void btnCreateCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var newCardWindow = new NewCardWindow(memoCore);
-            newCardWindow.Show();
+            uiCore.ShowNewCardForm();
         }
 
         private void ribbonControl_SelectedPageChanged(object sender, EventArgs e)

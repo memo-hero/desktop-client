@@ -1,12 +1,5 @@
-﻿using ClientBack.Core;
-using ClientBack.Domain.User;
-using DevExpress.XtraEditors;
-using DevExpress.XtraSplashScreen;
-using MemoHeroDesktopClient.Common;
-using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.UI.Login;
+﻿using MemoHeroDesktopClient.Common;
 using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient
@@ -23,6 +16,7 @@ namespace MemoHeroDesktopClient
             Application.SetCompatibleTextRenderingDefault(false);
 
             var uiCore = new UICore();
+            uiCore.CheckService();
             uiCore.StartLoginProcess(false);
 
             Application.Run(uiCore.login);

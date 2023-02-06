@@ -18,11 +18,17 @@ namespace MemoHeroDesktopClient.CustomControls
             InitializeComponent();
         }
 
-        internal void SetDataSource(List<Card> list)
+        internal void SetDataSource(ref List<Card> list)
         {
             cards = list;
             gridableCards = list.Select(c => new GridableCard(c)).ToList();
             gridCards.DataSource = new BindingList<GridableCard>(gridableCards);
+        }
+
+        internal void AddCard(Card card)
+        {
+            gridableCards.Add(new GridableCard(card));
+            gridCards.RefreshDataSource();
         }
 
         internal Card GetCardFromGridableCard(GridableCard gridableCard)

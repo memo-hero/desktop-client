@@ -68,7 +68,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
         }
 
-        public async void CreateCard(string userId, NewCard newCard)
+        public async Task<CreateCardResult> CreateCard(string userId, NewCard newCard)
         {
             var request = new RestRequest("users/{userId}/cards")
                 .AddUrlSegment("userId", userId)
@@ -76,11 +76,13 @@ namespace ClientBack.Infrastructure.HTTP
 
             try
             {
-                var result = await client.PostAsync(request);
+                var createResult = await client.PostAsync(request);
+                return serializer.Deserialize<CreateCardResult>(createResult.Content);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return null;
             }
         }
 

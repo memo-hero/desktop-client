@@ -1,13 +1,11 @@
 ﻿using ClientBack.Core;
-using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.UI.Login;
+using MemoHeroDesktopClient.UI.NewCard;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient.Common
@@ -17,6 +15,7 @@ namespace MemoHeroDesktopClient.Common
         // Forms
         internal readonly LoginSplash login;
         internal readonly UI.MainWindow.MainMenu mainMenu;
+        internal NewCardWindow newCardWindow;
 
         // Events
         internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
@@ -47,7 +46,7 @@ namespace MemoHeroDesktopClient.Common
             panel.Controls.Add(userStatsControl);
 
             cardListControl = new CardListControl();
-            cardListControl.SetDataSource(memoCore.UserCards);
+            cardListControl.SetDataSource(ref memoCore.UserCards);
             customControls.Add("ribbonPageCards", cardListControl);
             panel.Controls.Add(cardListControl);
         }
@@ -62,7 +61,16 @@ namespace MemoHeroDesktopClient.Common
 
         internal void ShowNewCardForm()
         {
+            if (newCardWindow == null) newCardWindow = new NewCardWindow();
+            newCardWindow.CardCreated += NewCardWindow_CardCreated;
+            
+            newCardWindow.ShowDialog();
+        }
 
+        private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
+        {
+            var card = await memoCore.CreateCardAsync(args.newCard);
+            cardListControl.AddCard(card);
         }
 
         internal void Logout()
@@ -73,14 +81,17 @@ namespace MemoHeroDesktopClient.Common
             login.Show();
         }
 
-        internal async void StartLoginProcess(bool manualLogin)
+        internal async void CheckService()
         {
             if (!await memoCore.IsServiceOnline())
             {
                 MessageBox.Show("The services is down.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 login.Close();
             }
+        }
 
+        internal async void StartLoginProcess(bool manualLogin)
+        {
             var isLogged = memoCore.IsLoggedIn();
 
             if (isLogged)

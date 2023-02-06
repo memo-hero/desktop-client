@@ -2,6 +2,7 @@
 using ClientBack.Domain.Cards;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using MemoHeroDesktopClient.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ namespace MemoHeroDesktopClient.UI.NewCard
 {
     public partial class NewCardWindow : DevExpress.XtraEditors.XtraForm
     {
-        private readonly MemoHeroCore memoCore;
+        internal delegate void CreateCardHandler(object source, CreateCardArgs args);
+        internal event CreateCardHandler CardCreated;
 
-        public NewCardWindow(MemoHeroCore memoCore)
+        public NewCardWindow()
         {
             InitializeComponent();
-            this.memoCore = memoCore;
         }
 
         private void tokenTags_ValidateToken(object sender, TokenEditValidateTokenEventArgs e)
@@ -41,7 +42,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
                 Tags = TokensToHashSet(tokenTags.GetTokenList())
             };
 
-            memoCore.CreateCard(newCard);
+            OnCardCreated(newCard);
         }
 
         private HashSet<string> TokensToHashSet(TokenEditSelectedItemCollection tokens)
@@ -50,5 +51,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             tokens.ForEach(token => tags.Add(token.Description));
             return tags;
         }
+
+        protected virtual void OnCardCreated(Card card) => CardCreated(this, new CreateCardArgs(card));
     }
 }

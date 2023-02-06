@@ -65,9 +65,12 @@ namespace ClientBack.Core
             loginModule.Logout();
         }
 
-        public void CreateCard(Card newCard)
+        public async Task<Card> CreateCardAsync(Card newCard)
         {
-            cardsModule.CreateCard(currentUser, newCard);
+            var card = await cardsModule.CreateCard(currentUser, newCard);
+            UserCards.Add(newCard);
+
+            return card;
         }
     }
 }

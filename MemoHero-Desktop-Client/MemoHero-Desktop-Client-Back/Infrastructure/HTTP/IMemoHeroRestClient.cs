@@ -9,7 +9,7 @@ namespace ClientBack.Infrastructure.HTTP
         Task<StoredUser> CreateUser(NewUser newUser);
         Task<StoredUser> RetrieveUser(string userId);
         Task<List<Card>> GetUserCards(string userId);
-        void CreateCard(string id, NewCard newCard);
+        Task<CreateCardResult> CreateCard(string id, NewCard newCard);
         Task<bool> IsServiceOnline();
     }
 }

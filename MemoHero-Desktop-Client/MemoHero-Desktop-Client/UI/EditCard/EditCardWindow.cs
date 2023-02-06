@@ -43,7 +43,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
                 Tags = TokensToHashSet(tokenTags.GetTokenList())
             };
 
-            memoCore.CreateCard(newCard);
+            memoCore.CreateCardAsync(newCard);
         }
 
         private HashSet<string> TokensToHashSet(TokenEditSelectedItemCollection tokens)
