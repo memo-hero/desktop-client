@@ -163,6 +163,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.BarButtonItem btnLogOut;
         private DevExpress.XtraBars.BarButtonItem btnCardEdit;
         private DevExpress.XtraBars.BarButtonItem btnCreateCard;
-        private System.Windows.Forms.Panel mainPanel;
+        internal System.Windows.Forms.Panel mainPanel;
     }
 }

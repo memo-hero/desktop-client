@@ -1,59 +1,27 @@
-﻿using ClientBack.Core;
-using ClientBack.Domain.User;
-using DevExpress.XtraSplashScreen;
-using MemoHeroDesktopClient.Infrastructure;
+﻿using MemoHeroDesktopClient.Common;
 using System;
 
 namespace MemoHeroDesktopClient.UI.Login
 {
-    public partial class LoginSplash : DevExpress.XtraEditors.XtraForm
+    internal partial class LoginSplash : DevExpress.XtraEditors.XtraForm
     {
-        private readonly MemoHeroCore memoCore = MemoHeroServices.Core;
-        private User user;
+        private readonly UICore uiCore;
 
-        public LoginSplash()
+        public LoginSplash(UICore uiCore)
         {
             InitializeComponent();
+
+            this.uiCore = uiCore;
+            this.uiCore.UserLoggedIn += UICore_UserLoggedIn;
         }
 
-        private async void Start()
+        private void UICore_UserLoggedIn(object source, UserLoginResultArgs args)
         {
-            if (!await memoCore.IsServiceOnline())
-            {
-                Close();
-            }
-
-            var isLogged = memoCore.IsLoggedIn();
-
-            if (isLogged)
-            {
-                user = memoCore.GetLocalUser();
-                GoToMainWindow();
-            }
-            loginButton.Enabled = true;
+            loginButton.Enabled = args.FailedLogin;
         }
-
-        private void LoginSplash_Load(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
-            Start();
-        }
-
-        private async void loginButton_Click(object sender, EventArgs e)
-        {
-            user = await memoCore.Login();
-            GoToMainWindow();
-        }
-
-        private async void GoToMainWindow()
-        {
-            if(user != null)
-            {
-                user = await memoCore.GetUserInfo(user);
-                var mainWindow = new MainWindow.MainMenu(this, memoCore, user);
-                mainWindow.Show();
-                Hide();
-            }
-            loginButton.Enabled = true;
+            uiCore.Login();
         }
     }
 }

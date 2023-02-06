@@ -2,6 +2,7 @@
 using ClientBack.Domain.User;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
+using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.UI.Login;
 using System;
@@ -20,7 +21,11 @@ namespace MemoHeroDesktopClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginSplash());
+
+            var uiCore = new UICore();
+            uiCore.StartLoginProcess(false);
+
+            Application.Run(uiCore.login);
         }
     }
 }

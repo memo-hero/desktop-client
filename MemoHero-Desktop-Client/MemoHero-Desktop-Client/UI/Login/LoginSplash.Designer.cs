@@ -65,7 +65,6 @@ namespace MemoHeroDesktopClient.UI.Login
             this.Name = "LoginSplash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.LoginSplash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -74,7 +73,7 @@ namespace MemoHeroDesktopClient.UI.Login
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton loginButton;
+        internal DevExpress.XtraEditors.SimpleButton loginButton;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

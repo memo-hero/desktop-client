@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\UICore.cs" />
+    <Compile Include="Common\UserLoginResultArgs.cs" />
     <Compile Include="CustomControls\CardListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

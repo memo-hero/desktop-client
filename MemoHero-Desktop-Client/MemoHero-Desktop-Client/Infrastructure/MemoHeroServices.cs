@@ -1,4 +1,5 @@
 ﻿using ClientBack.Core;
+using MemoHeroDesktopClient.Common;
 
 namespace MemoHeroDesktopClient.Infrastructure
 {
