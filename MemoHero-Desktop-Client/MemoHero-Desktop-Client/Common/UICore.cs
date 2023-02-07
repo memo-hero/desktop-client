@@ -75,12 +75,17 @@ namespace MemoHeroDesktopClient.Common
 
         internal void Logout()
         {
+            ClearState();
+            login.loginButton.Enabled = true;
+            login.Show();
+        }
+
+        private void ClearState()
+        {
             user = null;
             customControls.Clear();
             memoCore.Logout();
             mainMenu.Dispose();
-            login.loginButton.Enabled = true;
-            login.Show();
         }
 
         internal async void CheckService()

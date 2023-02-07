@@ -73,20 +73,20 @@ namespace MemoHeroDesktopClient.CustomControls
             this.layoutControl.Name = "layoutControl";
             this.layoutControl.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(2503, 296, 650, 400);
             this.layoutControl.Root = this.Root;
-            this.layoutControl.Size = new System.Drawing.Size(436, 366);
+            this.layoutControl.Size = new System.Drawing.Size(650, 350);
             this.layoutControl.TabIndex = 10;
             this.layoutControl.Text = "layoutControl1";
             // 
             // tokenTags
             // 
-            this.tokenTags.Location = new System.Drawing.Point(79, 294);
+            this.tokenTags.Location = new System.Drawing.Point(79, 278);
             this.tokenTags.Name = "tokenTags";
             this.tokenTags.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tokenTags.Properties.Appearance.Options.UseFont = true;
             this.tokenTags.Properties.EditMode = DevExpress.XtraEditors.TokenEditMode.Manual;
             this.tokenTags.Properties.Separators.AddRange(new string[] {
             ","});
-            this.tokenTags.Size = new System.Drawing.Size(345, 28);
+            this.tokenTags.Size = new System.Drawing.Size(559, 28);
             this.tokenTags.StyleController = this.layoutControl;
             this.tokenTags.TabIndex = 3;
             conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -102,7 +102,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.textCardFront.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
             this.textCardFront.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textCardFront.Properties.Appearance.Options.UseFont = true;
-            this.textCardFront.Size = new System.Drawing.Size(345, 131);
+            this.textCardFront.Size = new System.Drawing.Size(559, 129);
             this.textCardFront.StyleController = this.layoutControl;
             this.textCardFront.TabIndex = 1;
             conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -111,7 +111,7 @@ namespace MemoHeroDesktopClient.CustomControls
             // 
             // listCategories
             // 
-            this.listCategories.Location = new System.Drawing.Point(79, 326);
+            this.listCategories.Location = new System.Drawing.Point(79, 310);
             this.listCategories.Name = "listCategories";
             this.listCategories.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listCategories.Properties.Appearance.Options.UseFont = true;
@@ -126,7 +126,7 @@ namespace MemoHeroDesktopClient.CustomControls
             "Languages",
             "Science"});
             this.listCategories.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.listCategories.Size = new System.Drawing.Size(149, 28);
+            this.listCategories.Size = new System.Drawing.Size(262, 28);
             this.listCategories.StyleController = this.layoutControl;
             this.listCategories.TabIndex = 6;
             conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -135,11 +135,11 @@ namespace MemoHeroDesktopClient.CustomControls
             // 
             // textCardBack
             // 
-            this.textCardBack.Location = new System.Drawing.Point(79, 147);
+            this.textCardBack.Location = new System.Drawing.Point(79, 145);
             this.textCardBack.Name = "textCardBack";
             this.textCardBack.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textCardBack.Properties.Appearance.Options.UseFont = true;
-            this.textCardBack.Size = new System.Drawing.Size(345, 143);
+            this.textCardBack.Size = new System.Drawing.Size(559, 129);
             this.textCardBack.StyleController = this.layoutControl;
             this.textCardBack.TabIndex = 2;
             conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -157,7 +157,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblTags,
             this.emptySpaceItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(436, 366);
+            this.Root.Size = new System.Drawing.Size(650, 350);
             this.Root.TextVisible = false;
             // 
             // lblFront
@@ -169,7 +169,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblFront.Name = "lblFront";
             this.lblFront.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFront.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.lblFront.Size = new System.Drawing.Size(416, 135);
+            this.lblFront.Size = new System.Drawing.Size(630, 133);
             this.lblFront.Text = "Front";
             this.lblFront.TextSize = new System.Drawing.Size(55, 17);
             // 
@@ -178,11 +178,11 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblBack.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.lblBack.AppearanceItemCaption.Options.UseFont = true;
             this.lblBack.Control = this.textCardBack;
-            this.lblBack.Location = new System.Drawing.Point(0, 135);
+            this.lblBack.Location = new System.Drawing.Point(0, 133);
             this.lblBack.Name = "lblBack";
             this.lblBack.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBack.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.lblBack.Size = new System.Drawing.Size(416, 147);
+            this.lblBack.Size = new System.Drawing.Size(630, 133);
             this.lblBack.Text = "Back";
             this.lblBack.TextSize = new System.Drawing.Size(55, 17);
             // 
@@ -191,11 +191,11 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblCategories.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategories.AppearanceItemCaption.Options.UseFont = true;
             this.lblCategories.Control = this.listCategories;
-            this.lblCategories.Location = new System.Drawing.Point(0, 314);
+            this.lblCategories.Location = new System.Drawing.Point(0, 298);
             this.lblCategories.Name = "lblCategories";
             this.lblCategories.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategories.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.lblCategories.Size = new System.Drawing.Size(220, 32);
+            this.lblCategories.Size = new System.Drawing.Size(333, 32);
             this.lblCategories.Text = "Category";
             this.lblCategories.TextSize = new System.Drawing.Size(55, 17);
             // 
@@ -204,20 +204,20 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblTags.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTags.AppearanceItemCaption.Options.UseFont = true;
             this.lblTags.Control = this.tokenTags;
-            this.lblTags.Location = new System.Drawing.Point(0, 282);
+            this.lblTags.Location = new System.Drawing.Point(0, 266);
             this.lblTags.Name = "lblTags";
             this.lblTags.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTags.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.lblTags.Size = new System.Drawing.Size(416, 32);
+            this.lblTags.Size = new System.Drawing.Size(630, 32);
             this.lblTags.Text = "Tags";
             this.lblTags.TextSize = new System.Drawing.Size(55, 17);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(220, 314);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(333, 298);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(196, 32);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(297, 32);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // CardFormControl
@@ -227,7 +227,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.AutoSize = true;
             this.Controls.Add(this.layoutControl);
             this.Name = "CardFormControl";
-            this.Size = new System.Drawing.Size(436, 366);
+            this.Size = new System.Drawing.Size(650, 350);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).EndInit();
