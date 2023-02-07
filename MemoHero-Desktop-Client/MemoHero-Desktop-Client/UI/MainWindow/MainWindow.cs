@@ -24,10 +24,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void btnCardEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //var row = gridViewCards.GetRow(gridViewCards.FocusedRowHandle);
-            //var selectedCard = gridViewService.GetCardFromGridableCard(row as GridableCard);
-            //var newCardWindow = new EditCardWindow(memoCore, ref selectedCard);
-            //newCardWindow.Show();
+            uiCore.ShowEditCardForm();
         }
 
         private void btnCreateCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ShowNewCardForm();

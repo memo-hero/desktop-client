@@ -21,7 +21,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
 
         private void btnCreate_Click(object sender, System.EventArgs e)
         {
-            var result = cardFormControl.GetNewCard();
+            var result = cardFormControl.GetCard();
             if (result == null) return;
             OnCardCreated(result);
             cardFormControl.ClearForm();

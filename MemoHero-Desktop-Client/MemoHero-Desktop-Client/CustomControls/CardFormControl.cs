@@ -10,12 +10,27 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     internal partial class CardFormControl : UserControl
     {
-        public CardFormControl()
+        private Card card;
+        
+        public CardFormControl(Card card = null)
         {
             InitializeComponent();
+            this.card = card;
+            SetCard();
         }
 
         private bool TagIsEmpty(string tag) => string.IsNullOrWhiteSpace(tag);
+
+        private void SetCard()
+        {
+            if (card == null) card = new Card();
+
+            textCardFront.Text = card.Front;
+            textCardBack.Text = card.Back;
+            listCategories.SelectedItem = GetListItemFromCategory(card.Category);
+            tokenTags.EditValue = HashSetToTokens(card.Tags);
+        }
+
         private bool TagIsCategory(string tag) => Enum.IsDefined(typeof(Category), tag.ToUpper());
         private bool TagAlreadyExists(string tag)
         {
@@ -34,18 +49,30 @@ namespace MemoHeroDesktopClient.CustomControls
             return tags;
         }
 
-        internal Card GetNewCard()
+        private string HashSetToTokens(HashSet<string> hashSet) => string.Join(", ", hashSet);
+
+        private object GetListItemFromCategory(Category category)
+        {
+            foreach (var item in listCategories.Properties.Items)
+            {
+                if (item.ToString().ToUpper() == category.ToString().ToUpper()) return item;
+            }
+
+            return null;
+        }
+
+        internal Card GetCard()
         {
             if (!dxValidationProvider.Validate()) return null;
 
             _ = Enum.TryParse(listCategories.Text.ToUpper(), out Category category);
-            return new Card
-            {
-                Front = textCardFront.Text,
-                Back = textCardBack.Text,
-                Category = category,
-                Tags = TokensToHashSet(tokenTags.GetTokenList())
-            };
+
+            card.Front = textCardFront.Text;
+            card.Back = textCardBack.Text;
+            card.Category = category;
+            card.Tags = TokensToHashSet(tokenTags.GetTokenList());
+
+            return card;
         }
 
         internal void ClearForm()

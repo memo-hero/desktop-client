@@ -74,5 +74,16 @@ namespace ClientBack.Core
 
             return card;
         }
+
+        public async Task<bool> UpdateCardAsync(Card editedCard)
+        {
+            if (await cardsModule.UpdateCard(currentUser, editedCard))
+            {
+                UserCards.Remove(UserCards.Find(x => x.Id == editedCard.Id));
+                UserCards.Add(editedCard);
+            }
+
+            return false;
+        }
     }
 }

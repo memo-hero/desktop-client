@@ -25,5 +25,10 @@ namespace ClientBack.Core
             var card = NewCard.FromCard(newCard);
             return await restClient.CreateCard(currentUser.Id, card);
         }
+
+        internal async Task<bool> UpdateCard(User currentUser, Card updatedCard)
+        {
+            return await restClient.UpdateCard(currentUser.Id, new UpdatedCard(updatedCard));
+        }
     }
 }

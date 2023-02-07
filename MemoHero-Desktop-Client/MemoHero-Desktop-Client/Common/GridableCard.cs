@@ -9,6 +9,7 @@ namespace MemoHeroDesktopClient.Common
         public string Id { get; set; }
         public string Front { get; set; }
         public string Back { get; set; }
+        public string Category { get; set; }
         public string Tags { get; set; }
         public DateTime DueDate { get; set; }
 
@@ -17,6 +18,7 @@ namespace MemoHeroDesktopClient.Common
             Id = card.Id;
             Front = card.Front;
             Back = card.Back;
+            Category = card.Category.ToString();
             Tags = string.Join(", ", card.Tags);
             DueDate = UnixTimeStampToDateTime(card.DueDate);
         }

@@ -68,6 +68,7 @@
     <Compile Include="Infrastructure\HTTP\NewtonSoftSerializer.cs" />
     <Compile Include="Infrastructure\HTTP\NewUser.cs" />
     <Compile Include="Infrastructure\HTTP\StoredUser.cs" />
+    <Compile Include="Infrastructure\HTTP\UpdatedCard.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />
     <Compile Include="Infrastructure\LoginProvider\ILoginService.cs" />
     <Compile Include="Infrastructure\LoginProvider\LoginResult.cs" />

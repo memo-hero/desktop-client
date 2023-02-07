@@ -87,6 +87,7 @@
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
+    <Compile Include="UI\EditCard\EditCardArgs.cs" />
     <Compile Include="UI\EditCard\EditCardWindow.cs">
       <SubType>Form</SubType>
     </Compile>

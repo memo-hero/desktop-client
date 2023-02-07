@@ -1,56 +1,30 @@
-﻿using ClientBack.Core;
-using ClientBack.Domain.Cards;
-using DevExpress.Utils.Extensions;
-using DevExpress.XtraEditors;
+﻿using ClientBack.Domain.Cards;
+using MemoHeroDesktopClient.CustomControls;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MemoHeroDesktopClient.UI.EditCard
 {
     public partial class EditCardWindow : DevExpress.XtraEditors.XtraForm
     {
-        private readonly MemoHeroCore memoCore;
-        private readonly Card card;
+        internal delegate void EditCardHandler(object source, EditCardArgs args);
+        internal event EditCardHandler CardEdited;
+        private readonly CardFormControl cardFormControl;
 
-        public EditCardWindow(MemoHeroCore memoCore, ref Card card)
+        public EditCardWindow(Card card)
         {
             InitializeComponent();
-            this.memoCore = memoCore;
-            this.card = card;
+            cardFormControl = new CardFormControl(card);
+            editPanel.Controls.Add(cardFormControl);
         }
 
-        private void tokenTags_ValidateToken(object sender, TokenEditValidateTokenEventArgs e)
-        {
-            e.IsValid = !TagIsEmpty(e.Description) && !TagIsCategory(e.Description) && !TagAlreadyExists(e.Description);
-        }
+        protected virtual void OnCardEdited(Card card) => CardEdited(this, new EditCardArgs(card));
 
-        private bool TagIsEmpty(string tag) => string.IsNullOrWhiteSpace(tag);
-        private bool TagIsCategory(string tag) => Enum.IsDefined(typeof(Category), tag.ToUpper());
-        private bool TagAlreadyExists(string tag)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            return tokenTags.GetTokenList().FirstOrDefault(token => token.Description == tag) != null;
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            _ = Enum.TryParse(listCategories.Text.ToUpper(), out Category category);
-            var newCard = new Card
-            {
-                Front = textCardFront.Text,
-                Back = textCardBack.Text,
-                Category = category,
-                Tags = TokensToHashSet(tokenTags.GetTokenList())
-            };
-
-            memoCore.CreateCardAsync(newCard);
-        }
-
-        private HashSet<string> TokensToHashSet(TokenEditSelectedItemCollection tokens)
-        {
-            var tags = new HashSet<string>();
-            tokens.ForEach(token => tags.Add(token.Description));
-            return tags;
+            var result = cardFormControl.GetCard();
+            if (result == null) return;
+            OnCardEdited(result);
+            cardFormControl.ClearForm();
         }
     }
 }

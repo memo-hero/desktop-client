@@ -2,6 +2,7 @@
 using ClientBack.Domain.User;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
 using System;
@@ -16,6 +17,7 @@ namespace MemoHeroDesktopClient.Common
         internal readonly LoginSplash login;
         internal UI.MainWindow.MainMenu mainMenu;
         internal NewCardWindow newCardWindow;
+        internal EditCardWindow editCardWindow;
 
         // Events
         internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
@@ -28,6 +30,8 @@ namespace MemoHeroDesktopClient.Common
         
         // Controls
         private Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
+
+
         private UserStatsControl userStatsControl;
         private CardListControl cardListControl;
 
@@ -67,10 +71,24 @@ namespace MemoHeroDesktopClient.Common
             newCardWindow.ShowDialog();
         }
 
+        internal void ShowEditCardForm()
+        {
+            var selectedCard = cardListControl.GetSelectedCard();
+            editCardWindow = new EditCardWindow(selectedCard);
+            editCardWindow.CardEdited += EditCardWindow_CardEdited;
+
+            editCardWindow.ShowDialog();
+        }
+
         private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
         {
             var card = await memoCore.CreateCardAsync(args.newCard);
             cardListControl.AddCard(card);
+        }
+
+        private async void EditCardWindow_CardEdited(object source, EditCardArgs args)
+        {
+            if (await memoCore.UpdateCardAsync(args.editedCard)) cardListControl.UpdateCard(args.editedCard);
         }
 
         internal void Logout()

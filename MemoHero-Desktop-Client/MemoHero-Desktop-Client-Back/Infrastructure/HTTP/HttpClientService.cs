@@ -100,5 +100,24 @@ namespace ClientBack.Infrastructure.HTTP
                 return false;
             }
         }
+
+        public async Task<bool> UpdateCard(string userId, UpdatedCard card)
+        {
+            var request = new RestRequest("users/{userId}/cards/{cardId}")
+                .AddUrlSegment("userId", userId)
+                .AddUrlSegment("cardId", card.id)
+                .AddStringBody(serializer.Serialize(card), DataFormat.Json);
+
+            try
+            {
+                var createResult = await client.PostAsync(request);
+                return createResult.IsSuccessful;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

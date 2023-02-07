@@ -29,95 +29,69 @@ namespace MemoHeroDesktopClient.UI.EditCard
         /// </summary>
         private void InitializeComponent()
         {
-            this.textCardFront = new DevExpress.XtraEditors.MemoEdit();
-            this.textCardBack = new DevExpress.XtraEditors.MemoEdit();
-            this.tokenTags = new DevExpress.XtraEditors.TokenEdit();
-            this.listCategories = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.btnCreate = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textCardBack.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).BeginInit();
+            this.editPanel = new System.Windows.Forms.Panel();
+            this.btnClearTags = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
-            // textCardFront
+            // editPanel
             // 
-            this.textCardFront.Location = new System.Drawing.Point(54, 36);
-            this.textCardFront.Name = "textCardFront";
-            this.textCardFront.Size = new System.Drawing.Size(482, 138);
-            this.textCardFront.TabIndex = 1;
+            this.editPanel.AutoScroll = true;
+            this.editPanel.Location = new System.Drawing.Point(8, 8);
+            this.editPanel.Name = "editPanel";
+            this.editPanel.Size = new System.Drawing.Size(655, 355);
+            this.editPanel.TabIndex = 9;
             // 
-            // textCardBack
+            // btnClearTags
             // 
-            this.textCardBack.Location = new System.Drawing.Point(54, 180);
-            this.textCardBack.Name = "textCardBack";
-            this.textCardBack.Size = new System.Drawing.Size(482, 138);
-            this.textCardBack.TabIndex = 2;
+            this.btnClearTags.Location = new System.Drawing.Point(8, 369);
+            this.btnClearTags.Name = "btnClearTags";
+            this.btnClearTags.Size = new System.Drawing.Size(91, 23);
+            this.btnClearTags.TabIndex = 13;
+            this.btnClearTags.TabStop = false;
+            this.btnClearTags.Text = "Clear Tags";
             // 
-            // tokenTags
+            // btnClose
             // 
-            this.tokenTags.Location = new System.Drawing.Point(54, 372);
-            this.tokenTags.Name = "tokenTags";
-            this.tokenTags.Properties.EditMode = DevExpress.XtraEditors.TokenEditMode.Manual;
-            this.tokenTags.Properties.Separators.AddRange(new string[] {
-            ","});
-            this.tokenTags.Size = new System.Drawing.Size(207, 20);
-            this.tokenTags.TabIndex = 3;
-            this.tokenTags.ValidateToken += new DevExpress.XtraEditors.TokenEditValidateTokenEventHandler(this.tokenTags_ValidateToken);
+            this.btnClose.Location = new System.Drawing.Point(588, 369);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.TabStop = false;
+            this.btnClose.Text = "Close";
             // 
-            // listCategories
+            // btnSave
             // 
-            this.listCategories.Location = new System.Drawing.Point(54, 346);
-            this.listCategories.Name = "listCategories";
-            this.listCategories.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.listCategories.Properties.Items.AddRange(new object[] {
-            "Arts",
-            "Computers",
-            "History",
-            "Languages",
-            "Science"});
-            this.listCategories.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.listCategories.Size = new System.Drawing.Size(134, 20);
-            this.listCategories.TabIndex = 6;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(54, 398);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
-            this.btnCreate.TabIndex = 7;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnSave.Location = new System.Drawing.Point(507, 369);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 11;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // EditCardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 453);
-            this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.listCategories);
-            this.Controls.Add(this.tokenTags);
-            this.Controls.Add(this.textCardBack);
-            this.Controls.Add(this.textCardFront);
+            this.ClientSize = new System.Drawing.Size(669, 399);
+            this.Controls.Add(this.btnClearTags);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.editPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "EditCardWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "NewCard";
-            ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textCardBack.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).EndInit();
+            this.Text = "Edit Card";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.MemoEdit textCardFront;
-        private DevExpress.XtraEditors.MemoEdit textCardBack;
-        private DevExpress.XtraEditors.TokenEdit tokenTags;
-        private DevExpress.XtraEditors.ComboBoxEdit listCategories;
-        private DevExpress.XtraEditors.SimpleButton btnCreate;
+        private System.Windows.Forms.Panel editPanel;
+        private DevExpress.XtraEditors.SimpleButton btnClearTags;
+        private DevExpress.XtraEditors.SimpleButton btnClose;
+        private DevExpress.XtraEditors.SimpleButton btnSave;
     }
 }
