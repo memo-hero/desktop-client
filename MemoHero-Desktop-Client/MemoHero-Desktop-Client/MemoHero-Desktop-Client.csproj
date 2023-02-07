@@ -68,6 +68,12 @@
   <ItemGroup>
     <Compile Include="Common\UICore.cs" />
     <Compile Include="Common\UserLoginResultArgs.cs" />
+    <Compile Include="CustomControls\CardFormControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CardFormControl.Designer.cs">
+      <DependentUpon>CardFormControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\CardListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="UI\NewCard\NewCardWindow.Designer.cs">
       <DependentUpon>NewCardWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomControls\CardFormControl.resx">
+      <DependentUpon>CardFormControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\CardListControl.resx">
       <DependentUpon>CardListControl.cs</DependentUpon>
     </EmbeddedResource>

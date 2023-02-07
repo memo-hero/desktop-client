@@ -62,6 +62,8 @@ namespace ClientBack.Core
 
         public void Logout()
         {
+            currentUser = null;
+            UserCards = null;
             loginModule.Logout();
         }
 

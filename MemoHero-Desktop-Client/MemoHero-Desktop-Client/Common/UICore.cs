@@ -14,7 +14,7 @@ namespace MemoHeroDesktopClient.Common
     {
         // Forms
         internal readonly LoginSplash login;
-        internal readonly UI.MainWindow.MainMenu mainMenu;
+        internal UI.MainWindow.MainMenu mainMenu;
         internal NewCardWindow newCardWindow;
 
         // Events
@@ -75,8 +75,10 @@ namespace MemoHeroDesktopClient.Common
 
         internal void Logout()
         {
+            user = null;
+            customControls.Clear();
             memoCore.Logout();
-            mainMenu.Hide();
+            mainMenu.Dispose();
             login.loginButton.Enabled = true;
             login.Show();
         }
@@ -106,6 +108,7 @@ namespace MemoHeroDesktopClient.Common
             OnUserLoggedIn(user == null);
             if (user != null)
             {
+                if (manualLogin) mainMenu = new UI.MainWindow.MainMenu(this);
                 user = await memoCore.GetUserInfo(user);
                 await memoCore.GetUserCards(user.Id);
                 mainMenu.Show();
