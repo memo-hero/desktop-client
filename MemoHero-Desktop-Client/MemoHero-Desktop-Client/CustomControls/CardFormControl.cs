@@ -53,5 +53,7 @@ namespace MemoHeroDesktopClient.CustomControls
             textCardFront.Text = string.Empty;
             textCardBack.Text = string.Empty;
         }
+
+        internal void ClearTags() => tokenTags.EditValue = string.Empty;
     }
 }

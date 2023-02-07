@@ -26,5 +26,13 @@ namespace MemoHeroDesktopClient.UI.NewCard
             OnCardCreated(result);
             cardFormControl.ClearForm();
         }
+
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            Close();
+            Dispose();
+        }
+
+        private void btnClearTags_Click(object sender, System.EventArgs e) => cardFormControl.ClearTags();
     }
 }

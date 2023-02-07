@@ -32,6 +32,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.createPanel = new System.Windows.Forms.Panel();
             this.btnCreate = new DevExpress.XtraEditors.SimpleButton();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClearTags = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // createPanel
@@ -58,6 +59,16 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnClearTags
+            // 
+            this.btnClearTags.Location = new System.Drawing.Point(8, 369);
+            this.btnClearTags.Name = "btnClearTags";
+            this.btnClearTags.Size = new System.Drawing.Size(91, 23);
+            this.btnClearTags.TabIndex = 10;
+            this.btnClearTags.Text = "Clear Tags";
+            this.btnClearTags.Click += new System.EventHandler(this.btnClearTags_Click);
             // 
             // NewCardWindow
             // 
@@ -65,6 +76,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 399);
+            this.Controls.Add(this.btnClearTags);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.createPanel);
@@ -81,5 +93,6 @@ namespace MemoHeroDesktopClient.UI.NewCard
         private System.Windows.Forms.Panel createPanel;
         private DevExpress.XtraEditors.SimpleButton btnCreate;
         private DevExpress.XtraEditors.SimpleButton btnClose;
+        private DevExpress.XtraEditors.SimpleButton btnClearTags;
     }
 }

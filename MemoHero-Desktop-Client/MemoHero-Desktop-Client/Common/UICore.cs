@@ -61,7 +61,7 @@ namespace MemoHeroDesktopClient.Common
 
         internal void ShowNewCardForm()
         {
-            if (newCardWindow == null) newCardWindow = new NewCardWindow();
+            newCardWindow = new NewCardWindow();
             newCardWindow.CardCreated += NewCardWindow_CardCreated;
             
             newCardWindow.ShowDialog();
