@@ -33,6 +33,9 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnLogOut = new DevExpress.XtraBars.BarButtonItem();
             this.btnCardEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnCreateCard = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDeleteCard = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExport = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageUserStatus = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCards = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -40,6 +43,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupStudy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.pageBackup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,9 +55,12 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonControl.SearchEditItem,
             this.btnLogOut,
             this.btnCardEdit,
-            this.btnCreateCard});
+            this.btnCreateCard,
+            this.btnDeleteCard,
+            this.btnExport,
+            this.barButtonItem1});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 4;
+            this.ribbonControl.MaxItemId = 7;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageUserStatus,
@@ -73,17 +80,40 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // btnCardEdit
             // 
-            this.btnCardEdit.Caption = "Edit Selected Card";
+            this.btnCardEdit.Hint = "Edit selected card";
             this.btnCardEdit.Id = 2;
+            this.btnCardEdit.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.edit_card_24;
             this.btnCardEdit.Name = "btnCardEdit";
             this.btnCardEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCardEdit_ItemClick);
             // 
             // btnCreateCard
             // 
-            this.btnCreateCard.Caption = "Create Card";
+            this.btnCreateCard.Hint = "Create Card";
             this.btnCreateCard.Id = 3;
+            this.btnCreateCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.new_card_24;
             this.btnCreateCard.Name = "btnCreateCard";
             this.btnCreateCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCreateCard_ItemClick);
+            // 
+            // btnDeleteCard
+            // 
+            this.btnDeleteCard.Hint = "Delete Card";
+            this.btnDeleteCard.Id = 4;
+            this.btnDeleteCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.delete_card_24;
+            this.btnDeleteCard.Name = "btnDeleteCard";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Hint = "Import Backup";
+            this.btnExport.Id = 5;
+            this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_backup_24_1_;
+            this.btnExport.Name = "btnExport";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Hint = "Export Backup";
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.download_backup_24;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // ribbonPageUserStatus
             // 
@@ -101,7 +131,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // ribbonPageCards
             // 
             this.ribbonPageCards.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupCards});
+            this.ribbonPageGroupCards,
+            this.pageBackup});
             this.ribbonPageCards.Name = "ribbonPageCards";
             this.ribbonPageCards.Text = "Cards";
             // 
@@ -109,6 +140,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             this.ribbonPageGroupCards.ItemLinks.Add(this.btnCreateCard);
             this.ribbonPageGroupCards.ItemLinks.Add(this.btnCardEdit);
+            this.ribbonPageGroupCards.ItemLinks.Add(this.btnDeleteCard);
             this.ribbonPageGroupCards.Name = "ribbonPageGroupCards";
             this.ribbonPageGroupCards.Text = "ribbonPageGroupCards";
             // 
@@ -131,6 +163,13 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(500, 500);
             this.mainPanel.TabIndex = 26;
+            // 
+            // pageBackup
+            // 
+            this.pageBackup.ItemLinks.Add(this.btnExport);
+            this.pageBackup.ItemLinks.Add(this.barButtonItem1);
+            this.pageBackup.Name = "pageBackup";
+            this.pageBackup.Text = "Backup";
             // 
             // MainMenu
             // 
@@ -164,5 +203,9 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.BarButtonItem btnCardEdit;
         private DevExpress.XtraBars.BarButtonItem btnCreateCard;
         internal System.Windows.Forms.Panel mainPanel;
+        private DevExpress.XtraBars.BarButtonItem btnDeleteCard;
+        private DevExpress.XtraBars.BarButtonItem btnExport;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pageBackup;
     }
 }

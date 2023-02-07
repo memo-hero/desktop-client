@@ -58,6 +58,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 9;
+            this.btnClose.TabStop = false;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -67,6 +68,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.btnClearTags.Name = "btnClearTags";
             this.btnClearTags.Size = new System.Drawing.Size(91, 23);
             this.btnClearTags.TabIndex = 10;
+            this.btnClearTags.TabStop = false;
             this.btnClearTags.Text = "Clear Tags";
             this.btnClearTags.Click += new System.EventHandler(this.btnClearTags_Click);
             // 
@@ -84,7 +86,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NewCardWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "NewCard";
+            this.Text = "Create New Card";
             this.ResumeLayout(false);
 
         }

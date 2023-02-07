@@ -35,30 +35,30 @@ namespace MemoHeroDesktopClient.CustomControls
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.tokenTags = new DevExpress.XtraEditors.TokenEdit();
             this.textCardFront = new DevExpress.XtraEditors.MemoEdit();
             this.listCategories = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textCardBack = new DevExpress.XtraEditors.MemoEdit();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lblFront = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblBack = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblCategories = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblTags = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardBack.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblFront)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTags)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
@@ -76,6 +76,28 @@ namespace MemoHeroDesktopClient.CustomControls
             this.layoutControl.Size = new System.Drawing.Size(650, 350);
             this.layoutControl.TabIndex = 10;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.lblFront,
+            this.lblBack,
+            this.lblCategories,
+            this.lblTags,
+            this.emptySpaceItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(650, 350);
+            this.Root.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(333, 298);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(297, 32);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // tokenTags
             // 
@@ -146,20 +168,6 @@ namespace MemoHeroDesktopClient.CustomControls
             conditionValidationRule4.ErrorText = "Cannot be blank";
             this.dxValidationProvider.SetValidationRule(this.textCardBack, conditionValidationRule4);
             // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.lblFront,
-            this.lblBack,
-            this.lblCategories,
-            this.lblTags,
-            this.emptySpaceItem1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(650, 350);
-            this.Root.TextVisible = false;
-            // 
             // lblFront
             // 
             this.lblFront.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
@@ -212,14 +220,6 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblTags.Text = "Tags";
             this.lblTags.TextSize = new System.Drawing.Size(55, 17);
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(333, 298);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(297, 32);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // CardFormControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,17 +230,17 @@ namespace MemoHeroDesktopClient.CustomControls
             this.Size = new System.Drawing.Size(650, 350);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardBack.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblFront)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTags)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -186,6 +186,11 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\download-backup-24.png" />
+    <None Include="Resources\import-backup-24.png" />
+    <None Include="Resources\delete-card-24.png" />
+    <None Include="Resources\edit-card-24.png" />
+    <None Include="Resources\new-card-24.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

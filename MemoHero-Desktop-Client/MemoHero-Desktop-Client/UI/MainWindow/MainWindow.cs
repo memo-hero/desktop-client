@@ -16,20 +16,11 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.uiCore = uiCore;
         }
 
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-            uiCore.InitializeControls();
-        }
+        private void MainMenu_Load(object sender, EventArgs e) => uiCore.InitializeControls();
 
-        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            uiCore.CloseApplication();
-        }
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e) => uiCore.CloseApplication();
 
-        private void btnLogOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            uiCore.Logout();
-        }
+        private void btnLogOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.Logout();
 
         private void btnCardEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -39,10 +30,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             //newCardWindow.Show();
         }
 
-        private void btnCreateCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            uiCore.ShowNewCardForm();
-        }
+        private void btnCreateCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ShowNewCardForm();
 
         private void ribbonControl_SelectedPageChanged(object sender, EventArgs e)
         {
