@@ -81,6 +81,7 @@ namespace ClientBack.Core
             {
                 UserCards.Remove(UserCards.Find(x => x.Id == editedCard.Id));
                 UserCards.Add(editedCard);
+                return true;
             }
 
             return false;

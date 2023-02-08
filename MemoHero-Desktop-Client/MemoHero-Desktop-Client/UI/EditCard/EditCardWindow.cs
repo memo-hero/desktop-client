@@ -24,7 +24,6 @@ namespace MemoHeroDesktopClient.UI.EditCard
             var result = cardFormControl.GetCard();
             if (result == null) return;
             OnCardEdited(result);
-            cardFormControl.ClearForm();
         }
     }
 }
