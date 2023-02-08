@@ -1,7 +1,7 @@
 ﻿
 namespace MemoHeroDesktopClient.UI.EditCard
 {
-    partial class EditCardWindow
+    partial class EditCardForm
     {
         /// <summary>
         /// Required designer variable.

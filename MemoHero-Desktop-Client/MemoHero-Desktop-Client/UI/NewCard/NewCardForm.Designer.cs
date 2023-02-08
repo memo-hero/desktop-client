@@ -1,7 +1,7 @@
 ﻿
 namespace MemoHeroDesktopClient.UI.NewCard
 {
-    partial class NewCardWindow
+    partial class NewCardForm
     {
         /// <summary>
         /// Required designer variable.

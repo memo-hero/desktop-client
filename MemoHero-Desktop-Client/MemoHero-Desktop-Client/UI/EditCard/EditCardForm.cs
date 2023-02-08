@@ -4,13 +4,13 @@ using System;
 
 namespace MemoHeroDesktopClient.UI.EditCard
 {
-    public partial class EditCardWindow : DevExpress.XtraEditors.XtraForm
+    public partial class EditCardForm : DevExpress.XtraEditors.XtraForm
     {
         internal delegate void EditCardHandler(object source, EditCardArgs args);
         internal event EditCardHandler CardEdited;
         private readonly CardFormControl cardFormControl;
 
-        public EditCardWindow(Card card)
+        public EditCardForm(Card card)
         {
             InitializeComponent();
             cardFormControl = new CardFormControl(card);

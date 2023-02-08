@@ -70,7 +70,7 @@ namespace ClientBack.Core
         public async Task<Card> CreateCardAsync(Card newCard)
         {
             var card = await cardsModule.CreateCard(currentUser, newCard);
-            UserCards.Add(newCard);
+            UserCards.Add(card);
 
             return card;
         }

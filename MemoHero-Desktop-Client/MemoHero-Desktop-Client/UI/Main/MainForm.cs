@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Common;
-using MemoHeroDesktopClient.UI.NewCard;
+using MemoHeroDesktopClient.UI.StudyCards;
 using System;
 using System.Windows.Forms;
 
@@ -34,6 +34,11 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             var selectedPage = (sender as RibbonControl).SelectedPage.Name;
 
             uiCore.UpdatePanel(selectedPage);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            uiCore.StudyFilteredCards();
         }
     }
 }

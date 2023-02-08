@@ -87,12 +87,17 @@
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\EditCard\EditCardArgs.cs" />
-    <Compile Include="UI\EditCard\EditCardWindow.cs">
+    <Compile Include="UI\EditCard\EditCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EditCard\EditCardWindow.Designer.cs">
-      <DependentUpon>EditCardWindow.cs</DependentUpon>
+    <Compile Include="UI\EditCard\EditCardForm.Designer.cs">
+      <DependentUpon>EditCardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Login\LoginSplash.cs">
       <SubType>Form</SubType>
@@ -101,20 +106,26 @@
       <DependentUpon>LoginSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\GridableCard.cs" />
-    <Compile Include="UI\MainWindow\MainWindow.cs">
+    <Compile Include="UI\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\MainWindow\MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <Compile Include="UI\Main\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\CreateCardArgs.cs" />
-    <Compile Include="UI\NewCard\NewCardWindow.cs">
+    <Compile Include="UI\NewCard\NewCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\NewCard\NewCardWindow.Designer.cs">
-      <DependentUpon>NewCardWindow.cs</DependentUpon>
+    <Compile Include="UI\NewCard\NewCardForm.Designer.cs">
+      <DependentUpon>NewCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StudyCards\StudyCardsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StudyCards\StudyCardsForm.Designer.cs">
+      <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomControls\CardFormControl.resx">
       <DependentUpon>CardFormControl.cs</DependentUpon>
@@ -126,27 +137,25 @@
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="UI\EditCard\EditCardWindow.resx">
-      <DependentUpon>EditCardWindow.cs</DependentUpon>
+    <EmbeddedResource Include="UI\EditCard\EditCardForm.resx">
+      <DependentUpon>EditCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Login\LoginSplash.resx">
       <DependentUpon>LoginSplash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\MainWindow\MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Main\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="UI\NewCard\NewCardWindow.resx">
-      <DependentUpon>NewCardWindow.cs</DependentUpon>
+    <EmbeddedResource Include="UI\NewCard\NewCardForm.resx">
+      <DependentUpon>NewCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StudyCards\StudyCardsForm.resx">
+      <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -187,6 +196,8 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\card-background-2.PNG" />
+    <None Include="Resources\card-background.PNG" />
     <None Include="Resources\download-backup-24.png" />
     <None Include="Resources\import-backup-24.png" />
     <None Include="Resources\delete-card-24.png" />

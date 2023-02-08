@@ -5,13 +5,13 @@ using MemoHeroDesktopClient.CustomControls;
 
 namespace MemoHeroDesktopClient.UI.NewCard
 {
-    public partial class NewCardWindow : XtraForm
+    public partial class NewCardForm : XtraForm
     {
         internal delegate void CreateCardHandler(object source, CreateCardArgs args);
         internal event CreateCardHandler CardCreated;
         private readonly CardFormControl cardFormControl = new CardFormControl();
 
-        public NewCardWindow()
+        public NewCardForm()
         {
             InitializeComponent();
             createPanel.Controls.Add(cardFormControl);

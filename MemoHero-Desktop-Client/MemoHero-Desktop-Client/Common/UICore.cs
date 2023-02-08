@@ -1,10 +1,12 @@
 ﻿using ClientBack.Core;
+using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
+using MemoHeroDesktopClient.UI.StudyCards;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,9 +17,10 @@ namespace MemoHeroDesktopClient.Common
     {
         // Forms
         internal readonly LoginSplash login;
-        internal UI.MainWindow.MainMenu mainMenu;
-        internal NewCardWindow newCardWindow;
-        internal EditCardWindow editCardWindow;
+        internal UI.MainWindow.MainMenu mainMenuForm;
+        internal NewCardForm newCardForm;
+        internal EditCardForm editCardForm;
+        internal StudyCardsForm studyCardsForm;
 
         // Events
         internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
@@ -38,12 +41,12 @@ namespace MemoHeroDesktopClient.Common
         public UICore()
         {
             login = new LoginSplash(this);
-            mainMenu = new UI.MainWindow.MainMenu(this);
+            mainMenuForm = new UI.MainWindow.MainMenu(this);
         }
 
         internal void InitializeControls()
         {
-            var panel = mainMenu.mainPanel;
+            var panel = mainMenuForm.mainPanel;
 
             userStatsControl = new UserStatsControl(user);
             customControls.Add("ribbonPageUserStatus", userStatsControl);
@@ -53,6 +56,15 @@ namespace MemoHeroDesktopClient.Common
             cardListControl.SetDataSource(ref memoCore.UserCards);
             customControls.Add("ribbonPageCards", cardListControl);
             panel.Controls.Add(cardListControl);
+        }
+
+        internal void StudyFilteredCards()
+        {
+            var cards = cardListControl.GetCards();
+            using (studyCardsForm = new StudyCardsForm(new Queue<Card>(cards)))
+            {
+                studyCardsForm.ShowDialog();
+            }
         }
 
         internal void UpdatePanel(string currentPageName)
@@ -65,19 +77,19 @@ namespace MemoHeroDesktopClient.Common
 
         internal void ShowNewCardForm()
         {
-            newCardWindow = new NewCardWindow();
-            newCardWindow.CardCreated += NewCardWindow_CardCreated;
+            newCardForm = new NewCardForm();
+            newCardForm.CardCreated += NewCardWindow_CardCreated;
             
-            newCardWindow.ShowDialog();
+            newCardForm.ShowDialog();
         }
 
         internal void ShowEditCardForm()
         {
             var selectedCard = cardListControl.GetSelectedCard();
-            editCardWindow = new EditCardWindow(selectedCard);
-            editCardWindow.CardEdited += EditCardWindow_CardEdited;
+            editCardForm = new EditCardForm(selectedCard);
+            editCardForm.CardEdited += EditCardWindow_CardEdited;
 
-            editCardWindow.ShowDialog();
+            editCardForm.ShowDialog();
         }
 
         private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
@@ -103,7 +115,7 @@ namespace MemoHeroDesktopClient.Common
             user = null;
             customControls.Clear();
             memoCore.Logout();
-            mainMenu.Dispose();
+            mainMenuForm.Dispose();
         }
 
         internal async void CheckService()
@@ -131,10 +143,10 @@ namespace MemoHeroDesktopClient.Common
             OnUserLoggedIn(user == null);
             if (user != null)
             {
-                if (manualLogin) mainMenu = new UI.MainWindow.MainMenu(this);
+                if (manualLogin) mainMenuForm = new UI.MainWindow.MainMenu(this);
                 user = await memoCore.GetUserInfo(user);
                 await memoCore.GetUserCards(user.Id);
-                mainMenu.Show();
+                mainMenuForm.Show();
                 login.Hide();
                 
                 return;
