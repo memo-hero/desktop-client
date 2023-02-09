@@ -29,11 +29,11 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblCardText = new DevExpress.XtraEditors.LabelControl();
+            this.lblCardFront = new DevExpress.XtraEditors.LabelControl();
             this.lblCardBack = new DevExpress.XtraEditors.LabelControl();
             this.pictureCard = new System.Windows.Forms.PictureBox();
             this.groupControl = new DevExpress.XtraEditors.GroupControl();
-            this.btnResponse6 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResponse5 = new DevExpress.XtraEditors.SimpleButton();
             this.btnResponse4 = new DevExpress.XtraEditors.SimpleButton();
             this.btnResponse3 = new DevExpress.XtraEditors.SimpleButton();
             this.btnResponse2 = new DevExpress.XtraEditors.SimpleButton();
@@ -47,22 +47,22 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             ((System.ComponentModel.ISupportInitialize)(this.groupStats)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblCardText
+            // lblCardFront
             // 
-            this.lblCardText.AllowHtmlString = true;
-            this.lblCardText.Appearance.Font = new System.Drawing.Font("Weber Hand ITC Std", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardText.Appearance.Options.UseFont = true;
-            this.lblCardText.Appearance.Options.UseTextOptions = true;
-            this.lblCardText.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.lblCardText.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
-            this.lblCardText.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.lblCardText.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblCardText.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Vertical;
-            this.lblCardText.Location = new System.Drawing.Point(3, 58);
-            this.lblCardText.Name = "lblCardText";
-            this.lblCardText.Size = new System.Drawing.Size(794, 104);
-            this.lblCardText.TabIndex = 1;
-            this.lblCardText.Text = "Placeholder Front";
+            this.lblCardFront.AllowHtmlString = true;
+            this.lblCardFront.Appearance.Font = new System.Drawing.Font("Weber Hand ITC Std", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCardFront.Appearance.Options.UseFont = true;
+            this.lblCardFront.Appearance.Options.UseTextOptions = true;
+            this.lblCardFront.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lblCardFront.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.lblCardFront.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.lblCardFront.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblCardFront.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Vertical;
+            this.lblCardFront.Location = new System.Drawing.Point(3, 58);
+            this.lblCardFront.Name = "lblCardFront";
+            this.lblCardFront.Size = new System.Drawing.Size(794, 104);
+            this.lblCardFront.TabIndex = 1;
+            this.lblCardFront.Text = "Placeholder Front";
             // 
             // lblCardBack
             // 
@@ -94,7 +94,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // groupControl
             // 
-            this.groupControl.Controls.Add(this.btnResponse6);
+            this.groupControl.Controls.Add(this.btnResponse5);
             this.groupControl.Controls.Add(this.btnResponse4);
             this.groupControl.Controls.Add(this.btnResponse3);
             this.groupControl.Controls.Add(this.btnResponse2);
@@ -107,24 +107,29 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.groupControl.TabIndex = 3;
             this.groupControl.Text = "Card Control";
             // 
-            // btnResponse6
+            // btnResponse5
             // 
-            this.btnResponse6.Location = new System.Drawing.Point(240, 116);
-            this.btnResponse6.Name = "btnResponse6";
-            this.btnResponse6.Size = new System.Drawing.Size(75, 23);
-            this.btnResponse6.TabIndex = 6;
-            this.btnResponse6.Text = "Response 5";
+            this.btnResponse5.Enabled = false;
+            this.btnResponse5.Location = new System.Drawing.Point(240, 116);
+            this.btnResponse5.Name = "btnResponse5";
+            this.btnResponse5.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse5.TabIndex = 6;
+            this.btnResponse5.Text = "Response 5";
+            this.btnResponse5.Click += new System.EventHandler(this.btnResponse5_Click);
             // 
             // btnResponse4
             // 
+            this.btnResponse4.Enabled = false;
             this.btnResponse4.Location = new System.Drawing.Point(159, 116);
             this.btnResponse4.Name = "btnResponse4";
             this.btnResponse4.Size = new System.Drawing.Size(75, 23);
             this.btnResponse4.TabIndex = 5;
             this.btnResponse4.Text = "Response 4";
+            this.btnResponse4.Click += new System.EventHandler(this.btnResponse4_Click);
             // 
             // btnResponse3
             // 
+            this.btnResponse3.Enabled = false;
             this.btnResponse3.Location = new System.Drawing.Point(78, 116);
             this.btnResponse3.Name = "btnResponse3";
             this.btnResponse3.Size = new System.Drawing.Size(75, 23);
@@ -134,27 +139,33 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse2
             // 
+            this.btnResponse2.Enabled = false;
             this.btnResponse2.Location = new System.Drawing.Point(240, 145);
             this.btnResponse2.Name = "btnResponse2";
             this.btnResponse2.Size = new System.Drawing.Size(75, 23);
             this.btnResponse2.TabIndex = 3;
             this.btnResponse2.Text = "Response 2";
+            this.btnResponse2.Click += new System.EventHandler(this.btnResponse2_Click);
             // 
             // btnResponse1
             // 
+            this.btnResponse1.Enabled = false;
             this.btnResponse1.Location = new System.Drawing.Point(159, 145);
             this.btnResponse1.Name = "btnResponse1";
             this.btnResponse1.Size = new System.Drawing.Size(75, 23);
             this.btnResponse1.TabIndex = 2;
             this.btnResponse1.Text = "Response 1";
+            this.btnResponse1.Click += new System.EventHandler(this.btnResponse1_Click);
             // 
             // btnResponse0
             // 
+            this.btnResponse0.Enabled = false;
             this.btnResponse0.Location = new System.Drawing.Point(78, 145);
             this.btnResponse0.Name = "btnResponse0";
             this.btnResponse0.Size = new System.Drawing.Size(75, 23);
             this.btnResponse0.TabIndex = 1;
             this.btnResponse0.Text = "Response 0";
+            this.btnResponse0.Click += new System.EventHandler(this.btnResponse0_Click);
             // 
             // btnReveal
             // 
@@ -181,7 +192,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.Controls.Add(this.groupStats);
             this.Controls.Add(this.groupControl);
             this.Controls.Add(this.lblCardBack);
-            this.Controls.Add(this.lblCardText);
+            this.Controls.Add(this.lblCardFront);
             this.Controls.Add(this.pictureCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "StudyCardsForm";
@@ -198,12 +209,12 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         #endregion
 
         private System.Windows.Forms.PictureBox pictureCard;
-        private DevExpress.XtraEditors.LabelControl lblCardText;
+        private DevExpress.XtraEditors.LabelControl lblCardFront;
         private DevExpress.XtraEditors.LabelControl lblCardBack;
         private DevExpress.XtraEditors.GroupControl groupControl;
         private DevExpress.XtraEditors.GroupControl groupStats;
         private DevExpress.XtraEditors.SimpleButton btnReveal;
-        private DevExpress.XtraEditors.SimpleButton btnResponse6;
+        private DevExpress.XtraEditors.SimpleButton btnResponse5;
         private DevExpress.XtraEditors.SimpleButton btnResponse4;
         private DevExpress.XtraEditors.SimpleButton btnResponse3;
         private DevExpress.XtraEditors.SimpleButton btnResponse2;

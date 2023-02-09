@@ -127,6 +127,7 @@
     <Compile Include="UI\StudyCards\StudyCardsForm.Designer.cs">
       <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\StudyCards\UserResponseArgs.cs" />
     <EmbeddedResource Include="CustomControls\CardFormControl.resx">
       <DependentUpon>CardFormControl.cs</DependentUpon>
     </EmbeddedResource>
