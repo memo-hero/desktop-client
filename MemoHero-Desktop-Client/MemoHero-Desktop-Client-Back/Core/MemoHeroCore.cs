@@ -1,5 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
@@ -85,6 +86,11 @@ namespace ClientBack.Core
             }
 
             return false;
+        }
+
+        public Task<StudyResult> StudyCard(Card card, int quality)
+        {
+            return cardsModule.StudyCard(currentUser, card, quality);
         }
     }
 }

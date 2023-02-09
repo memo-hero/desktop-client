@@ -33,9 +33,17 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.lblCardBack = new DevExpress.XtraEditors.LabelControl();
             this.pictureCard = new System.Windows.Forms.PictureBox();
             this.groupControl = new DevExpress.XtraEditors.GroupControl();
+            this.btnResponse6 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResponse4 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResponse3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResponse2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResponse1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResponse0 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReveal = new DevExpress.XtraEditors.SimpleButton();
             this.groupStats = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).BeginInit();
+            this.groupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupStats)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,11 +94,76 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // groupControl
             // 
+            this.groupControl.Controls.Add(this.btnResponse6);
+            this.groupControl.Controls.Add(this.btnResponse4);
+            this.groupControl.Controls.Add(this.btnResponse3);
+            this.groupControl.Controls.Add(this.btnResponse2);
+            this.groupControl.Controls.Add(this.btnResponse1);
+            this.groupControl.Controls.Add(this.btnResponse0);
+            this.groupControl.Controls.Add(this.btnReveal);
             this.groupControl.Location = new System.Drawing.Point(3, 507);
             this.groupControl.Name = "groupControl";
             this.groupControl.Size = new System.Drawing.Size(400, 194);
             this.groupControl.TabIndex = 3;
             this.groupControl.Text = "Card Control";
+            // 
+            // btnResponse6
+            // 
+            this.btnResponse6.Location = new System.Drawing.Point(240, 116);
+            this.btnResponse6.Name = "btnResponse6";
+            this.btnResponse6.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse6.TabIndex = 6;
+            this.btnResponse6.Text = "Response 5";
+            // 
+            // btnResponse4
+            // 
+            this.btnResponse4.Location = new System.Drawing.Point(159, 116);
+            this.btnResponse4.Name = "btnResponse4";
+            this.btnResponse4.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse4.TabIndex = 5;
+            this.btnResponse4.Text = "Response 4";
+            // 
+            // btnResponse3
+            // 
+            this.btnResponse3.Location = new System.Drawing.Point(78, 116);
+            this.btnResponse3.Name = "btnResponse3";
+            this.btnResponse3.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse3.TabIndex = 4;
+            this.btnResponse3.Text = "Response 3";
+            this.btnResponse3.Click += new System.EventHandler(this.btnResponse3_Click);
+            // 
+            // btnResponse2
+            // 
+            this.btnResponse2.Location = new System.Drawing.Point(240, 145);
+            this.btnResponse2.Name = "btnResponse2";
+            this.btnResponse2.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse2.TabIndex = 3;
+            this.btnResponse2.Text = "Response 2";
+            // 
+            // btnResponse1
+            // 
+            this.btnResponse1.Location = new System.Drawing.Point(159, 145);
+            this.btnResponse1.Name = "btnResponse1";
+            this.btnResponse1.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse1.TabIndex = 2;
+            this.btnResponse1.Text = "Response 1";
+            // 
+            // btnResponse0
+            // 
+            this.btnResponse0.Location = new System.Drawing.Point(78, 145);
+            this.btnResponse0.Name = "btnResponse0";
+            this.btnResponse0.Size = new System.Drawing.Size(75, 23);
+            this.btnResponse0.TabIndex = 1;
+            this.btnResponse0.Text = "Response 0";
+            // 
+            // btnReveal
+            // 
+            this.btnReveal.Location = new System.Drawing.Point(173, 55);
+            this.btnReveal.Name = "btnReveal";
+            this.btnReveal.Size = new System.Drawing.Size(75, 23);
+            this.btnReveal.TabIndex = 0;
+            this.btnReveal.Text = "Reveal";
+            this.btnReveal.Click += new System.EventHandler(this.btnReveal_Click);
             // 
             // groupStats
             // 
@@ -115,6 +188,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.Text = "StudyCardsForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).EndInit();
+            this.groupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupStats)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,5 +202,12 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         private DevExpress.XtraEditors.LabelControl lblCardBack;
         private DevExpress.XtraEditors.GroupControl groupControl;
         private DevExpress.XtraEditors.GroupControl groupStats;
+        private DevExpress.XtraEditors.SimpleButton btnReveal;
+        private DevExpress.XtraEditors.SimpleButton btnResponse6;
+        private DevExpress.XtraEditors.SimpleButton btnResponse4;
+        private DevExpress.XtraEditors.SimpleButton btnResponse3;
+        private DevExpress.XtraEditors.SimpleButton btnResponse2;
+        private DevExpress.XtraEditors.SimpleButton btnResponse1;
+        private DevExpress.XtraEditors.SimpleButton btnResponse0;
     }
 }

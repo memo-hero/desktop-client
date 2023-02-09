@@ -63,8 +63,14 @@ namespace MemoHeroDesktopClient.Common
             var cards = cardListControl.GetCards();
             using (studyCardsForm = new StudyCardsForm(new Queue<Card>(cards)))
             {
+                studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
                 studyCardsForm.ShowDialog();
             }
+        }
+
+        private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
+        {
+            var result = await memoCore.StudyCard(args.Card, args.Quality);
         }
 
         internal void UpdatePanel(string currentPageName)

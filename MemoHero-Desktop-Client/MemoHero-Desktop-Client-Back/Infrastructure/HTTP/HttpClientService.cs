@@ -119,5 +119,24 @@ namespace ClientBack.Infrastructure.HTTP
                 return false;
             }
         }
+
+        public async Task<StudyResult> StudyCard(string userId, string cardId, int quality)
+        {
+            var request = new RestRequest("users/{userId}/cards/{cardId}/study")
+                .AddUrlSegment("userId", userId)
+                .AddUrlSegment("cardId", cardId)
+                .AddQueryParameter("quality", quality);
+
+            try
+            {
+                var createResult = await client.PostAsync(request);
+                return serializer.Deserialize<StudyResult>(createResult.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 }
