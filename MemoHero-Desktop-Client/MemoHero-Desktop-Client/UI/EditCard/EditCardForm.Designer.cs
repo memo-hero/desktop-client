@@ -60,6 +60,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.btnClose.TabIndex = 12;
             this.btnClose.TabStop = false;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
@@ -70,7 +71,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // EditCardWindow
+            // EditCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,7 +81,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.editPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "EditCardWindow";
+            this.Name = "EditCardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Card";
             this.ResumeLayout(false);

@@ -25,5 +25,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             if (result == null) return;
             OnCardEdited(result);
         }
+
+        private void btnClose_Click(object sender, EventArgs e) => Close();
     }
 }
