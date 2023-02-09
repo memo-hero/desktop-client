@@ -68,55 +68,66 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonPageUserStatus,
             this.ribbonPage2,
             this.ribbonPageCards});
-            this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
+            this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.Size = new System.Drawing.Size(638, 158);
             this.ribbonControl.SelectedPageChanged += new System.EventHandler(this.ribbonControl_SelectedPageChanged);
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Caption = "Log Out";
+            this.btnLogOut.Caption = "Log out";
             this.btnLogOut.Id = 1;
-            this.btnLogOut.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.icons8_logout_52;
+            this.btnLogOut.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.logout_32;
             this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnLogOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogOut_ItemClick);
             // 
             // btnCardEdit
             // 
-            this.btnCardEdit.Hint = "Edit selected card";
+            this.btnCardEdit.Caption = "Edit selected card";
             this.btnCardEdit.Id = 2;
-            this.btnCardEdit.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.edit_card_24;
+            this.btnCardEdit.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_edit_52;
             this.btnCardEdit.Name = "btnCardEdit";
+            this.btnCardEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnCardEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCardEdit_ItemClick);
             // 
             // btnCreateCard
             // 
+            this.btnCreateCard.Caption = "Create new card";
             this.btnCreateCard.Hint = "Create Card";
             this.btnCreateCard.Id = 3;
-            this.btnCreateCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.new_card_24;
+            this.btnCreateCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_create_32;
+            this.btnCreateCard.ImageOptions.LargeImage = global::MemoHeroDesktopClient.Properties.Resources.card_create_52;
             this.btnCreateCard.Name = "btnCreateCard";
+            this.btnCreateCard.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnCreateCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCreateCard_ItemClick);
             // 
             // btnDeleteCard
             // 
+            this.btnDeleteCard.Caption = "Delete selected card";
             this.btnDeleteCard.Hint = "Delete Card";
             this.btnDeleteCard.Id = 4;
-            this.btnDeleteCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.delete_card_24;
+            this.btnDeleteCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_delete_52;
             this.btnDeleteCard.Name = "btnDeleteCard";
+            this.btnDeleteCard.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // btnExport
             // 
+            this.btnExport.Caption = "Import Collection";
             this.btnExport.Hint = "Import Backup";
             this.btnExport.Id = 5;
-            this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_backup_24_1_;
+            this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_32;
             this.btnExport.Name = "btnExport";
+            this.btnExport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // barButtonItem1
             // 
+            this.barButtonItem1.Caption = "Export Collection";
             this.barButtonItem1.Hint = "Export Backup";
             this.barButtonItem1.Id = 6;
-            this.barButtonItem1.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.download_backup_24;
+            this.barButtonItem1.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.export_32;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
             // barButtonItem2
             // 
@@ -136,9 +147,9 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // ribbonPageGroupUser
             // 
+            this.ribbonPageGroupUser.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             this.ribbonPageGroupUser.ItemLinks.Add(this.btnLogOut);
             this.ribbonPageGroupUser.Name = "ribbonPageGroupUser";
-            this.ribbonPageGroupUser.Text = "ribbonPageGroupUser";
             // 
             // ribbonPage2
             // 
@@ -171,7 +182,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonPageGroupCards.ItemLinks.Add(this.btnCardEdit);
             this.ribbonPageGroupCards.ItemLinks.Add(this.btnDeleteCard);
             this.ribbonPageGroupCards.Name = "ribbonPageGroupCards";
-            this.ribbonPageGroupCards.Text = "ribbonPageGroupCards";
+            this.ribbonPageGroupCards.Text = "Cards Management";
             // 
             // pageBackup
             // 

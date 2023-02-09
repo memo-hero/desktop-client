@@ -197,6 +197,16 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\export-32.png" />
+    <None Include="Resources\import-32.png" />
+    <None Include="Resources\card-create-32.png" />
+    <None Include="Resources\logout-32.png" />
+    <None Include="Resources\card-edit-52.png" />
+    <None Include="Resources\card-delete-52.png" />
+    <None Include="Resources\card-create-52.png" />
+    <None Include="Resources\card-edit-100.png" />
+    <None Include="Resources\card-512.png" />
+    <None Include="Resources\logout-512.png" />
     <None Include="Resources\card-background-2.PNG" />
     <None Include="Resources\card-background.PNG" />
     <None Include="Resources\download-backup-24.png" />
