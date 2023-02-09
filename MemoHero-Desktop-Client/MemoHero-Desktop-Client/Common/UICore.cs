@@ -53,6 +53,8 @@ namespace MemoHeroDesktopClient.Common
             panel.Controls.Add(userStatsControl);
 
             cardListControl = new CardListControl();
+            cardListControl.Visible = false;
+            cardListControl.Dock = DockStyle.Fill;
             cardListControl.SetDataSource(ref memoCore.UserCards);
             customControls.Add("ribbonPageCards", cardListControl);
             panel.Controls.Add(cardListControl);
