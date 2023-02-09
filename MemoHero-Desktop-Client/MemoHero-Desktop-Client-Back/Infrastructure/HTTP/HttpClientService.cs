@@ -18,6 +18,8 @@ namespace ClientBack.Infrastructure.HTTP
             this.serializer = serializer;
         }
 
+        public async Task<bool> IsServiceOnline() => await IsPostSuccessful(new RestRequest("healthz"));
+
         public async Task<StoredUser> CreateUser(NewUser newUser)
         {
             var request = new RestRequest("users")
@@ -29,28 +31,16 @@ namespace ClientBack.Infrastructure.HTTP
         public async Task<StoredUser> RetrieveUser(string userId)
         {
             var request = new RestRequest("users/{user}").AddUrlSegment("user", userId);
-            try
-            {
-                return await client.GetAsync<StoredUser>(request);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+
+            return await MakeGet<StoredUser>(request);
         }
 
         public async Task<List<Card>> GetUserCards(string userId)
         {
-            var request = new RestRequest("users/{userId}/cards").AddUrlSegment("userId", userId);
-            try
-            {
-                var result = await client.GetAsync(request);
-                return serializer.Deserialize<List<Card>>(result.Content);
-            }
-            catch (Exception ex)
-            {
-                return new List<Card>();
-            }
+            var request = new RestRequest("users/{userId}/cards")
+                .AddUrlSegment("userId", userId);
+            
+            return await MakeGet<List<Card>>(request);
         }
 
         internal async Task<Card> GetCardByIdAsync(string userId, string cardId)
@@ -58,14 +48,8 @@ namespace ClientBack.Infrastructure.HTTP
             var request = new RestRequest("users/{userId}/cards/{cardId}")
                 .AddUrlSegment("userId", userId)
                 .AddUrlSegment("cardId", cardId);
-            try
-            {
-                return await client.GetAsync<Card>(request);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+
+            return await MakeGet<Card>(request);
         }
 
         public async Task<CreateCardResult> CreateCard(string userId, NewCard newCard)
@@ -74,31 +58,7 @@ namespace ClientBack.Infrastructure.HTTP
                 .AddUrlSegment("userId", userId)
                 .AddStringBody(serializer.Serialize(newCard), DataFormat.Json);
 
-            try
-            {
-                var createResult = await client.PostAsync(request);
-                return serializer.Deserialize<CreateCardResult>(createResult.Content);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-
-        public async Task<bool> IsServiceOnline()
-        {
-            var request = new RestRequest("healthz");
-            
-            try
-            {
-                var result = await client.PostAsync(request);
-                return result.StatusCode == System.Net.HttpStatusCode.OK;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return await MakePost<CreateCardResult>(request);
         }
 
         public async Task<bool> UpdateCard(string userId, UpdatedCard card)
@@ -108,16 +68,7 @@ namespace ClientBack.Infrastructure.HTTP
                 .AddUrlSegment("cardId", card.id)
                 .AddStringBody(serializer.Serialize(card), DataFormat.Json);
 
-            try
-            {
-                var createResult = await client.PostAsync(request);
-                return createResult.IsSuccessful;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
+            return await IsPostSuccessful(request);
         }
 
         public async Task<StudyResult> StudyCard(string userId, string cardId, int quality)
@@ -127,15 +78,48 @@ namespace ClientBack.Infrastructure.HTTP
                 .AddUrlSegment("cardId", cardId)
                 .AddQueryParameter("quality", quality);
 
+            return await MakePost<StudyResult>(request);
+        }
+
+        private async Task<T> MakePost<T>(RestRequest request)
+        {
             try
             {
-                var createResult = await client.PostAsync(request);
-                return serializer.Deserialize<StudyResult>(createResult.Content);
+                var result = await client.PostAsync(request);
+                return serializer.Deserialize<T>(result.Content);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                return default;
+            }
+        }
+
+        private async Task<bool> IsPostSuccessful(RestRequest request)
+        {
+            try
+            {
+                var result = await client.PostAsync(request);
+                return result.IsSuccessful;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return default;
+            }
+        }
+
+        private async Task<T> MakeGet<T>(RestRequest request)
+        {
+            try
+            {
+                var result = await client.GetAsync(request);
+                return serializer.Deserialize<T>(result.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return default;
             }
         }
     }
