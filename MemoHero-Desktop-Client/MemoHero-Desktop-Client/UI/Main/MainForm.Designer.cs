@@ -36,10 +36,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnDeleteCard = new DevExpress.XtraBars.BarButtonItem();
             this.btnExport = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStudy = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageUserStatus = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageStudy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupStudy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCards = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupCards = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -60,13 +60,13 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnDeleteCard,
             this.btnExport,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.btnStudy});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 9;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageUserStatus,
-            this.ribbonPage2,
+            this.ribbonPageStudy,
             this.ribbonPageCards});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
@@ -129,12 +129,14 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             // 
-            // barButtonItem2
+            // btnStudy
             // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 8;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.btnStudy.Caption = "Study Cards";
+            this.btnStudy.Id = 8;
+            this.btnStudy.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.study_32;
+            this.btnStudy.Name = "btnStudy";
+            this.btnStudy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnStudy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStudy_ItemClick);
             // 
             // ribbonPageUserStatus
             // 
@@ -151,20 +153,20 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonPageGroupUser.ItemLinks.Add(this.btnLogOut);
             this.ribbonPageGroupUser.Name = "ribbonPageGroupUser";
             // 
-            // ribbonPage2
+            // ribbonPageStudy
             // 
-            this.ribbonPage2.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ribbonPage2.Appearance.Options.UseFont = true;
-            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageStudy.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ribbonPageStudy.Appearance.Options.UseFont = true;
+            this.ribbonPageStudy.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupStudy});
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Study";
+            this.ribbonPageStudy.Name = "ribbonPageStudy";
+            this.ribbonPageStudy.Text = "Study";
             // 
             // ribbonPageGroupStudy
             // 
-            this.ribbonPageGroupStudy.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroupStudy.ItemLinks.Add(this.btnStudy);
             this.ribbonPageGroupStudy.Name = "ribbonPageGroupStudy";
-            this.ribbonPageGroupStudy.Text = "ribbonPageGroupStudy";
+            this.ribbonPageGroupStudy.Text = "Study";
             // 
             // ribbonPageCards
             // 
@@ -226,7 +228,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupUser;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageCards;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupCards;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageStudy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupStudy;
         private DevExpress.XtraBars.BarButtonItem btnLogOut;
         private DevExpress.XtraBars.BarButtonItem btnCardEdit;
@@ -236,6 +238,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.BarButtonItem btnExport;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pageBackup;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem btnStudy;
     }
 }

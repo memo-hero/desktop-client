@@ -36,7 +36,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             uiCore.UpdatePanel(selectedPage);
         }
 
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnStudy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             uiCore.StudyFilteredCards();
         }

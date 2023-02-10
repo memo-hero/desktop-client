@@ -197,6 +197,7 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\study-32.png" />
     <None Include="Resources\export-32.png" />
     <None Include="Resources\import-32.png" />
     <None Include="Resources\card-create-32.png" />

@@ -36,6 +36,7 @@ namespace MemoHeroDesktopClient.Common
 
 
         private UserStatsControl userStatsControl;
+        private CardListControl dueCardsControl;
         private CardListControl cardListControl;
 
         public UICore()
@@ -52,6 +53,13 @@ namespace MemoHeroDesktopClient.Common
             customControls.Add("ribbonPageUserStatus", userStatsControl);
             panel.Controls.Add(userStatsControl);
 
+            dueCardsControl = new CardListControl();
+            customControls.Add("ribbonPageStudy", dueCardsControl);
+            dueCardsControl.Visible = false;
+            dueCardsControl.Dock = DockStyle.Fill;
+            dueCardsControl.SetDataSource(ref memoCore.UserCards);
+            panel.Controls.Add(dueCardsControl);
+
             cardListControl = new CardListControl();
             cardListControl.Visible = false;
             cardListControl.Dock = DockStyle.Fill;
@@ -62,7 +70,7 @@ namespace MemoHeroDesktopClient.Common
 
         internal void StudyFilteredCards()
         {
-            var cards = cardListControl.GetCards();
+            var cards = dueCardsControl.GetCards();
             using (studyCardsForm = new StudyCardsForm(new Queue<Card>(cards)))
             {
                 studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
