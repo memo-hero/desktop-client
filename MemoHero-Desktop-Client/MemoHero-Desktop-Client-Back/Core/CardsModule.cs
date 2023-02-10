@@ -16,10 +16,7 @@ namespace ClientBack.Core
             this.restClient = restClient;
         }
 
-        internal async Task<List<Card>> GetUserCards(string userId)
-        {
-            return await restClient.GetUserCards(userId);
-        }
+        internal async Task<List<Card>> GetUserCards(string userId) => await restClient.GetUserCards(userId);
 
         internal async Task<CreateCardResult> CreateCard(User currentUser, Card newCard)
         {
@@ -27,14 +24,10 @@ namespace ClientBack.Core
             return await restClient.CreateCard(currentUser.Id, card);
         }
 
-        internal async Task<bool> UpdateCard(User currentUser, Card updatedCard)
-        {
-            return await restClient.UpdateCard(currentUser.Id, new UpdatedCard(updatedCard));
-        }
+        internal async Task<bool> UpdateCard(User currentUser, Card updatedCard) => await restClient.UpdateCard(currentUser.Id, new UpdatedCard(updatedCard));
 
-        internal async Task<StudyResult> StudyCard(User currentUser, Card card, int quality)
-        {
-            return await restClient.StudyCard(currentUser.Id, card.Id, quality);
-        }
+        internal async Task<StudyResult> StudyCard(User currentUser, Card card, int quality) => await restClient.StudyCard(currentUser.Id, card.Id, quality);
+
+        internal async Task<List<Card>> GetDueCards(string userId) => await restClient.GetUserDueCards(userId);
     }
 }

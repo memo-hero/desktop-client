@@ -39,6 +39,13 @@ namespace MemoHeroDesktopClient.CustomControls
             gridCards.RefreshDataSource();
         }
 
+        internal void UpdateGrid()
+        {
+            gridableCards.Clear();
+            gridableCards.AddRange(cards.Select(c => new GridableCard(c)).ToList());
+            gridCards.RefreshDataSource();
+        }
+
         internal void UpdateCard(Card card)
         {
             gridableCards.Remove(gridableCards.Find(x => x.Id == card.Id));

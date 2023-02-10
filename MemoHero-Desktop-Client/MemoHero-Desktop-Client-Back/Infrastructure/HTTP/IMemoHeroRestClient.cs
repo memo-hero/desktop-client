@@ -13,5 +13,6 @@ namespace ClientBack.Infrastructure.HTTP
         Task<bool> UpdateCard(string userId, UpdatedCard card);
         Task<bool> IsServiceOnline();
         Task<StudyResult> StudyCard(string id1, string id2, int quality);
+        Task<List<Card>> GetUserDueCards(string userId);
     }
 }

@@ -43,6 +43,14 @@ namespace ClientBack.Infrastructure.HTTP
             return await MakeGet<List<Card>>(request);
         }
 
+        public async Task<List<Card>> GetUserDueCards(string userId)
+        {
+            var request = new RestRequest("users/{userId}/cards/due")
+                .AddUrlSegment("userId", userId);
+
+            return await MakeGet<List<Card>>(request);
+        }
+
         internal async Task<Card> GetCardByIdAsync(string userId, string cardId)
         {
             var request = new RestRequest("users/{userId}/cards/{cardId}")

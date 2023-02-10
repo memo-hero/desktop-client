@@ -57,7 +57,7 @@ namespace MemoHeroDesktopClient.Common
             customControls.Add("ribbonPageStudy", dueCardsControl);
             dueCardsControl.Visible = false;
             dueCardsControl.Dock = DockStyle.Fill;
-            dueCardsControl.SetDataSource(ref memoCore.UserCards);
+            dueCardsControl.SetDataSource(ref memoCore.DueCards);
             panel.Controls.Add(dueCardsControl);
 
             cardListControl = new CardListControl();
@@ -111,7 +111,7 @@ namespace MemoHeroDesktopClient.Common
         private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
         {
             var card = await memoCore.CreateCardAsync(args.newCard);
-            cardListControl.AddCard(card);
+            dueCardsControl.UpdateGrid();
         }
 
         private async void EditCardWindow_CardEdited(object source, EditCardArgs args)
@@ -161,7 +161,7 @@ namespace MemoHeroDesktopClient.Common
             {
                 if (manualLogin) mainMenuForm = new UI.MainWindow.MainMenu(this);
                 user = await memoCore.GetUserInfo(user);
-                await memoCore.GetUserCards(user.Id);
+                await memoCore.GetUserDueCards();
                 mainMenuForm.Show();
                 login.Hide();
                 
