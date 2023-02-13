@@ -51,9 +51,9 @@ namespace ClientBack.Core
             return currentUser;
         }
 
-        public async Task<bool> GetUserCards(string userId)
+        public async Task<bool> GetUserCards()
         {
-            UserCards = await cardsModule.GetUserCards(userId);
+            UserCards = await cardsModule.GetUserCards(currentUser.Id);
             return true;
         }
 
@@ -95,9 +95,14 @@ namespace ClientBack.Core
             return false;
         }
 
-        public Task<StudyResult> StudyCard(Card card, int quality)
+        public async Task<StudyResult> StudyCard(Card card, int quality)
         {
-            return cardsModule.StudyCard(currentUser, card, quality);
+            return await cardsModule.StudyCard(currentUser, card, quality);
+        }
+
+        public async Task<bool> DeleteCard(Card card)
+        {
+            return await cardsModule.DeleteCard(currentUser, card);
         }
     }
 }

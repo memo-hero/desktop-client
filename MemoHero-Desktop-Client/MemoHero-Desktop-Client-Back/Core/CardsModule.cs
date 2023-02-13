@@ -29,5 +29,10 @@ namespace ClientBack.Core
         internal async Task<StudyResult> StudyCard(User currentUser, Card card, int quality) => await restClient.StudyCard(currentUser.Id, card.Id, quality);
 
         internal async Task<List<Card>> GetDueCards(string userId) => await restClient.GetUserDueCards(userId);
+
+        internal async Task<bool> DeleteCard(User user, Card card)
+        {
+            return await restClient.DeleteCard(user.Id, card.Id);
+        }
     }
 }

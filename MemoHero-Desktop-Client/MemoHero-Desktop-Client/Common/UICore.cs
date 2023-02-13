@@ -68,6 +68,41 @@ namespace MemoHeroDesktopClient.Common
             panel.Controls.Add(cardListControl);
         }
 
+        internal async void DeleteSelectedCard()
+        {
+            var selectedCard = cardListControl.GetSelectedCard();
+            if (selectedCard == null) return;
+
+            var response = MessageBox.Show("Are you sure you want to delete the selected card?", "Deleting Card", MessageBoxButtons.OKCancel);
+            if (response == DialogResult.OK)
+            {
+                if (await memoCore.DeleteCard(selectedCard))
+                {
+                    UpdateCardListControl();
+                    UpdateDueCardsControl();
+                }
+            }
+        }
+
+        private async void UpdateCardListControl()
+        {
+            await memoCore.GetUserCards();
+            cardListControl.SetDataSource(ref memoCore.UserCards);
+            cardListControl.UpdateGrid();
+        }
+
+        private async void UpdateDueCardsControl()
+        {
+            await memoCore.GetUserDueCards();
+            dueCardsControl.SetDataSource(ref memoCore.DueCards);
+            dueCardsControl.UpdateGrid();
+        }
+
+        internal void GetCardsFromServer()
+        {
+            UpdateCardListControl();
+        }
+
         internal void StudyFilteredCards()
         {
             var cards = dueCardsControl.GetCards();
@@ -75,6 +110,7 @@ namespace MemoHeroDesktopClient.Common
             {
                 studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
                 studyCardsForm.ShowDialog();
+                UpdateDueCardsControl();
             }
         }
 
@@ -102,9 +138,10 @@ namespace MemoHeroDesktopClient.Common
         internal void ShowEditCardForm()
         {
             var selectedCard = cardListControl.GetSelectedCard();
+            if (selectedCard == null) return;
+            
             editCardForm = new EditCardForm(selectedCard);
             editCardForm.CardEdited += EditCardWindow_CardEdited;
-
             editCardForm.ShowDialog();
         }
 

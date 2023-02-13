@@ -89,6 +89,15 @@ namespace ClientBack.Infrastructure.HTTP
             return await MakePost<StudyResult>(request);
         }
 
+        public async Task<bool> DeleteCard(string userId, string cardId)
+        {
+            var request = new RestRequest("users/{userId}/cards/{cardId}")
+                .AddUrlSegment("userId", userId)
+                .AddUrlSegment("cardId", cardId);
+
+                return await IsDeleteSuccessful(request);
+        }
+
         private async Task<T> MakePost<T>(RestRequest request)
         {
             try
@@ -123,6 +132,20 @@ namespace ClientBack.Infrastructure.HTTP
             {
                 var result = await client.GetAsync(request);
                 return serializer.Deserialize<T>(result.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return default;
+            }
+        }
+
+        private async Task<bool> IsDeleteSuccessful(RestRequest request)
+        {
+            try
+            {
+                var result = await client.DeleteAsync(request);
+                return result.IsSuccessful;
             }
             catch (Exception ex)
             {

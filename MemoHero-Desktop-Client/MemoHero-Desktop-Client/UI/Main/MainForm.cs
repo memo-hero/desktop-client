@@ -40,5 +40,15 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         {
             uiCore.StudyFilteredCards();
         }
+
+        private void btnServerSync_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            uiCore.GetCardsFromServer();
+        }
+
+        private void btnDeleteCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            uiCore.DeleteSelectedCard();
+        }
     }
 }
