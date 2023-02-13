@@ -17,6 +17,7 @@ namespace MemoHeroDesktopClient.CustomControls
 
             progressBarHP.EditValue = CalculateHPPercentage(userStats.Health);
             lblCurrentCategory.Text = category.ToString();
+            lblCurrentCategoryLevel.Text = currentCategory.Level.ToString();
             progressBarCategory.EditValue = CalculateCategoryPercentage(currentCategory);
         }
 

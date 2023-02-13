@@ -33,12 +33,14 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblCurrentHP = new DevExpress.XtraEditors.LabelControl();
             this.lblLabelCurrentCategory = new DevExpress.XtraEditors.LabelControl();
             this.lblCategoryProgress = new DevExpress.XtraEditors.LabelControl();
-            this.progressBarHP = new DevExpress.XtraEditors.ProgressBarControl();
             this.lblCurrentCategory = new DevExpress.XtraEditors.LabelControl();
             this.progressBarCategory = new DevExpress.XtraEditors.ProgressBarControl();
+            this.progressBarHP = new DevExpress.XtraEditors.ProgressBarControl();
+            this.lblLabelCurrentCategoryLevel = new DevExpress.XtraEditors.LabelControl();
+            this.lblCurrentCategoryLevel = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarHP.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarCategory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarHP.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -46,21 +48,25 @@ namespace MemoHeroDesktopClient.CustomControls
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Controls.Add(this.lblCategoryProgress, 0, 3);
             this.tableLayoutPanel.Controls.Add(this.lblLabelCurrentCategory, 0, 2);
-            this.tableLayoutPanel.Controls.Add(this.progressBarCategory, 1, 3);
             this.tableLayoutPanel.Controls.Add(this.lblCurrentHP, 0, 1);
             this.tableLayoutPanel.Controls.Add(this.lblCurrentCategory, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.progressBarHP, 1, 1);
+            this.tableLayoutPanel.Controls.Add(this.lblCategoryProgress, 0, 4);
+            this.tableLayoutPanel.Controls.Add(this.lblLabelCurrentCategoryLevel, 0, 3);
+            this.tableLayoutPanel.Controls.Add(this.progressBarCategory, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.lblCurrentCategoryLevel, 1, 3);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 4;
+            this.tableLayoutPanel.RowCount = 5;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel.Size = new System.Drawing.Size(311, 109);
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(351, 132);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // lblCurrentHP
@@ -87,15 +93,33 @@ namespace MemoHeroDesktopClient.CustomControls
             // 
             this.lblCategoryProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoryProgress.Appearance.Options.UseFont = true;
-            this.lblCategoryProgress.Location = new System.Drawing.Point(3, 77);
+            this.lblCategoryProgress.Location = new System.Drawing.Point(3, 104);
             this.lblCategoryProgress.Name = "lblCategoryProgress";
             this.lblCategoryProgress.Size = new System.Drawing.Size(142, 21);
             this.lblCategoryProgress.TabIndex = 7;
             this.lblCategoryProgress.Text = "Category Progress:";
             // 
+            // lblCurrentCategory
+            // 
+            this.lblCurrentCategory.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblCurrentCategory.Appearance.Options.UseFont = true;
+            this.lblCurrentCategory.Location = new System.Drawing.Point(187, 50);
+            this.lblCurrentCategory.Name = "lblCurrentCategory";
+            this.lblCurrentCategory.Size = new System.Drawing.Size(145, 21);
+            this.lblCurrentCategory.TabIndex = 9;
+            this.lblCurrentCategory.Text = "category placeholder";
+            // 
+            // progressBarCategory
+            // 
+            this.progressBarCategory.Location = new System.Drawing.Point(187, 104);
+            this.progressBarCategory.Name = "progressBarCategory";
+            this.progressBarCategory.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBarCategory.Size = new System.Drawing.Size(150, 20);
+            this.progressBarCategory.TabIndex = 10;
+            // 
             // progressBarHP
             // 
-            this.progressBarHP.Location = new System.Drawing.Point(151, 23);
+            this.progressBarHP.Location = new System.Drawing.Point(187, 23);
             this.progressBarHP.Name = "progressBarHP";
             this.progressBarHP.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progressBarHP.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
@@ -105,23 +129,25 @@ namespace MemoHeroDesktopClient.CustomControls
             this.progressBarHP.Size = new System.Drawing.Size(150, 20);
             this.progressBarHP.TabIndex = 8;
             // 
-            // lblCurrentCategory
+            // lblLabelCurrentCategoryLevel
             // 
-            this.lblCurrentCategory.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblCurrentCategory.Appearance.Options.UseFont = true;
-            this.lblCurrentCategory.Location = new System.Drawing.Point(151, 50);
-            this.lblCurrentCategory.Name = "lblCurrentCategory";
-            this.lblCurrentCategory.Size = new System.Drawing.Size(145, 21);
-            this.lblCurrentCategory.TabIndex = 9;
-            this.lblCurrentCategory.Text = "category placeholder";
+            this.lblLabelCurrentCategoryLevel.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLabelCurrentCategoryLevel.Appearance.Options.UseFont = true;
+            this.lblLabelCurrentCategoryLevel.Location = new System.Drawing.Point(3, 77);
+            this.lblLabelCurrentCategoryLevel.Name = "lblLabelCurrentCategoryLevel";
+            this.lblLabelCurrentCategoryLevel.Size = new System.Drawing.Size(178, 21);
+            this.lblLabelCurrentCategoryLevel.TabIndex = 11;
+            this.lblLabelCurrentCategoryLevel.Text = "Current Category Level:";
             // 
-            // progressBarCategory
+            // lblCurrentCategoryLevel
             // 
-            this.progressBarCategory.Location = new System.Drawing.Point(151, 77);
-            this.progressBarCategory.Name = "progressBarCategory";
-            this.progressBarCategory.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBarCategory.Size = new System.Drawing.Size(150, 20);
-            this.progressBarCategory.TabIndex = 10;
+            this.lblCurrentCategoryLevel.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblCurrentCategoryLevel.Appearance.Options.UseFont = true;
+            this.lblCurrentCategoryLevel.Location = new System.Drawing.Point(187, 77);
+            this.lblCurrentCategoryLevel.Name = "lblCurrentCategoryLevel";
+            this.lblCurrentCategoryLevel.Size = new System.Drawing.Size(117, 21);
+            this.lblCurrentCategoryLevel.TabIndex = 12;
+            this.lblCurrentCategoryLevel.Text = "level placeholder";
             // 
             // StudyStatsControl
             // 
@@ -130,11 +156,11 @@ namespace MemoHeroDesktopClient.CustomControls
             this.AutoSize = true;
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "StudyStatsControl";
-            this.Size = new System.Drawing.Size(311, 109);
+            this.Size = new System.Drawing.Size(351, 132);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarHP.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarCategory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarHP.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,5 +174,7 @@ namespace MemoHeroDesktopClient.CustomControls
         private DevExpress.XtraEditors.ProgressBarControl progressBarHP;
         private DevExpress.XtraEditors.LabelControl lblCurrentCategory;
         private DevExpress.XtraEditors.ProgressBarControl progressBarCategory;
+        private DevExpress.XtraEditors.LabelControl lblLabelCurrentCategoryLevel;
+        private DevExpress.XtraEditors.LabelControl lblCurrentCategoryLevel;
     }
 }

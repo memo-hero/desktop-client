@@ -1,5 +1,7 @@
-﻿using ClientBack.Domain.User;
+﻿using ClientBack.Domain.Cards;
+using ClientBack.Domain.User;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ClientBack.Infrastructure.HTTP
 {
@@ -12,7 +14,7 @@ namespace ClientBack.Infrastructure.HTTP
         public bool DidGetKnockedOut { get; set; }
 
         [JsonProperty("category")]
-        public CategoryProperties Category { get; set; }
+        public Dictionary<Category, CategoryProperties> Category { get; set; }
 
         [JsonProperty("userStats")]
         public UserStats UserStats { get; set; }

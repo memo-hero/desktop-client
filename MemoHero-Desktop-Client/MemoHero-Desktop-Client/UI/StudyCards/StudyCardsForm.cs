@@ -1,10 +1,13 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using ClientBack.Infrastructure.HTTP;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Windows;
 
 namespace MemoHeroDesktopClient.UI.StudyCards
 {
@@ -34,16 +37,25 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         private void UiCore_StudyResult(object source, StudyResultHandlerArgs args)
         {
             UpdateStatsPanel();
+            if (args.studyResult.DidLevelUp) ShowLevelUpMessage(args.studyResult);
+        }
+
+        private void ShowLevelUpMessage(StudyResult studyresult)
+        {
+            var category = studyresult.Category.Keys.First();
+            var message = $"Congratulations!{ Environment.NewLine }You leveled up your { category } category to level { studyresult.Category[category].Level }!";
+            
+            MessageBox.Show(message, "Level Up!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void InitializeLabel()
         {
             lblCardFront.Parent = pictureCard;
-            lblCardFront.Location = new Point(10, 50);
+            lblCardFront.Location = new System.Drawing.Point(10, 50);
             lblCardFront.BackColor = Color.Transparent;
 
             lblCardBack.Parent = pictureCard;
-            lblCardBack.Location = new Point(10,170);
+            lblCardBack.Location = new System.Drawing.Point(10,170);
             lblCardBack.BackColor = Color.Transparent;
         }
 
