@@ -31,7 +31,6 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         {
             this.lblCardFront = new DevExpress.XtraEditors.LabelControl();
             this.lblCardBack = new DevExpress.XtraEditors.LabelControl();
-            this.pictureCard = new System.Windows.Forms.PictureBox();
             this.groupControl = new DevExpress.XtraEditors.GroupControl();
             this.btnResponse5 = new DevExpress.XtraEditors.SimpleButton();
             this.btnResponse4 = new DevExpress.XtraEditors.SimpleButton();
@@ -41,10 +40,13 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.btnResponse0 = new DevExpress.XtraEditors.SimpleButton();
             this.btnReveal = new DevExpress.XtraEditors.SimpleButton();
             this.groupStats = new DevExpress.XtraEditors.GroupControl();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureCard)).BeginInit();
+            this.pictureCard = new System.Windows.Forms.PictureBox();
+            this.panelStats = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).BeginInit();
             this.groupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupStats)).BeginInit();
+            this.groupStats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCard)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCardFront
@@ -82,16 +84,6 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.lblCardBack.Text = "Placeholder Back";
             this.lblCardBack.Visible = false;
             // 
-            // pictureCard
-            // 
-            this.pictureCard.Image = global::MemoHeroDesktopClient.Properties.Resources.card_background_2;
-            this.pictureCard.Location = new System.Drawing.Point(3, 12);
-            this.pictureCard.Name = "pictureCard";
-            this.pictureCard.Size = new System.Drawing.Size(810, 489);
-            this.pictureCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureCard.TabIndex = 0;
-            this.pictureCard.TabStop = false;
-            // 
             // groupControl
             // 
             this.groupControl.Controls.Add(this.btnResponse5);
@@ -109,6 +101,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse5
             // 
+            this.btnResponse5.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResponse5.Appearance.Options.UseFont = true;
             this.btnResponse5.Enabled = false;
             this.btnResponse5.Location = new System.Drawing.Point(240, 116);
             this.btnResponse5.Name = "btnResponse5";
@@ -119,6 +113,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse4
             // 
+            this.btnResponse4.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResponse4.Appearance.Options.UseFont = true;
             this.btnResponse4.Enabled = false;
             this.btnResponse4.Location = new System.Drawing.Point(159, 116);
             this.btnResponse4.Name = "btnResponse4";
@@ -129,6 +125,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse3
             // 
+            this.btnResponse3.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResponse3.Appearance.Options.UseFont = true;
             this.btnResponse3.Enabled = false;
             this.btnResponse3.Location = new System.Drawing.Point(78, 116);
             this.btnResponse3.Name = "btnResponse3";
@@ -139,6 +137,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse2
             // 
+            this.btnResponse2.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResponse2.Appearance.Options.UseFont = true;
             this.btnResponse2.Enabled = false;
             this.btnResponse2.Location = new System.Drawing.Point(240, 145);
             this.btnResponse2.Name = "btnResponse2";
@@ -149,6 +149,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse1
             // 
+            this.btnResponse1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResponse1.Appearance.Options.UseFont = true;
             this.btnResponse1.Enabled = false;
             this.btnResponse1.Location = new System.Drawing.Point(159, 145);
             this.btnResponse1.Name = "btnResponse1";
@@ -159,6 +161,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnResponse0
             // 
+            this.btnResponse0.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResponse0.Appearance.Options.UseFont = true;
             this.btnResponse0.Enabled = false;
             this.btnResponse0.Location = new System.Drawing.Point(78, 145);
             this.btnResponse0.Name = "btnResponse0";
@@ -169,7 +173,9 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // btnReveal
             // 
-            this.btnReveal.Location = new System.Drawing.Point(173, 55);
+            this.btnReveal.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReveal.Appearance.Options.UseFont = true;
+            this.btnReveal.Location = new System.Drawing.Point(159, 60);
             this.btnReveal.Name = "btnReveal";
             this.btnReveal.Size = new System.Drawing.Size(75, 23);
             this.btnReveal.TabIndex = 0;
@@ -178,11 +184,30 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             // 
             // groupStats
             // 
+            this.groupStats.Controls.Add(this.panelStats);
             this.groupStats.Location = new System.Drawing.Point(407, 507);
             this.groupStats.Name = "groupStats";
             this.groupStats.Size = new System.Drawing.Size(400, 194);
             this.groupStats.TabIndex = 4;
             this.groupStats.Text = "Your Stats";
+            // 
+            // pictureCard
+            // 
+            this.pictureCard.Image = global::MemoHeroDesktopClient.Properties.Resources.card_background_2;
+            this.pictureCard.Location = new System.Drawing.Point(3, 12);
+            this.pictureCard.Name = "pictureCard";
+            this.pictureCard.Size = new System.Drawing.Size(810, 489);
+            this.pictureCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureCard.TabIndex = 0;
+            this.pictureCard.TabStop = false;
+            // 
+            // panelStats
+            // 
+            this.panelStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelStats.Location = new System.Drawing.Point(2, 23);
+            this.panelStats.Name = "panelStats";
+            this.panelStats.Size = new System.Drawing.Size(396, 169);
+            this.panelStats.TabIndex = 0;
             // 
             // StudyCardsForm
             // 
@@ -197,10 +222,11 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "StudyCardsForm";
             this.Text = "StudyCardsForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).EndInit();
             this.groupControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupStats)).EndInit();
+            this.groupStats.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +246,6 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         private DevExpress.XtraEditors.SimpleButton btnResponse2;
         private DevExpress.XtraEditors.SimpleButton btnResponse1;
         private DevExpress.XtraEditors.SimpleButton btnResponse0;
+        private System.Windows.Forms.Panel panelStats;
     }
 }

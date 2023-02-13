@@ -1,6 +1,7 @@
 ﻿using ClientBack.Core;
 using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using ClientBack.Infrastructure.HTTP;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.UI.EditCard;
@@ -25,6 +26,9 @@ namespace MemoHeroDesktopClient.Common
         // Events
         internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
         internal event UserLoginHandler UserLoggedIn;
+
+        internal delegate void StudyResultHandler(object source, StudyResultHandlerArgs args);
+        internal event StudyResultHandler StudyResult;
 
         private readonly MemoHeroCore memoCore = MemoHeroServices.Core;
 
@@ -106,7 +110,7 @@ namespace MemoHeroDesktopClient.Common
         internal void StudyFilteredCards()
         {
             var cards = dueCardsControl.GetCards();
-            using (studyCardsForm = new StudyCardsForm(new Queue<Card>(cards)))
+            using (studyCardsForm = new StudyCardsForm(this, ref user, new Queue<Card>(cards), new StudyStatsControl()))
             {
                 studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
                 studyCardsForm.ShowDialog();
@@ -117,7 +121,11 @@ namespace MemoHeroDesktopClient.Common
         private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
         {
             var result = await memoCore.StudyCard(args.Card, args.Quality);
+            user.Stats = result.UserStats;
+            OnStudyResult(result);
         }
+
+        protected virtual void OnStudyResult(StudyResult result) => StudyResult(this, new StudyResultHandlerArgs(result));
 
         internal void UpdatePanel(string currentPageName)
         {

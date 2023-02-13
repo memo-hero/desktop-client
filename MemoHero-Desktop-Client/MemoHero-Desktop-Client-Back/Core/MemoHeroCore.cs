@@ -97,7 +97,10 @@ namespace ClientBack.Core
 
         public async Task<StudyResult> StudyCard(Card card, int quality)
         {
-            return await cardsModule.StudyCard(currentUser, card, quality);
+            var result = await cardsModule.StudyCard(currentUser, card, quality);
+            currentUser.Stats = result.UserStats;
+
+            return result;
         }
 
         public async Task<bool> DeleteCard(Card card)

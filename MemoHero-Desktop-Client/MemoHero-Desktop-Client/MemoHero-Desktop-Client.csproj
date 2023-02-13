@@ -66,6 +66,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StudyResultHandlerArgs.cs" />
     <Compile Include="Common\UICore.cs" />
     <Compile Include="Common\UserLoginResultArgs.cs" />
     <Compile Include="CustomControls\CardFormControl.cs">
@@ -79,6 +80,12 @@
     </Compile>
     <Compile Include="CustomControls\CardListControl.Designer.cs">
       <DependentUpon>CardListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\StudyStatsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\StudyStatsControl.Designer.cs">
+      <DependentUpon>StudyStatsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\UserStatsControl.cs">
       <SubType>UserControl</SubType>
@@ -133,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\CardListControl.resx">
       <DependentUpon>CardListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\StudyStatsControl.resx">
+      <DependentUpon>StudyStatsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\UserStatsControl.resx">
       <DependentUpon>UserStatsControl.cs</DependentUpon>
