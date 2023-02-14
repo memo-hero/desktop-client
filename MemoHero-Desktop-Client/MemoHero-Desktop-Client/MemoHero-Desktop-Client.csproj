@@ -66,6 +66,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DateTimeHelper.cs" />
     <Compile Include="Common\StudyResultHandlerArgs.cs" />
     <Compile Include="Common\UICore.cs" />
     <Compile Include="Common\UserLoginResultArgs.cs" />

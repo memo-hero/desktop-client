@@ -1,4 +1,5 @@
 ﻿using ClientBack.Domain.Cards;
+using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
 using System;
 
@@ -24,6 +25,20 @@ namespace MemoHeroDesktopClient.UI.EditCard
             var result = cardFormControl.GetCard();
             if (result == null) return;
             OnCardEdited(result);
+        }
+
+        private void btnClearDueDate_Click(object sender, EventArgs e)
+        {
+            var card = cardFormControl.GetCard();
+            card.DueDate = DateTimeHelper.DateTimeToEpoch(DateTime.UtcNow);
+            cardFormControl.SetCard(card);
+        }
+
+        private void btnClearTags_Click(object sender, EventArgs e)
+        {
+            var card = cardFormControl.GetCard();
+            card.Tags.Clear();
+            cardFormControl.SetCard(card);
         }
 
         private void btnClose_Click(object sender, EventArgs e) => Close();

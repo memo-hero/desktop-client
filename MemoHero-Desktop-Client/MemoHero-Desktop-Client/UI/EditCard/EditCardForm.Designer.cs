@@ -33,6 +33,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.btnClearTags = new DevExpress.XtraEditors.SimpleButton();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClearDueDate = new DevExpress.XtraEditors.SimpleButton();
             this.SuspendLayout();
             // 
             // editPanel
@@ -51,6 +52,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.btnClearTags.TabIndex = 13;
             this.btnClearTags.TabStop = false;
             this.btnClearTags.Text = "Clear Tags";
+            this.btnClearTags.Click += new System.EventHandler(this.btnClearTags_Click);
             // 
             // btnClose
             // 
@@ -71,11 +73,22 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnClearDueDate
+            // 
+            this.btnClearDueDate.Location = new System.Drawing.Point(105, 369);
+            this.btnClearDueDate.Name = "btnClearDueDate";
+            this.btnClearDueDate.Size = new System.Drawing.Size(91, 23);
+            this.btnClearDueDate.TabIndex = 14;
+            this.btnClearDueDate.TabStop = false;
+            this.btnClearDueDate.Text = "Clear Due Date";
+            this.btnClearDueDate.Click += new System.EventHandler(this.btnClearDueDate_Click);
+            // 
             // EditCardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 399);
+            this.Controls.Add(this.btnClearDueDate);
             this.Controls.Add(this.btnClearTags);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
@@ -94,5 +107,6 @@ namespace MemoHeroDesktopClient.UI.EditCard
         private DevExpress.XtraEditors.SimpleButton btnClearTags;
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton btnSave;
+        private DevExpress.XtraEditors.SimpleButton btnClearDueDate;
     }
 }

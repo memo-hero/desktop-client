@@ -161,7 +161,11 @@ namespace MemoHeroDesktopClient.Common
 
         private async void EditCardWindow_CardEdited(object source, EditCardArgs args)
         {
-            if (await memoCore.UpdateCardAsync(args.editedCard)) cardListControl.UpdateCard(args.editedCard);
+            if (await memoCore.UpdateCardAsync(args.editedCard))
+            {
+                cardListControl.UpdateCard(args.editedCard);
+                UpdateDueCardsControl();
+            };
         }
 
         internal void Logout()

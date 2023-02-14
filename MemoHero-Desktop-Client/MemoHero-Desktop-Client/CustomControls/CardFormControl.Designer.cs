@@ -35,6 +35,7 @@ namespace MemoHeroDesktopClient.CustomControls
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.dateDueDate = new DevExpress.XtraEditors.DateEdit();
             this.tokenTags = new DevExpress.XtraEditors.TokenEdit();
             this.textCardFront = new DevExpress.XtraEditors.MemoEdit();
             this.listCategories = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -44,10 +45,12 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblBack = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblCategories = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblTags = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.lblDueDate = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).BeginInit();
@@ -57,12 +60,13 @@ namespace MemoHeroDesktopClient.CustomControls
             ((System.ComponentModel.ISupportInitialize)(this.lblBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblCategories)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTags)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblDueDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
+            this.layoutControl.Controls.Add(this.dateDueDate);
             this.layoutControl.Controls.Add(this.tokenTags);
             this.layoutControl.Controls.Add(this.textCardFront);
             this.layoutControl.Controls.Add(this.listCategories);
@@ -77,16 +81,32 @@ namespace MemoHeroDesktopClient.CustomControls
             this.layoutControl.TabIndex = 10;
             this.layoutControl.Text = "layoutControl1";
             // 
+            // dateDueDate
+            // 
+            this.dateDueDate.EditValue = null;
+            this.dateDueDate.Enabled = false;
+            this.dateDueDate.Location = new System.Drawing.Point(387, 310);
+            this.dateDueDate.Name = "dateDueDate";
+            this.dateDueDate.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDueDate.Properties.Appearance.Options.UseFont = true;
+            this.dateDueDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDueDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateDueDate.Size = new System.Drawing.Size(251, 28);
+            this.dateDueDate.StyleController = this.layoutControl;
+            this.dateDueDate.TabIndex = 7;
+            // 
             // tokenTags
             // 
-            this.tokenTags.Location = new System.Drawing.Point(79, 278);
+            this.tokenTags.Location = new System.Drawing.Point(82, 278);
             this.tokenTags.Name = "tokenTags";
             this.tokenTags.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tokenTags.Properties.Appearance.Options.UseFont = true;
             this.tokenTags.Properties.EditMode = DevExpress.XtraEditors.TokenEditMode.Manual;
             this.tokenTags.Properties.Separators.AddRange(new string[] {
             ","});
-            this.tokenTags.Size = new System.Drawing.Size(559, 28);
+            this.tokenTags.Size = new System.Drawing.Size(556, 28);
             this.tokenTags.StyleController = this.layoutControl;
             this.tokenTags.TabIndex = 3;
             conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -97,12 +117,12 @@ namespace MemoHeroDesktopClient.CustomControls
             // textCardFront
             // 
             this.textCardFront.EditValue = "";
-            this.textCardFront.Location = new System.Drawing.Point(79, 12);
+            this.textCardFront.Location = new System.Drawing.Point(82, 12);
             this.textCardFront.Name = "textCardFront";
             this.textCardFront.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
             this.textCardFront.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textCardFront.Properties.Appearance.Options.UseFont = true;
-            this.textCardFront.Size = new System.Drawing.Size(559, 129);
+            this.textCardFront.Size = new System.Drawing.Size(556, 129);
             this.textCardFront.StyleController = this.layoutControl;
             this.textCardFront.TabIndex = 1;
             conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -111,7 +131,7 @@ namespace MemoHeroDesktopClient.CustomControls
             // 
             // listCategories
             // 
-            this.listCategories.Location = new System.Drawing.Point(79, 310);
+            this.listCategories.Location = new System.Drawing.Point(82, 310);
             this.listCategories.Name = "listCategories";
             this.listCategories.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listCategories.Properties.Appearance.Options.UseFont = true;
@@ -127,7 +147,7 @@ namespace MemoHeroDesktopClient.CustomControls
             "Science"});
             this.listCategories.Properties.Sorted = true;
             this.listCategories.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.listCategories.Size = new System.Drawing.Size(262, 28);
+            this.listCategories.Size = new System.Drawing.Size(231, 28);
             this.listCategories.StyleController = this.layoutControl;
             this.listCategories.TabIndex = 6;
             conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -136,11 +156,11 @@ namespace MemoHeroDesktopClient.CustomControls
             // 
             // textCardBack
             // 
-            this.textCardBack.Location = new System.Drawing.Point(79, 145);
+            this.textCardBack.Location = new System.Drawing.Point(82, 145);
             this.textCardBack.Name = "textCardBack";
             this.textCardBack.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textCardBack.Properties.Appearance.Options.UseFont = true;
-            this.textCardBack.Size = new System.Drawing.Size(559, 129);
+            this.textCardBack.Size = new System.Drawing.Size(556, 129);
             this.textCardBack.StyleController = this.layoutControl;
             this.textCardBack.TabIndex = 2;
             conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -156,7 +176,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblBack,
             this.lblCategories,
             this.lblTags,
-            this.emptySpaceItem1});
+            this.lblDueDate});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(650, 350);
             this.Root.TextVisible = false;
@@ -172,7 +192,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblFront.OptionsPrint.AppearanceItem.Options.UseFont = true;
             this.lblFront.Size = new System.Drawing.Size(630, 133);
             this.lblFront.Text = "Front";
-            this.lblFront.TextSize = new System.Drawing.Size(55, 17);
+            this.lblFront.TextSize = new System.Drawing.Size(58, 17);
             // 
             // lblBack
             // 
@@ -185,7 +205,7 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblBack.OptionsPrint.AppearanceItem.Options.UseFont = true;
             this.lblBack.Size = new System.Drawing.Size(630, 133);
             this.lblBack.Text = "Back";
-            this.lblBack.TextSize = new System.Drawing.Size(55, 17);
+            this.lblBack.TextSize = new System.Drawing.Size(58, 17);
             // 
             // lblCategories
             // 
@@ -196,9 +216,9 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblCategories.Name = "lblCategories";
             this.lblCategories.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategories.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.lblCategories.Size = new System.Drawing.Size(333, 32);
+            this.lblCategories.Size = new System.Drawing.Size(305, 32);
             this.lblCategories.Text = "Category";
-            this.lblCategories.TextSize = new System.Drawing.Size(55, 17);
+            this.lblCategories.TextSize = new System.Drawing.Size(58, 17);
             // 
             // lblTags
             // 
@@ -211,15 +231,19 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblTags.OptionsPrint.AppearanceItem.Options.UseFont = true;
             this.lblTags.Size = new System.Drawing.Size(630, 32);
             this.lblTags.Text = "Tags";
-            this.lblTags.TextSize = new System.Drawing.Size(55, 17);
+            this.lblTags.TextSize = new System.Drawing.Size(58, 17);
             // 
-            // emptySpaceItem1
+            // lblDueDate
             // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(333, 298);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(297, 32);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.lblDueDate.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblDueDate.AppearanceItemCaption.Options.UseFont = true;
+            this.lblDueDate.Control = this.dateDueDate;
+            this.lblDueDate.CustomizationFormText = "Due Date";
+            this.lblDueDate.Location = new System.Drawing.Point(305, 298);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(325, 32);
+            this.lblDueDate.Text = "Due Date";
+            this.lblDueDate.TextSize = new System.Drawing.Size(58, 17);
             // 
             // CardFormControl
             // 
@@ -231,6 +255,8 @@ namespace MemoHeroDesktopClient.CustomControls
             this.Size = new System.Drawing.Size(650, 350);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).EndInit();
@@ -240,7 +266,7 @@ namespace MemoHeroDesktopClient.CustomControls
             ((System.ComponentModel.ISupportInitialize)(this.lblBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblCategories)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTags)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblDueDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -258,7 +284,8 @@ namespace MemoHeroDesktopClient.CustomControls
         private DevExpress.XtraLayout.LayoutControlItem lblBack;
         private DevExpress.XtraLayout.LayoutControlItem lblCategories;
         private DevExpress.XtraLayout.LayoutControlItem lblTags;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider;
+        private DevExpress.XtraEditors.DateEdit dateDueDate;
+        private DevExpress.XtraLayout.LayoutControlItem lblDueDate;
     }
 }

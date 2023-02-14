@@ -1,6 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using MemoHeroDesktopClient.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,12 @@ namespace MemoHeroDesktopClient.CustomControls
         {
             InitializeComponent();
             this.card = card;
-            SetCard();
+            SetCard(card);
         }
 
         private bool TagIsEmpty(string tag) => string.IsNullOrWhiteSpace(tag);
 
-        private void SetCard()
+        internal void SetCard(Card card = null)
         {
             if (card == null) card = new Card();
 
@@ -29,6 +30,7 @@ namespace MemoHeroDesktopClient.CustomControls
             textCardBack.Text = card.Back;
             listCategories.SelectedItem = GetListItemFromCategory(card.Category);
             tokenTags.EditValue = HashSetToTokens(card.Tags);
+            dateDueDate.EditValue = DateTimeHelper.EpochToDateTime(card.DueDate);
         }
 
         private bool TagIsCategory(string tag) => Enum.IsDefined(typeof(Category), tag.ToUpper());
