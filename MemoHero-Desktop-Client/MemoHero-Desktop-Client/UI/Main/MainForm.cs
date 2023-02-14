@@ -22,10 +22,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void btnLogOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.Logout();
 
-        private void btnCardEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            uiCore.ShowEditCardForm();
-        }
+        private void btnCardEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ShowEditCardForm();
 
         private void btnCreateCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ShowNewCardForm();
 
@@ -36,20 +33,11 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             uiCore.UpdatePanel(selectedPage);
         }
 
-        private void btnStudy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            uiCore.StudyFilteredCards();
-        }
+        private void btnStudy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.StudyFilteredCards();
 
-        private void btnServerSync_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            uiCore.GetCardsFromServer();
-        }
+        private void btnServerSync_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.GetCardsFromServer();
 
-        private void btnDeleteCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            uiCore.DeleteSelectedCard();
-        }
+        private void btnDeleteCard_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.DeleteSelectedCard();
 
         private void btnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ExportCards();
 
