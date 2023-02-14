@@ -82,6 +82,12 @@
     <Compile Include="CustomControls\CardListControl.Designer.cs">
       <DependentUpon>CardListControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\CategoryStats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CategoryStats.Designer.cs">
+      <DependentUpon>CategoryStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\StudyStatsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\CardListControl.resx">
       <DependentUpon>CardListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CategoryStats.resx">
+      <DependentUpon>CategoryStats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\StudyStatsControl.resx">
       <DependentUpon>StudyStatsControl.cs</DependentUpon>
@@ -209,6 +218,11 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\science-512.png" />
+    <None Include="Resources\languages-512.png" />
+    <None Include="Resources\history-512.png" />
+    <None Include="Resources\computers-512.png" />
+    <None Include="Resources\art-512.png" />
     <None Include="Resources\sync-32.png" />
     <None Include="Resources\study-32.png" />
     <None Include="Resources\export-32.png" />

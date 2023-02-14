@@ -1,5 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient.CustomControls
@@ -9,42 +10,23 @@ namespace MemoHeroDesktopClient.CustomControls
         public UserStatsControl(User user)
         {
             InitializeComponent();
+            UpdateTableStats(user);
             UpdateLabels(user);
         }
 
-        internal void UpdateLabels(User user)
+        private void UpdateLabels(User user)
         {
             lblWelcome.Text = $"Welcome { user.Nickname }!";
-
-            lblArts.Text = "Arts";
-            lblArtsLevel.Text = "LVL: " + user.Stats.Categories[Category.ARTS].Level.ToString();
-            expArts.EditValue = GetExpPercentValue(user, Category.ARTS);
-
-            lblComputers.Text = "Computers";
-            lblComputersLevel.Text = "LVL: " + user.Stats.Categories[Category.COMPUTERS].Level.ToString();
-            expComputers.EditValue = GetExpPercentValue(user, Category.COMPUTERS);
-
-            lblHistory.Text = "History";
-            lblHistoryLevel.Text = "LVL: " + user.Stats.Categories[Category.HISTORY].Level.ToString();
-            expHistory.EditValue = GetExpPercentValue(user, Category.HISTORY);
-
-            lblLanguages.Text = "Languages";
-            lblLanguagesLevel.Text = "LVL: " + user.Stats.Categories[Category.LANGUAGES].Level.ToString();
-            expLanguages.EditValue = GetExpPercentValue(user, Category.LANGUAGES);
-
-            lblScience.Text = "Science";
-            lblScienceLevel.Text = "LVL: " + user.Stats.Categories[Category.SCIENCE].Level.ToString();
-            expScience.EditValue = GetExpPercentValue(user, Category.SCIENCE);
         }
 
-        private static int GetExpPercentValue(User user, Category category)
+        internal void UpdateTableStats(User user)
         {
-            var currentExp = user.Stats.Categories[category].Exp;
-            var neededExp = user.Stats.Categories[category].Needed;
-
-            if (neededExp == 0) return 0;
-
-            return (currentExp * 100 / neededExp);
+            tableStats.Controls.Clear();
+            foreach (var item in user.Stats.Categories)
+            {
+                var stat = new CategoryStats(new KeyValuePair<Category, CategoryProperty>(item.Key, item.Value));
+                tableStats.Controls.Add(stat);
+            }
         }
     }
 }
