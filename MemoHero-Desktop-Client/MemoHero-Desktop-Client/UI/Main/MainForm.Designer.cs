@@ -29,6 +29,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnLogOut = new DevExpress.XtraBars.BarButtonItem();
             this.btnCardEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -80,6 +81,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             this.btnLogOut.Caption = "Log out";
             this.btnLogOut.Id = 1;
+            this.btnLogOut.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.logout_32;
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnLogOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogOut_ItemClick);
@@ -88,6 +90,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             this.btnCardEdit.Caption = "Edit selected card";
             this.btnCardEdit.Id = 2;
+            this.btnCardEdit.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_edit_52;
             this.btnCardEdit.Name = "btnCardEdit";
             this.btnCardEdit.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnCardEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCardEdit_ItemClick);
@@ -97,6 +100,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnCreateCard.Caption = "Create new card";
             this.btnCreateCard.Hint = "Create Card";
             this.btnCreateCard.Id = 3;
+            this.btnCreateCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_create_32;
             this.btnCreateCard.Name = "btnCreateCard";
             this.btnCreateCard.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnCreateCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCreateCard_ItemClick);
@@ -106,6 +110,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnDeleteCard.Caption = "Delete selected card";
             this.btnDeleteCard.Hint = "Delete Card";
             this.btnDeleteCard.Id = 4;
+            this.btnDeleteCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_delete_52;
             this.btnDeleteCard.Name = "btnDeleteCard";
             this.btnDeleteCard.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnDeleteCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteCard_ItemClick);
@@ -115,6 +120,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnImport.Caption = "Import Collection";
             this.btnImport.Hint = "Import Backup";
             this.btnImport.Id = 5;
+            this.btnImport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_32;
             this.btnImport.Name = "btnImport";
             this.btnImport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImport_ItemClick);
@@ -124,6 +130,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnExport.Caption = "Export Collection";
             this.btnExport.Hint = "Export Backup";
             this.btnExport.Id = 6;
+            this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.export_32;
             this.btnExport.Name = "btnExport";
             this.btnExport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExport_ItemClick);
@@ -132,6 +139,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             this.btnStudy.Caption = "Study Cards";
             this.btnStudy.Id = 8;
+            this.btnStudy.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.study_32;
             this.btnStudy.Name = "btnStudy";
             this.btnStudy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnStudy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStudy_ItemClick);
@@ -140,6 +148,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             this.btnServerSync.Caption = "Sync with server";
             this.btnServerSync.Id = 9;
+            this.btnServerSync.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.sync_32;
             this.btnServerSync.Name = "btnServerSync";
             this.btnServerSync.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnServerSync.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnServerSync_ItemClick);
@@ -222,6 +231,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ClientSize = new System.Drawing.Size(638, 719);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.ribbonControl);
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("MainMenu.IconOptions.Icon")));
             this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
             this.Name = "MainMenu";
             this.Ribbon = this.ribbonControl;

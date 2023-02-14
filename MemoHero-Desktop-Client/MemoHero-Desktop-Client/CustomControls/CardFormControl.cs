@@ -24,7 +24,7 @@ namespace MemoHeroDesktopClient.CustomControls
 
         internal void SetCard(Card card = null)
         {
-            if (card == null) card = new Card();
+            if (card == null) card = new Card() { DueDate = DateTimeHelper.DateTimeToEpoch(DateTime.Today) };
 
             textCardFront.Text = card.Front;
             textCardBack.Text = card.Back;

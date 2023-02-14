@@ -15,7 +15,7 @@ namespace MemoHeroDesktopClient.Common
         internal static int DateTimeToEpoch(DateTime dateTime)
         {
             var epochBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            return (int)dateTime.Subtract(epochBase).TotalDays;
+            return (int)dateTime.Subtract(epochBase).TotalDays + 1;
         }
     }
 }
