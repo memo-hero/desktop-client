@@ -12,7 +12,7 @@ namespace MemoHeroDesktopClient.CustomControls
             UpdateLabels(user);
         }
 
-        private void UpdateLabels(User user)
+        internal void UpdateLabels(User user)
         {
             lblWelcome.Text = $"Welcome { user.Nickname }!";
 

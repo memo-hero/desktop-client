@@ -134,6 +134,7 @@ namespace MemoHeroDesktopClient.Common
         {
             var result = await memoCore.StudyCard(args.Card, args.Quality);
             user.Stats = result.UserStats;
+            userStatsControl.UpdateLabels(user);
             OnStudyResult(result);
         }
 
