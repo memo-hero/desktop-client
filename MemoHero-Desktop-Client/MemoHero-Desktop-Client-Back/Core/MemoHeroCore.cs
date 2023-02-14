@@ -65,10 +65,7 @@ namespace ClientBack.Core
             return true;
         }
 
-        public async Task<User> GetUserInfo(User user)
-        {
-            return await userModule.GetUserInfo(user);
-        }
+        public async Task<User> GetUserInfo(User user) => await userModule.GetUserInfo(user);
 
         public void Logout()
         {

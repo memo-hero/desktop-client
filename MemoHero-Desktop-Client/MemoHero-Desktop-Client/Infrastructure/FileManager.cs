@@ -5,7 +5,7 @@ namespace MemoHeroDesktopClient.Infrastructure
 {
     static internal class FileManager
     {
-        private static string filter = "JSON file (*.json) | *.json";
+        private static readonly string filter = "JSON file (*.json) | *.json";
 
         internal static void SaveFile(string content)
         {

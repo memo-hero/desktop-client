@@ -37,7 +37,14 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         private void UiCore_StudyResult(object source, StudyResultHandlerArgs args)
         {
             UpdateStatsPanel();
+            if (args.studyResult.DidGetKnockedOut) ShowKnockedOutMessage();
             if (args.studyResult.DidLevelUp) ShowLevelUpMessage(args.studyResult);
+        }
+
+        private void ShowKnockedOutMessage()
+        {
+            var message = "You are out of HP!\nPlease, consider taking a 15 min. break and come back.";
+            MessageBox.Show(message, "Level Up!", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void ShowLevelUpMessage(StudyResult studyresult)
