@@ -35,11 +35,11 @@ namespace MemoHeroDesktopClient.CustomControls
             // 
             // lblWelcome
             // 
-            this.lblWelcome.Appearance.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Appearance.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWelcome.Appearance.Options.UseFont = true;
             this.lblWelcome.Location = new System.Drawing.Point(3, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(161, 39);
+            this.lblWelcome.Size = new System.Drawing.Size(169, 45);
             this.lblWelcome.TabIndex = 41;
             this.lblWelcome.Text = "lblWelcome";
             // 

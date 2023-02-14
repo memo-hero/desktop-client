@@ -113,16 +113,6 @@ namespace MemoHeroDesktopClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap card_delete_32 {
-            get {
-                object obj = ResourceManager.GetObject("card-delete-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap card_delete_52 {
             get {
                 object obj = ResourceManager.GetObject("card-delete-52", resourceCulture);
