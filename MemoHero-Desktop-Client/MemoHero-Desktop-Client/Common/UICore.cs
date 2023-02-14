@@ -72,6 +72,18 @@ namespace MemoHeroDesktopClient.Common
             panel.Controls.Add(cardListControl);
         }
 
+        internal void ImportCards()
+        {
+            var content = FileManager.OpenFile();
+            memoCore.ImportCards(content);
+        }
+
+        internal void ExportCards()
+        {
+            var cards = memoCore.ExportCards();
+            if(cards != null) FileManager.SaveFile(cards);
+        }
+
         internal async void DeleteSelectedCard()
         {
             var selectedCard = cardListControl.GetSelectedCard();

@@ -34,8 +34,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnCardEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnCreateCard = new DevExpress.XtraBars.BarButtonItem();
             this.btnDeleteCard = new DevExpress.XtraBars.BarButtonItem();
+            this.btnImport = new DevExpress.XtraBars.BarButtonItem();
             this.btnExport = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnStudy = new DevExpress.XtraBars.BarButtonItem();
             this.btnServerSync = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageUserStatus = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -60,8 +60,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnCardEdit,
             this.btnCreateCard,
             this.btnDeleteCard,
+            this.btnImport,
             this.btnExport,
-            this.barButtonItem1,
             this.btnStudy,
             this.btnServerSync});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
@@ -115,23 +115,25 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnDeleteCard.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnDeleteCard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDeleteCard_ItemClick);
             // 
+            // btnImport
+            // 
+            this.btnImport.Caption = "Import Collection";
+            this.btnImport.Hint = "Import Backup";
+            this.btnImport.Id = 5;
+            this.btnImport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_32;
+            this.btnImport.Name = "btnImport";
+            this.btnImport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnImport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnImport_ItemClick);
+            // 
             // btnExport
             // 
-            this.btnExport.Caption = "Import Collection";
-            this.btnExport.Hint = "Import Backup";
-            this.btnExport.Id = 5;
-            this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_32;
+            this.btnExport.Caption = "Export Collection";
+            this.btnExport.Hint = "Export Backup";
+            this.btnExport.Id = 6;
+            this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.export_32;
             this.btnExport.Name = "btnExport";
             this.btnExport.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Export Collection";
-            this.barButtonItem1.Hint = "Export Backup";
-            this.barButtonItem1.Id = 6;
-            this.barButtonItem1.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.export_32;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExport_ItemClick);
             // 
             // btnStudy
             // 
@@ -208,8 +210,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // pageBackup
             // 
+            this.pageBackup.ItemLinks.Add(this.btnImport);
             this.pageBackup.ItemLinks.Add(this.btnExport);
-            this.pageBackup.ItemLinks.Add(this.barButtonItem1);
             this.pageBackup.Name = "pageBackup";
             this.pageBackup.Text = "Backup";
             // 
@@ -255,8 +257,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.BarButtonItem btnCreateCard;
         internal System.Windows.Forms.Panel mainPanel;
         private DevExpress.XtraBars.BarButtonItem btnDeleteCard;
+        private DevExpress.XtraBars.BarButtonItem btnImport;
         private DevExpress.XtraBars.BarButtonItem btnExport;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pageBackup;
         private DevExpress.XtraBars.BarButtonItem btnStudy;
         private DevExpress.XtraBars.BarButtonItem btnServerSync;

@@ -1,4 +1,5 @@
-﻿using ClientBack.Infrastructure.HTTP;
+﻿using ClientBack.Infrastructure.Helpers;
+using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.LoginProvider;
 using ClientBack.Infrastructure.Repository;
 using LiteDB;

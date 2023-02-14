@@ -1,5 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using ClientBack.Infrastructure.Helpers;
 using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.Services;
 using System;
@@ -14,6 +15,7 @@ namespace ClientBack.Core
         private readonly LoginModule loginModule;
         private readonly CardsModule cardsModule;
         private readonly UserModule userModule;
+        private ISerializer serializer = new NewtonSoftSerializer();
 
         public List<Card> UserCards = new List<Card>();
         public List<Card> DueCards;
@@ -93,6 +95,20 @@ namespace ClientBack.Core
             }
 
             return false;
+        }
+
+        public void ImportCards(string content)
+        {
+            if (string.IsNullOrWhiteSpace(content)) return;
+
+            var cards = serializer.Deserialize<List<Card>>(content);
+            cards.ForEach(async x => await CreateCardAsync(x));
+        }
+
+        public string ExportCards()
+        {
+            if (UserCards.Count == 0) return string.Empty;
+            return serializer.Serialize(UserCards);
         }
 
         public async Task<StudyResult> StudyCard(Card card, int quality)

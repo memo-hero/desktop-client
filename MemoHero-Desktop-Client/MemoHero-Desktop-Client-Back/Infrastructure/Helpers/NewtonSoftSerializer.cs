@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using ClientBack.Infrastructure.HTTP;
+using Newtonsoft.Json;
 
-namespace ClientBack.Infrastructure.HTTP
+namespace ClientBack.Infrastructure.Helpers
 {
     class NewtonSoftSerializer : ISerializer
     {

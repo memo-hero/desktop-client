@@ -94,6 +94,7 @@
     <Compile Include="CustomControls\UserStatsControl.Designer.cs">
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\FileManager.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

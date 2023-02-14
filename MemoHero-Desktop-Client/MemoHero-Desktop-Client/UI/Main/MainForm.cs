@@ -50,5 +50,9 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         {
             uiCore.DeleteSelectedCard();
         }
+
+        private void btnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ExportCards();
+
+        private void btnImport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ImportCards();
     }
 }
