@@ -70,7 +70,7 @@ namespace ClientBack.Core
         public void Logout()
         {
             currentUser = null;
-            UserCards = null;
+            UserCards = new List<Card>();
             loginModule.Logout();
         }
 
