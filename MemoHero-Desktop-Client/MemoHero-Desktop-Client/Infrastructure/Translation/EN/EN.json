@@ -1,0 +1,20 @@
+{
+  "ENGLISH_NO_SERVICE_MESSAGE": "The services is down.\nTry again later",
+  "ENGLISH_NO_SERVICE_CAPTION": "Alert",
+  "ENGLISH_BTN_LOGOUT": "Log Out",
+  "ENGLISH_BTN_STUDY": "Study Cards",
+  "ENGLISH_BTN_SERVER_SYNC": "Sync with server",
+  "ENGLISH_BTN_CREATE_CARD": "Create new card",
+  "ENGLISH_BTN_CARD_EDIT": "Edit selected card",
+  "ENGLISH_BTN_DELETE_CARD": "Delete selected card",
+  "ENGLISH_BTN_IMPORT": "Import Collection",
+  "ENGLISH_BTN_EXPORT": "Export Collection",
+  "ENGLISH_PAGE_USER_STATUS": "User",
+  "ENGLISH_PAGE_STUDY": "Study",
+  "ENGLISH_PAGE_CARDS": "Cards",
+  "ENGLISH_PAGE_GROUP_USER": "Session",
+  "ENGLISH_PAGE_GROUP_STUDY": "Study",
+  "ENGLISH_PAGE_GROUP_SERVER": "Server",
+  "ENGLISH_PAGE_GROUP_CARDS": "Cards Management",
+  "ENGLISH_PAGE_GROUP_BACKUP": "Backup"
+}

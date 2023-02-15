@@ -15,13 +15,7 @@ namespace MemoHeroDesktopClient.UI.Login
             this.uiCore.UserLoggedIn += UICore_UserLoggedIn;
         }
 
-        private void UICore_UserLoggedIn(object source, UserLoginResultArgs args)
-        {
-            loginButton.Enabled = args.FailedLogin;
-        }
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            uiCore.StartLoginProcess(true);
-        }
+        private void UICore_UserLoggedIn(object source, UserLoginResultArgs args) => loginButton.Enabled = args.FailedLogin;
+        private void loginButton_Click(object sender, EventArgs e) => uiCore.StartLoginProcess(true);
     }
 }

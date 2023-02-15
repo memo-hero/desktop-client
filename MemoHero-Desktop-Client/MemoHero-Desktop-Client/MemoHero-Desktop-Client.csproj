@@ -122,6 +122,14 @@
     </Compile>
     <Compile Include="Infrastructure\FileManager.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Infrastructure\Translation\ILocalizableControl.cs" />
+    <Compile Include="Infrastructure\Translation\ISOCode.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizableControl.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizableControlCaption.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizableControlText.cs" />
+    <Compile Include="Infrastructure\Translation\ReflectionUtils.cs" />
+    <Compile Include="Infrastructure\Translation\TranslationService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -208,6 +216,7 @@
     <EmbeddedResource Include="UI\StudyCards\StudyCardsForm.resx">
       <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Infrastructure\Translation\EN\EN.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

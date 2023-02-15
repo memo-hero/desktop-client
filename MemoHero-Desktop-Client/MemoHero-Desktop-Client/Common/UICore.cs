@@ -4,6 +4,7 @@ using ClientBack.Domain.User;
 using ClientBack.Infrastructure.HTTP;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
@@ -16,6 +17,8 @@ namespace MemoHeroDesktopClient.Common
 {
     internal class UICore
     {
+        private static readonly TranslationService translationService = MemoHeroServices.TranslationService;
+
         // Forms
         internal readonly LoginSplash login;
         internal UI.MainWindow.MainMenu mainMenuForm;
@@ -38,7 +41,6 @@ namespace MemoHeroDesktopClient.Common
         // Controls
         private Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
 
-
         private UserStatsControl userStatsControl;
         private CardListControl dueCardsControl;
         private CardListControl cardListControl;
@@ -47,6 +49,7 @@ namespace MemoHeroDesktopClient.Common
         {
             login = new LoginSplash(this);
             mainMenuForm = new UI.MainWindow.MainMenu(this);
+            translationService.LocalizeControls();
         }
 
         internal void InitializeControls()
@@ -54,11 +57,11 @@ namespace MemoHeroDesktopClient.Common
             var panel = mainMenuForm.mainPanel;
 
             userStatsControl = new UserStatsControl(user);
-            customControls.Add("ribbonPageUserStatus", userStatsControl);
+            customControls.Add("pageUserStatus", userStatsControl);
             panel.Controls.Add(userStatsControl);
 
             dueCardsControl = new CardListControl();
-            customControls.Add("ribbonPageStudy", dueCardsControl);
+            customControls.Add("pageStudy", dueCardsControl);
             dueCardsControl.Visible = false;
             dueCardsControl.Dock = DockStyle.Fill;
             dueCardsControl.SetDataSource(ref memoCore.DueCards);
@@ -68,7 +71,7 @@ namespace MemoHeroDesktopClient.Common
             cardListControl.Visible = false;
             cardListControl.Dock = DockStyle.Fill;
             cardListControl.SetDataSource(ref memoCore.UserCards);
-            customControls.Add("ribbonPageCards", cardListControl);
+            customControls.Add("pageCards", cardListControl);
             panel.Controls.Add(cardListControl);
         }
 
@@ -200,7 +203,9 @@ namespace MemoHeroDesktopClient.Common
         {
             if (!await memoCore.IsServiceOnline())
             {
-                MessageBox.Show("The services is down.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var message = translationService.LocalizeMessage(TranslationService.Message.NO_SERVICE_MESSAGE);
+                var caption = translationService.LocalizeMessage(TranslationService.Message.NO_SERVICE_CAPTION);
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 login.Close();
             }
         }

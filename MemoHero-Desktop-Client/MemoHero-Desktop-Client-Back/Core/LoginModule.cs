@@ -12,7 +12,6 @@ namespace ClientBack.Core
         private readonly string envVarName = "memohero-lastlogin-user";
         private readonly ILoginService loginService = ClientBackServiceProvider.LoginService;
         private readonly ILoginRepository repository = ClientBackServiceProvider.LoginRepository;
-        private readonly IMemoHeroRestClient restClient = ClientBackServiceProvider.RestClient;
 
         internal bool IsLoggedIn()
         {

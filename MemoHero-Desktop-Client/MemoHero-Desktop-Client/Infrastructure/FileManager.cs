@@ -32,5 +32,7 @@ namespace MemoHeroDesktopClient.Infrastructure
 
             return fileContent;
         }
+
+        internal static string GetDefaultLanguageContent() => new StreamReader(new MemoryStream(Properties.Resources.EN)).ReadToEnd();
     }
 }
