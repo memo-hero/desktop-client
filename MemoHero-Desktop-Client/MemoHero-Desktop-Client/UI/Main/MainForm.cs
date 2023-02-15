@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.UI.About;
 using MemoHeroDesktopClient.UI.StudyCards;
 using System;
 using System.Windows.Forms;
@@ -42,5 +43,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private void btnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ExportCards();
 
         private void btnImport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) => uiCore.ImportCards();
+
+        private void btnAbout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var about = new AboutForm()) { about.ShowDialog(); };
+        }
     }
 }

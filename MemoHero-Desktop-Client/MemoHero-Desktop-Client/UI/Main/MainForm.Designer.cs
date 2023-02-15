@@ -48,6 +48,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.ribbonPageGroupCards = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageBackup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnAbout = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,14 +65,16 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnImport,
             this.btnExport,
             this.btnStudy,
-            this.btnServerSync});
+            this.btnServerSync,
+            this.btnAbout});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 10;
+            this.ribbonControl.MaxItemId = 11;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageUserStatus,
             this.ribbonPageStudy,
             this.ribbonPageCards});
+            this.ribbonControl.QuickToolbarItemLinks.Add(this.btnAbout);
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.Size = new System.Drawing.Size(638, 158);
@@ -224,6 +227,15 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.mainPanel.Size = new System.Drawing.Size(638, 561);
             this.mainPanel.TabIndex = 26;
             // 
+            // btnAbout
+            // 
+            this.btnAbout.Caption = "About";
+            this.btnAbout.Hint = "About";
+            this.btnAbout.Id = 10;
+            this.btnAbout.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbout_ItemClick);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,5 +276,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.BarButtonItem btnStudy;
         private DevExpress.XtraBars.BarButtonItem btnServerSync;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupServer;
+        private DevExpress.XtraBars.BarButtonItem btnAbout;
     }
 }
