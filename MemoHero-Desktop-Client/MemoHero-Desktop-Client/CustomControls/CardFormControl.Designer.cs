@@ -30,38 +30,38 @@ namespace MemoHeroDesktopClient.CustomControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.dateDueDate = new DevExpress.XtraEditors.DateEdit();
             this.tokenTags = new DevExpress.XtraEditors.TokenEdit();
             this.textCardFront = new DevExpress.XtraEditors.MemoEdit();
             this.listCategories = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textCardBack = new DevExpress.XtraEditors.MemoEdit();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.lblFront = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblBack = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lblCategories = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lblCategory = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblTags = new DevExpress.XtraLayout.LayoutControlItem();
             this.lblDueDate = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dxValidationProvider = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardBack.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblFront)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblBack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lblCategories)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTags)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblDueDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
@@ -80,6 +80,20 @@ namespace MemoHeroDesktopClient.CustomControls
             this.layoutControl.Size = new System.Drawing.Size(650, 350);
             this.layoutControl.TabIndex = 10;
             this.layoutControl.Text = "layoutControl1";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.lblFront,
+            this.lblBack,
+            this.lblCategory,
+            this.lblTags,
+            this.lblDueDate});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(650, 350);
+            this.Root.TextVisible = false;
             // 
             // dateDueDate
             // 
@@ -109,9 +123,9 @@ namespace MemoHeroDesktopClient.CustomControls
             this.tokenTags.Size = new System.Drawing.Size(556, 28);
             this.tokenTags.StyleController = this.layoutControl;
             this.tokenTags.TabIndex = 3;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "Cannot be blank";
-            this.dxValidationProvider.SetValidationRule(this.tokenTags, conditionValidationRule1);
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule5.ErrorText = "Cannot be blank";
+            this.dxValidationProvider.SetValidationRule(this.tokenTags, conditionValidationRule5);
             this.tokenTags.ValidateToken += new DevExpress.XtraEditors.TokenEditValidateTokenEventHandler(this.tokenTags_ValidateToken);
             // 
             // textCardFront
@@ -125,9 +139,9 @@ namespace MemoHeroDesktopClient.CustomControls
             this.textCardFront.Size = new System.Drawing.Size(556, 129);
             this.textCardFront.StyleController = this.layoutControl;
             this.textCardFront.TabIndex = 1;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Cannot be blank";
-            this.dxValidationProvider.SetValidationRule(this.textCardFront, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Cannot be blank";
+            this.dxValidationProvider.SetValidationRule(this.textCardFront, conditionValidationRule1);
             // 
             // listCategories
             // 
@@ -150,9 +164,9 @@ namespace MemoHeroDesktopClient.CustomControls
             this.listCategories.Size = new System.Drawing.Size(231, 28);
             this.listCategories.StyleController = this.layoutControl;
             this.listCategories.TabIndex = 6;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "Cannot be blank";
-            this.dxValidationProvider.SetValidationRule(this.listCategories, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Cannot be blank";
+            this.dxValidationProvider.SetValidationRule(this.listCategories, conditionValidationRule2);
             // 
             // textCardBack
             // 
@@ -163,23 +177,9 @@ namespace MemoHeroDesktopClient.CustomControls
             this.textCardBack.Size = new System.Drawing.Size(556, 129);
             this.textCardBack.StyleController = this.layoutControl;
             this.textCardBack.TabIndex = 2;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule4.ErrorText = "Cannot be blank";
-            this.dxValidationProvider.SetValidationRule(this.textCardBack, conditionValidationRule4);
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.lblFront,
-            this.lblBack,
-            this.lblCategories,
-            this.lblTags,
-            this.lblDueDate});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(650, 350);
-            this.Root.TextVisible = false;
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Cannot be blank";
+            this.dxValidationProvider.SetValidationRule(this.textCardBack, conditionValidationRule3);
             // 
             // lblFront
             // 
@@ -207,18 +207,18 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblBack.Text = "Back";
             this.lblBack.TextSize = new System.Drawing.Size(58, 17);
             // 
-            // lblCategories
+            // lblCategory
             // 
-            this.lblCategories.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategories.AppearanceItemCaption.Options.UseFont = true;
-            this.lblCategories.Control = this.listCategories;
-            this.lblCategories.Location = new System.Drawing.Point(0, 298);
-            this.lblCategories.Name = "lblCategories";
-            this.lblCategories.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategories.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.lblCategories.Size = new System.Drawing.Size(305, 32);
-            this.lblCategories.Text = "Category";
-            this.lblCategories.TextSize = new System.Drawing.Size(58, 17);
+            this.lblCategory.AppearanceItemCaption.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.AppearanceItemCaption.Options.UseFont = true;
+            this.lblCategory.Control = this.listCategories;
+            this.lblCategory.Location = new System.Drawing.Point(0, 298);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.lblCategory.Size = new System.Drawing.Size(305, 32);
+            this.lblCategory.Text = "Category";
+            this.lblCategory.TextSize = new System.Drawing.Size(58, 17);
             // 
             // lblTags
             // 
@@ -255,19 +255,19 @@ namespace MemoHeroDesktopClient.CustomControls
             this.Size = new System.Drawing.Size(650, 350);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDueDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tokenTags.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardFront.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listCategories.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textCardBack.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblFront)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblBack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lblCategories)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblTags)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblDueDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,7 +282,7 @@ namespace MemoHeroDesktopClient.CustomControls
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem lblFront;
         private DevExpress.XtraLayout.LayoutControlItem lblBack;
-        private DevExpress.XtraLayout.LayoutControlItem lblCategories;
+        private DevExpress.XtraLayout.LayoutControlItem lblCategory;
         private DevExpress.XtraLayout.LayoutControlItem lblTags;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider;
         private DevExpress.XtraEditors.DateEdit dateDueDate;

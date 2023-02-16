@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DateTimeHelper.cs" />
+    <Compile Include="Common\MessagesRepository.cs" />
     <Compile Include="Common\StudyResultHandlerArgs.cs" />
     <Compile Include="Common\UICore.cs" />
     <Compile Include="Common\UserLoginResultArgs.cs" />
@@ -123,13 +124,16 @@
     <Compile Include="Infrastructure\FileManager.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizedControl.cs" />
     <Compile Include="Infrastructure\Translation\ILocalizableControl.cs" />
     <Compile Include="Infrastructure\Translation\ISOCode.cs" />
     <Compile Include="Infrastructure\Translation\LocalizableControl.cs" />
     <Compile Include="Infrastructure\Translation\LocalizableControlCaption.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizableControlHint.cs" />
     <Compile Include="Infrastructure\Translation\LocalizableControlText.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizedMessage.cs" />
     <Compile Include="Infrastructure\Translation\ReflectionUtils.cs" />
-    <Compile Include="Infrastructure\Translation\TranslationService.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizationService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

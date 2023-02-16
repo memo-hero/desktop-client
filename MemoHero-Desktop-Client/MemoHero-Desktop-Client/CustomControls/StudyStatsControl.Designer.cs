@@ -30,17 +30,17 @@ namespace MemoHeroDesktopClient.CustomControls
         private void InitializeComponent()
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCurrentHP = new DevExpress.XtraEditors.LabelControl();
             this.lblLabelCurrentCategory = new DevExpress.XtraEditors.LabelControl();
-            this.lblCategoryProgress = new DevExpress.XtraEditors.LabelControl();
+            this.lblCurrentHP = new DevExpress.XtraEditors.LabelControl();
             this.lblCurrentCategory = new DevExpress.XtraEditors.LabelControl();
-            this.progressBarCategory = new DevExpress.XtraEditors.ProgressBarControl();
-            this.progressBarHP = new DevExpress.XtraEditors.ProgressBarControl();
+            this.lblCategoryProgress = new DevExpress.XtraEditors.LabelControl();
             this.lblLabelCurrentCategoryLevel = new DevExpress.XtraEditors.LabelControl();
             this.lblCurrentCategoryLevel = new DevExpress.XtraEditors.LabelControl();
+            this.progressBarHP = new DevExpress.XtraEditors.ProgressBarControl();
+            this.progressBarCategory = new DevExpress.XtraEditors.ProgressBarControl();
             this.tableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarHP.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarCategory.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -69,16 +69,6 @@ namespace MemoHeroDesktopClient.CustomControls
             this.tableLayoutPanel.Size = new System.Drawing.Size(351, 132);
             this.tableLayoutPanel.TabIndex = 0;
             // 
-            // lblCurrentHP
-            // 
-            this.lblCurrentHP.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentHP.Appearance.Options.UseFont = true;
-            this.lblCurrentHP.Location = new System.Drawing.Point(3, 23);
-            this.lblCurrentHP.Name = "lblCurrentHP";
-            this.lblCurrentHP.Size = new System.Drawing.Size(87, 21);
-            this.lblCurrentHP.TabIndex = 5;
-            this.lblCurrentHP.Text = "Current HP:";
-            // 
             // lblLabelCurrentCategory
             // 
             this.lblLabelCurrentCategory.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -89,15 +79,15 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblLabelCurrentCategory.TabIndex = 6;
             this.lblLabelCurrentCategory.Text = "Current Category:";
             // 
-            // lblCategoryProgress
+            // lblCurrentHP
             // 
-            this.lblCategoryProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoryProgress.Appearance.Options.UseFont = true;
-            this.lblCategoryProgress.Location = new System.Drawing.Point(3, 104);
-            this.lblCategoryProgress.Name = "lblCategoryProgress";
-            this.lblCategoryProgress.Size = new System.Drawing.Size(142, 21);
-            this.lblCategoryProgress.TabIndex = 7;
-            this.lblCategoryProgress.Text = "Category Progress:";
+            this.lblCurrentHP.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrentHP.Appearance.Options.UseFont = true;
+            this.lblCurrentHP.Location = new System.Drawing.Point(3, 23);
+            this.lblCurrentHP.Name = "lblCurrentHP";
+            this.lblCurrentHP.Size = new System.Drawing.Size(87, 21);
+            this.lblCurrentHP.TabIndex = 5;
+            this.lblCurrentHP.Text = "Current HP:";
             // 
             // lblCurrentCategory
             // 
@@ -107,27 +97,18 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblCurrentCategory.Name = "lblCurrentCategory";
             this.lblCurrentCategory.Size = new System.Drawing.Size(145, 21);
             this.lblCurrentCategory.TabIndex = 9;
+            this.lblCurrentCategory.Tag = "False";
             this.lblCurrentCategory.Text = "category placeholder";
             // 
-            // progressBarCategory
+            // lblCategoryProgress
             // 
-            this.progressBarCategory.Location = new System.Drawing.Point(187, 104);
-            this.progressBarCategory.Name = "progressBarCategory";
-            this.progressBarCategory.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBarCategory.Size = new System.Drawing.Size(150, 20);
-            this.progressBarCategory.TabIndex = 10;
-            // 
-            // progressBarHP
-            // 
-            this.progressBarHP.Location = new System.Drawing.Point(187, 23);
-            this.progressBarHP.Name = "progressBarHP";
-            this.progressBarHP.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBarHP.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.progressBarHP.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.Red;
-            this.progressBarHP.Properties.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.Red;
-            this.progressBarHP.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.progressBarHP.Size = new System.Drawing.Size(150, 20);
-            this.progressBarHP.TabIndex = 8;
+            this.lblCategoryProgress.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoryProgress.Appearance.Options.UseFont = true;
+            this.lblCategoryProgress.Location = new System.Drawing.Point(3, 104);
+            this.lblCategoryProgress.Name = "lblCategoryProgress";
+            this.lblCategoryProgress.Size = new System.Drawing.Size(142, 21);
+            this.lblCategoryProgress.TabIndex = 7;
+            this.lblCategoryProgress.Text = "Category Progress:";
             // 
             // lblLabelCurrentCategoryLevel
             // 
@@ -147,7 +128,28 @@ namespace MemoHeroDesktopClient.CustomControls
             this.lblCurrentCategoryLevel.Name = "lblCurrentCategoryLevel";
             this.lblCurrentCategoryLevel.Size = new System.Drawing.Size(117, 21);
             this.lblCurrentCategoryLevel.TabIndex = 12;
+            this.lblCurrentCategoryLevel.Tag = "False";
             this.lblCurrentCategoryLevel.Text = "level placeholder";
+            // 
+            // progressBarHP
+            // 
+            this.progressBarHP.Location = new System.Drawing.Point(187, 23);
+            this.progressBarHP.Name = "progressBarHP";
+            this.progressBarHP.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBarHP.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.progressBarHP.Properties.LookAndFeel.SkinMaskColor = System.Drawing.Color.Red;
+            this.progressBarHP.Properties.LookAndFeel.SkinMaskColor2 = System.Drawing.Color.Red;
+            this.progressBarHP.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.progressBarHP.Size = new System.Drawing.Size(150, 20);
+            this.progressBarHP.TabIndex = 8;
+            // 
+            // progressBarCategory
+            // 
+            this.progressBarCategory.Location = new System.Drawing.Point(187, 104);
+            this.progressBarCategory.Name = "progressBarCategory";
+            this.progressBarCategory.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressBarCategory.Size = new System.Drawing.Size(150, 20);
+            this.progressBarCategory.TabIndex = 10;
             // 
             // StudyStatsControl
             // 
@@ -159,8 +161,8 @@ namespace MemoHeroDesktopClient.CustomControls
             this.Size = new System.Drawing.Size(351, 132);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarHP.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarCategory.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

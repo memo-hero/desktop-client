@@ -2,7 +2,7 @@
 
 namespace MemoHeroDesktopClient.Infrastructure.Translation
 {
-    internal partial class TranslationService
+    internal partial class LocalizationService
     {
         internal enum ISOCode
         {

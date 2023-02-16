@@ -1,21 +1,24 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
-using ClientBack.Infrastructure.HTTP;
+using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
+using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows;
 
 namespace MemoHeroDesktopClient.UI.StudyCards
 {
-    internal partial class StudyCardsForm : DevExpress.XtraEditors.XtraForm
+    internal partial class StudyCardsForm : XtraForm
     {
         internal delegate void UserResponseHandler(object source, UserResponseArgs args);
         internal event UserResponseHandler UserResponded;
 
+        private static readonly LocalizationService localization = MemoHeroServices.TranslationService;
         private readonly StudyStatsControl studyStatsControl;
         private readonly User user;
         private readonly Queue<Card> cards;
@@ -30,6 +33,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             InitializeLabel();
             ShowNextCard();
             InitializeStatsPanel();
+            LoadLocalizableControls();
 
             uiCore.StudyResult += UiCore_StudyResult;
         }
@@ -37,22 +41,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         private void UiCore_StudyResult(object source, StudyResultHandlerArgs args)
         {
             UpdateStatsPanel();
-            if (args.studyResult.DidGetKnockedOut) ShowKnockedOutMessage();
-            if (args.studyResult.DidLevelUp) ShowLevelUpMessage(args.studyResult);
-        }
-
-        private void ShowKnockedOutMessage()
-        {
-            var message = "You are out of HP!\nPlease, consider taking a 15 min. break and come back.";
-            MessageBox.Show(message, "Level Up!", MessageBoxButton.OK, MessageBoxImage.Warning);
-        }
-
-        private void ShowLevelUpMessage(StudyResult studyresult)
-        {
-            var category = studyresult.Category.Keys.First();
-            var message = $"Congratulations!{ Environment.NewLine }You leveled up your { category } category to level { studyresult.Category[category].Level }!";
-            
-            MessageBox.Show(message, "Level Up!", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (args.studyResult.DidGetKnockedOut) MessagesRepository.ShowHPLeftMessage();
+            if (args.studyResult.DidLevelUp) MessagesRepository.ShowLevelUpMessage(args.studyResult);
         }
 
         private void InitializeLabel()
@@ -75,6 +65,16 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         private void UpdateStatsPanel()
         {
             studyStatsControl.UpdateStats(user.Stats, currentCard.Category);
+        }
+
+        private void LoadLocalizableControls()
+        {
+            localization.AddLocalizableControl(new LocalizableControlText(this));
+            localization.AddLocalizableControl(new LocalizableControlText(groupControl));
+            localization.AddLocalizableControl(new LocalizableControlText(groupStats));
+            groupControl.Controls
+                .OfType<SimpleButton>()
+                .ForEach(x => localization.AddLocalizableControl(new LocalizableControlText(x)));
         }
 
         private void btnReveal_Click(object sender, EventArgs e)

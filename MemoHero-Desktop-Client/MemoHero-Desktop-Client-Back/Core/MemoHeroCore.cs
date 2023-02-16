@@ -94,12 +94,13 @@ namespace ClientBack.Core
             return false;
         }
 
-        public void ImportCards(string content)
+        public async void ImportCards(string content)
         {
             if (string.IsNullOrWhiteSpace(content)) return;
 
             var cards = serializer.Deserialize<List<Card>>(content);
             cards.ForEach(async x => await CreateCardAsync(x));
+            await GetUserDueCards();
         }
 
         public string ExportCards()

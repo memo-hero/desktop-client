@@ -6,7 +6,6 @@ using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.UI.About;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,7 +13,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 {
     internal partial class MainMenu : RibbonForm
     {
-        private static readonly TranslationService translationService = MemoHeroServices.TranslationService;
+        private static readonly LocalizationService translationService = MemoHeroServices.TranslationService;
         private readonly UICore uiCore;
 
         public MainMenu(UICore uiCore)
@@ -26,7 +25,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void LoadLocalizableControls()
         {
-            // Loads ribbon buttons
             ribbonControl.Manager.Items
                 .Where(x => x.Tag != null && (bool)x.Tag == true)
                 .ToList()
@@ -37,6 +35,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
                 page.Groups.ForEach(group => translationService.AddLocalizableControl(new LocalizableControlText(group)));
                 translationService.AddLocalizableControl(new LocalizableControlText(page));
             });
+
+            translationService.AddLocalizableControl(new LocalizableControlHint(btnAbout));
         }
 
         private void MainMenu_Load(object sender, EventArgs e) => uiCore.InitializeControls();

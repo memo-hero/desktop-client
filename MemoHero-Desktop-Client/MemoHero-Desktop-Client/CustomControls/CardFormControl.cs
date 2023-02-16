@@ -2,6 +2,8 @@
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,8 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     internal partial class CardFormControl : UserControl
     {
+        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+
         private Card card;
         
         public CardFormControl(Card card = null)
@@ -18,6 +22,15 @@ namespace MemoHeroDesktopClient.CustomControls
             InitializeComponent();
             this.card = card;
             SetCard(card);
+            LoadLocalizableControls();
+        }
+
+        private void LoadLocalizableControls()
+        {
+            Root.Items.ForEach(x =>
+            {
+                localizationService.AddLocalizableControl(new LocalizableControlText(x));
+            });
         }
 
         private bool TagIsEmpty(string tag) => string.IsNullOrWhiteSpace(tag);
@@ -25,6 +38,7 @@ namespace MemoHeroDesktopClient.CustomControls
         internal void SetCard(Card card = null)
         {
             if (card == null) card = new Card() { DueDate = DateTimeHelper.DateTimeToEpoch(DateTime.Today) };
+            this.card = card;
 
             textCardFront.Text = card.Front;
             textCardBack.Text = card.Back;
@@ -67,7 +81,8 @@ namespace MemoHeroDesktopClient.CustomControls
         {
             if (!dxValidationProvider.Validate()) return null;
 
-            _ = Enum.TryParse(listCategories.Text.ToUpper(), out Category category);
+            var category = (Category)listCategories.SelectedIndex;
+            //_ = Enum.TryParse(listCategories.Text.ToUpper(), out Category category);
 
             card.Front = textCardFront.Text;
             card.Back = textCardBack.Text;

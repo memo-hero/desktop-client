@@ -1,5 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,16 +9,21 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     public partial class UserStatsControl : UserControl
     {
+        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static string username;
+
         public UserStatsControl(User user)
         {
             InitializeComponent();
+            username = user.Nickname;
             UpdateTableStats(user);
-            UpdateLabels(user);
+            LoadLocalizableControls();
         }
 
-        private void UpdateLabels(User user)
+        private void LoadLocalizableControls()
         {
-            lblWelcome.Text = $"Welcome { user.Nickname }!";
+            localizationService.AddLocalizableControl(new LocalizableControlText(lblWelcome));
+            lblWelcome.Text = string.Format(lblWelcome.Text, username);
         }
 
         internal void UpdateTableStats(User user)

@@ -4,12 +4,10 @@ using ClientBack.Domain.User;
 using ClientBack.Infrastructure.HTTP;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
 using MemoHeroDesktopClient.UI.StudyCards;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -17,8 +15,6 @@ namespace MemoHeroDesktopClient.Common
 {
     internal class UICore
     {
-        private static readonly TranslationService translationService = MemoHeroServices.TranslationService;
-
         // Forms
         internal readonly LoginSplash login;
         internal UI.MainWindow.MainMenu mainMenuForm;
@@ -49,7 +45,6 @@ namespace MemoHeroDesktopClient.Common
         {
             login = new LoginSplash(this);
             mainMenuForm = new UI.MainWindow.MainMenu(this);
-            translationService.LocalizeControls();
         }
 
         internal void InitializeControls()
@@ -79,6 +74,7 @@ namespace MemoHeroDesktopClient.Common
         {
             var content = FileManager.OpenFile();
             memoCore.ImportCards(content);
+            UpdateDueCardsControl();
         }
 
         internal void ExportCards()
@@ -92,7 +88,7 @@ namespace MemoHeroDesktopClient.Common
             var selectedCard = cardListControl.GetSelectedCard();
             if (selectedCard == null) return;
 
-            var response = MessageBox.Show("Are you sure you want to delete the selected card?", "Deleting Card", MessageBoxButtons.OKCancel);
+            var response = MessagesRepository.ShowDeleteCardConfirmation();
             if (response == DialogResult.OK)
             {
                 if (await memoCore.DeleteCard(selectedCard))
@@ -201,13 +197,10 @@ namespace MemoHeroDesktopClient.Common
 
         internal async void CheckService()
         {
-            if (!await memoCore.IsServiceOnline())
-            {
-                var message = translationService.LocalizeMessage(TranslationService.Message.NO_SERVICE_MESSAGE);
-                var caption = translationService.LocalizeMessage(TranslationService.Message.NO_SERVICE_CAPTION);
-                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                login.Close();
-            }
+            if (await memoCore.IsServiceOnline()) return;
+
+            MessagesRepository.ShowServiceOffline();
+            login.Close();
         }
 
         internal async void StartLoginProcess(bool manualLogin)

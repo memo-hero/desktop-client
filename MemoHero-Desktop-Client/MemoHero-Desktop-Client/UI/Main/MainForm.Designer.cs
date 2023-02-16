@@ -166,7 +166,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // btnAbout
             // 
-            this.btnAbout.Caption = "About";
             this.btnAbout.Hint = "About";
             this.btnAbout.Id = 10;
             this.btnAbout.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAbout.ImageOptions.SvgImage")));

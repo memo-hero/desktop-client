@@ -3,6 +3,6 @@
     internal interface ILocalizableControl
     {
         void SetText(string value);
-        TranslationService.Control GetControlEnum();
+        LocalizationService.LocalizedControl GetControlEnum();
     }
 }

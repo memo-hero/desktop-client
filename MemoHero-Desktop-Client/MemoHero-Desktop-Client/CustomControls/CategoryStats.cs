@@ -1,5 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,6 +11,8 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     internal partial class CategoryStats : UserControl
     {
+        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+
         public CategoryStats(KeyValuePair<Category, CategoryProperty> stats)
         {
             InitializeComponent();
@@ -18,7 +22,7 @@ namespace MemoHeroDesktopClient.CustomControls
         private void Initialize(KeyValuePair<Category, CategoryProperty> stats)
         {
             pictureCategory.Image = ResolveCategoryImage(stats.Key);
-            lblCategoryName.Text = stats.Key.ToString();
+            lblCategoryName.Text = localizationService.LocalizeCategory(stats.Key);
             lblCategoryLevel.Text = "LVL: " + stats.Value.Level.ToString();
             progressCategory.EditValue = GetExpPercentValue(stats.Value);
         }

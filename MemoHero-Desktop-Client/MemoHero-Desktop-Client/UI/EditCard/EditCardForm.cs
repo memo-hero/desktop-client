@@ -1,24 +1,39 @@
 ﻿using ClientBack.Domain.Cards;
+using DevExpress.Utils.Extensions;
+using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
+using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
+using System.Linq;
 
 namespace MemoHeroDesktopClient.UI.EditCard
 {
-    public partial class EditCardForm : DevExpress.XtraEditors.XtraForm
+    public partial class EditCardForm : XtraForm
     {
+        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private readonly CardFormControl cardFormControl;
+
         internal delegate void EditCardHandler(object source, EditCardArgs args);
         internal event EditCardHandler CardEdited;
-        private readonly CardFormControl cardFormControl;
 
         public EditCardForm(Card card)
         {
             InitializeComponent();
             cardFormControl = new CardFormControl(card);
             editPanel.Controls.Add(cardFormControl);
+            LoadLocalizableControls();
         }
 
         protected virtual void OnCardEdited(Card card) => CardEdited(this, new EditCardArgs(card));
+
+        private void LoadLocalizableControls()
+        {
+            localizationService.AddLocalizableControl(new LocalizableControlText(this));
+            Controls.OfType<SimpleButton>()
+                .ForEach(x => localizationService.AddLocalizableControl(new LocalizableControlText(x)));
+        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
