@@ -4,6 +4,7 @@ using ClientBack.Domain.User;
 using ClientBack.Infrastructure.HTTP;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
@@ -15,6 +16,8 @@ namespace MemoHeroDesktopClient.Common
 {
     internal class UICore
     {
+        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+
         // Forms
         internal readonly LoginSplash login;
         internal UI.MainWindow.MainMenu mainMenuForm;
@@ -40,6 +43,8 @@ namespace MemoHeroDesktopClient.Common
         private UserStatsControl userStatsControl;
         private CardListControl dueCardsControl;
         private CardListControl cardListControl;
+
+        internal static LocalizationService LocalizationService => localizationService;
 
         public UICore()
         {

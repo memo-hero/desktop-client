@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient.Infrastructure
@@ -33,6 +34,6 @@ namespace MemoHeroDesktopClient.Infrastructure
             return fileContent;
         }
 
-        internal static string GetDefaultLanguageContent() => new StreamReader(new MemoryStream(Properties.Resources.EN)).ReadToEnd();
+        internal static string GetDefaultLanguageContent() => new StreamReader(new MemoryStream(Properties.Resources.EN), Encoding.GetEncoding(65000)).ReadToEnd();
     }
 }

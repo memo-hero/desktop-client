@@ -10,7 +10,7 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
         private readonly Dictionary<LocalizedControl, ILocalizableControl> localizableControls = new Dictionary<LocalizedControl, ILocalizableControl>();
         private readonly ISerializer serializer;
         private Dictionary<string, string> localizationContent;
-        private ISOCode isoCode = ISOCode.ENGLISH;
+        private ISOCode isoCode = ISOCode.SPANISH;
 
         public LocalizationService(ISerializer serializer)
         {

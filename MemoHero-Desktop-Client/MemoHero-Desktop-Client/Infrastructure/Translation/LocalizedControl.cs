@@ -70,6 +70,9 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
             [Description("btnSave")]
             BTN_SAVE,
 
+            [Description("barItemLanguage")]
+            BAR_ITEM_LANGUAGE,
+
             // Labels
             [Description("lblFront")]
             LBL_FRONT,
@@ -126,6 +129,9 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
 
             [Description("pageGroupBackup")]
             PAGE_GROUP_BACKUP,
+
+            [Description("pageGroupConfiguration")]
+            PAGE_GROUP_CONFIGURATION,
 
             // Groups
             [Description("groupControl")]

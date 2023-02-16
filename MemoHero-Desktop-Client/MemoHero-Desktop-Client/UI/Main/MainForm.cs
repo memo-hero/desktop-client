@@ -37,6 +37,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             });
 
             translationService.AddLocalizableControl(new LocalizableControlHint(btnAbout));
+            translationService.AddLocalizableControl(new LocalizableControlCaption(barItemLanguage));
         }
 
         private void MainMenu_Load(object sender, EventArgs e) => uiCore.InitializeControls();

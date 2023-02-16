@@ -40,16 +40,22 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnStudy = new DevExpress.XtraBars.BarButtonItem();
             this.btnServerSync = new DevExpress.XtraBars.BarButtonItem();
             this.btnAbout = new DevExpress.XtraBars.BarButtonItem();
+            this.barItemLanguage = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.pageUserStatus = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.pageGroupUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.pageGroupConfiguration = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageStudy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.pageGroupStudy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageCards = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.pageGroupServer = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageGroupCards = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageGroupBackup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -66,15 +72,20 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnExport,
             this.btnStudy,
             this.btnServerSync,
-            this.btnAbout});
+            this.btnAbout,
+            this.barItemLanguage,
+            this.barButtonItem1,
+            this.barButtonItem2});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 11;
+            this.ribbonControl.MaxItemId = 15;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.pageUserStatus,
             this.pageStudy,
             this.pageCards});
             this.ribbonControl.QuickToolbarItemLinks.Add(this.btnAbout);
+            this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemComboBox1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2007;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.Size = new System.Drawing.Size(638, 158);
@@ -172,12 +183,34 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbout_ItemClick);
             // 
+            // barItemLanguage
+            // 
+            this.barItemLanguage.Caption = "Change Language";
+            this.barItemLanguage.Id = 12;
+            this.barItemLanguage.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.barItemLanguage.Name = "barItemLanguage";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "English";
+            this.barButtonItem1.Id = 13;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Español";
+            this.barButtonItem2.Id = 14;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
             // pageUserStatus
             // 
             this.pageUserStatus.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageUserStatus.Appearance.Options.UseFont = true;
             this.pageUserStatus.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.pageGroupUser});
+            this.pageGroupUser,
+            this.pageGroupConfiguration});
             this.pageUserStatus.Name = "pageUserStatus";
             this.pageUserStatus.Text = "User";
             // 
@@ -186,6 +219,12 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.pageGroupUser.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             this.pageGroupUser.ItemLinks.Add(this.btnLogOut);
             this.pageGroupUser.Name = "pageGroupUser";
+            // 
+            // pageGroupConfiguration
+            // 
+            this.pageGroupConfiguration.ItemLinks.Add(this.barItemLanguage);
+            this.pageGroupConfiguration.Name = "pageGroupConfiguration";
+            this.pageGroupConfiguration.Text = "Configuration";
             // 
             // pageStudy
             // 
@@ -234,6 +273,17 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.pageGroupBackup.Name = "pageGroupBackup";
             this.pageGroupBackup.Text = "Backup";
             // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Items.AddRange(new object[] {
+            "English",
+            "Español"});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
             // mainPanel
             // 
             this.mainPanel.AutoScroll = true;
@@ -259,6 +309,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +335,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraBars.BarButtonItem btnServerSync;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pageGroupServer;
         private DevExpress.XtraBars.BarButtonItem btnAbout;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pageGroupConfiguration;
+        private DevExpress.XtraBars.BarSubItem barItemLanguage;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

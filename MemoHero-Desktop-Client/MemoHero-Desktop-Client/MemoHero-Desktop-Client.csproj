@@ -220,7 +220,8 @@
     <EmbeddedResource Include="UI\StudyCards\StudyCardsForm.resx">
       <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Infrastructure\Translation\EN\EN.json" />
+    <None Include="Infrastructure\Translation\Localizations\EN.json" />
+    <None Include="Infrastructure\Translation\Localizations\ES.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
