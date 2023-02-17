@@ -11,6 +11,7 @@ using MemoHeroDesktopClient.UI.NewCard;
 using MemoHeroDesktopClient.UI.StudyCards;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static MemoHeroDesktopClient.Infrastructure.Translation.LocalizationService;
 
 namespace MemoHeroDesktopClient.Common
 {
@@ -53,10 +54,12 @@ namespace MemoHeroDesktopClient.Common
             LocalizationService.LocalizationChanged += LocalizationService_LocalizationChanged;
         }
 
-        private void LocalizationService_LocalizationChanged(object source, System.EventArgs args)
+        private void LocalizationService_LocalizationChanged(object source, LocalizationChangedEventArgs args)
         {
             cardListControl.UpdateGrid();
             dueCardsControl.UpdateGrid();
+            user.Locale = args.ISOCode;
+            memoCore.UpdateLocale();
         }
 
         internal void InitializeControls()

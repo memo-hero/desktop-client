@@ -124,5 +124,10 @@ namespace ClientBack.Core
         {
             return await cardsModule.DeleteCard(currentUser, card);
         }
+
+        public void UpdateLocale()
+        {
+            loginModule.UpdateLoginLocale(currentUser.Locale);
+        }
     }
 }

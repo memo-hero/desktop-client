@@ -16,7 +16,7 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
         private Dictionary<string, string> localizationContent = new Dictionary<string, string>();
         private ISOCode isoCode = ISOCode.ENGLISH;
 
-        internal delegate void LocalizationChangeHandler(object source, EventArgs args);
+        internal delegate void LocalizationChangeHandler(object source, LocalizationChangedEventArgs args);
         internal event LocalizationChangeHandler LocalizationChanged;
 
         public LocalizationService(ISerializer serializer, ILocalizationRepository repository, string locale)
@@ -25,6 +25,12 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
             this.repository = repository;
             StoreDefaultLocalization("EN", "ES");
             LoadLocalization(locale);
+        }
+
+        internal class LocalizationChangedEventArgs : EventArgs
+        {
+            internal string ISOCode;
+            public LocalizationChangedEventArgs(ISOCode isoCode) => ISOCode = Extensions.GetDescription(isoCode);
         }
 
         private void StoreDefaultLocalization(params string[] locales)
@@ -71,10 +77,10 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
             this.isoCode = isoCode;
             LoadLocalization(Extensions.GetDescription(isoCode));
             LocalizeControls();
-            OnLocalizationChanged();
+            OnLocalizationChanged(isoCode);
         }
 
-        internal virtual void OnLocalizationChanged() => LocalizationChanged(this, null);
+        internal virtual void OnLocalizationChanged(ISOCode isoCode) => LocalizationChanged(this, new LocalizationChangedEventArgs(isoCode));
 
         internal void LoadLanguage(Dictionary<string, string> newContent) => newContent.ToList().ForEach(x => localizationContent.Add(x.Key, x.Value));
 

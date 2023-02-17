@@ -30,7 +30,8 @@ namespace ClientBack.Core
 
             return new LoginResult
             {
-                user = login.User
+                user = login.User,
+                expiration = login.Expiration
             };
         }
 
@@ -81,6 +82,13 @@ namespace ClientBack.Core
             loginService.Logout();
             var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
             repository.RemoveLastLogin(lastUser);
+        }
+
+        internal void UpdateLoginLocale(string newLocale)
+        {
+            var login = GetUserFromLocalDb();
+            login.user.Locale = newLocale;
+            repository.Store(login);
         }
     }
 }
