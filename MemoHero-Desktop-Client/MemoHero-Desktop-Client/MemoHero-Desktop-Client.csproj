@@ -122,6 +122,9 @@
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\FileManager.cs" />
+    <Compile Include="Infrastructure\ILocalizationRepository.cs" />
+    <Compile Include="Infrastructure\Localization.cs" />
+    <Compile Include="Infrastructure\LocalizationRepository.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Infrastructure\Translation\LocalizedControl.cs" />

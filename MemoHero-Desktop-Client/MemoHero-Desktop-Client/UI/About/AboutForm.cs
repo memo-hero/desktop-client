@@ -13,6 +13,7 @@ namespace MemoHeroDesktopClient.UI.About
         {
             InitializeComponent();
             lblVersion.Text = $"Ver. { Assembly.GetExecutingAssembly().GetName().Version }.";
+            localizationService.AddLocalizableControl(new LocalizableControlText(this));
         }
     }
 }

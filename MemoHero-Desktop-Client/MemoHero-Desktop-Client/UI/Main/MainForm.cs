@@ -13,7 +13,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 {
     internal partial class MainMenu : RibbonForm
     {
-        private static readonly LocalizationService translationService = MemoHeroServices.TranslationService;
+        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
         private readonly UICore uiCore;
 
         public MainMenu(UICore uiCore)
@@ -28,16 +28,16 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             ribbonControl.Manager.Items
                 .Where(x => x.Tag != null && (bool)x.Tag == true)
                 .ToList()
-                .ForEach(x => translationService.AddLocalizableControl(new LocalizableControlCaption(x)));
+                .ForEach(x => localizationService.AddLocalizableControl(new LocalizableControlCaption(x)));
 
             ribbonControl.Pages.ForEach(page =>
             {
-                page.Groups.ForEach(group => translationService.AddLocalizableControl(new LocalizableControlText(group)));
-                translationService.AddLocalizableControl(new LocalizableControlText(page));
+                page.Groups.ForEach(group => localizationService.AddLocalizableControl(new LocalizableControlText(group)));
+                localizationService.AddLocalizableControl(new LocalizableControlText(page));
             });
 
-            translationService.AddLocalizableControl(new LocalizableControlHint(btnAbout));
-            translationService.AddLocalizableControl(new LocalizableControlCaption(barItemLanguage));
+            localizationService.AddLocalizableControl(new LocalizableControlHint(btnAbout));
+            localizationService.AddLocalizableControl(new LocalizableControlCaption(barItemLanguage));
         }
 
         private void MainMenu_Load(object sender, EventArgs e) => uiCore.InitializeControls();
@@ -70,6 +70,16 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private void btnAbout_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (var about = new AboutForm()) { about.ShowDialog(); };
+        }
+
+        private void btnSetLanguageEnglish_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            localizationService.SetISOCode(LocalizationService.ISOCode.ENGLISH);
+        }
+
+        private void btnSetLanguageSpanish_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            localizationService.SetISOCode(LocalizationService.ISOCode.SPANISH);
         }
     }
 }

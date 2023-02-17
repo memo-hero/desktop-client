@@ -12,20 +12,29 @@ namespace MemoHeroDesktopClient.CustomControls
     internal partial class CategoryStats : UserControl
     {
         private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private readonly Category category;
 
         public CategoryStats(KeyValuePair<Category, CategoryProperty> stats)
         {
             InitializeComponent();
+            category = stats.Key;
+            localizationService.LocalizationChanged += LocalizationService_LocalizationChanged;
             Initialize(stats);
         }
 
+        private void LocalizationService_LocalizationChanged(object source, EventArgs args)
+            => UpdateLabel();
+
         private void Initialize(KeyValuePair<Category, CategoryProperty> stats)
         {
-            pictureCategory.Image = ResolveCategoryImage(stats.Key);
-            lblCategoryName.Text = localizationService.LocalizeCategory(stats.Key);
+            pictureCategory.Image = ResolveCategoryImage(category);
             lblCategoryLevel.Text = "LVL: " + stats.Value.Level.ToString();
             progressCategory.EditValue = GetExpPercentValue(stats.Value);
+            UpdateLabel();
         }
+
+        private void UpdateLabel()
+            => lblCategoryName.Text = localizationService.LocalizeCategory(category);
 
         private Bitmap ResolveCategoryImage(Category category)
         {

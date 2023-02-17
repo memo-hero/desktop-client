@@ -1,5 +1,8 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Infrastructure.HTTP;
+using DevExpress.Utils.Extensions;
+using MemoHeroDesktopClient.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,13 +12,31 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
     {
         private readonly Dictionary<LocalizedControl, ILocalizableControl> localizableControls = new Dictionary<LocalizedControl, ILocalizableControl>();
         private readonly ISerializer serializer;
-        private Dictionary<string, string> localizationContent;
-        private ISOCode isoCode = ISOCode.SPANISH;
+        private readonly ILocalizationRepository repository;
+        private Dictionary<string, string> localizationContent = new Dictionary<string, string>();
+        private ISOCode isoCode = ISOCode.ENGLISH;
 
-        public LocalizationService(ISerializer serializer)
+        internal delegate void LocalizationChangeHandler(object source, EventArgs args);
+        internal event LocalizationChangeHandler LocalizationChanged;
+
+        public LocalizationService(ISerializer serializer, ILocalizationRepository repository, string locale)
         {
             this.serializer = serializer;
-            LoadDefaultLanguage();
+            this.repository = repository;
+            StoreDefaultLocalization("EN", "ES");
+            LoadLocalization(locale);
+        }
+
+        private void StoreDefaultLocalization(params string[] locales)
+        {
+            locales.ForEach(locale =>
+            {
+                if (!repository.LocalizationExists(locale))
+                {
+                    var content = serializer.Deserialize<Dictionary<string, string>>(FileManager.GetDefaultLanguageContent(locale));
+                    repository.StoreLocalization(new Localization(locale) { content = content });
+                }
+            });
         }
 
         internal void AddLocalizableControl(ILocalizableControl control)
@@ -36,13 +57,24 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
 
         internal void LocalizeControls() => localizableControls.ToList().ForEach(x => SetControlContent(x.Value));
 
-        private void LoadDefaultLanguage()
+        private void LoadLocalization(string locale)
         {
-            var content = FileManager.GetDefaultLanguageContent();
-            localizationContent = serializer.Deserialize<Dictionary<string, string>>(content);
+            isoCode = Extensions.GetValueFromDescription<ISOCode>(locale.ToUpper());
+            var localization = repository.RetrieveLocalization(locale.ToUpper());
+            if (localization == null) repository.RetrieveLocalization(locale.ToUpper());
+            else localizationContent = localization.content;
         }
 
-        internal void SetISOCode(ISOCode isoCode) => this.isoCode = isoCode;
+        internal void SetISOCode(ISOCode isoCode)
+        {
+            if (this.isoCode == isoCode) return;
+            this.isoCode = isoCode;
+            LoadLocalization(Extensions.GetDescription(isoCode));
+            LocalizeControls();
+            OnLocalizationChanged();
+        }
+
+        internal virtual void OnLocalizationChanged() => LocalizationChanged(this, null);
 
         internal void LoadLanguage(Dictionary<string, string> newContent) => newContent.ToList().ForEach(x => localizationContent.Add(x.Key, x.Value));
 

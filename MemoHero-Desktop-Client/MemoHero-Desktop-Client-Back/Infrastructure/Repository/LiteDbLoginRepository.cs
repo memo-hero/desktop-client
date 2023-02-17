@@ -7,10 +7,7 @@ namespace ClientBack.Infrastructure.Repository
         private readonly LiteDatabase database;
         private readonly string tableName = "logins";
 
-        internal LiteDbLoginRepository(LiteDatabase database)
-        {
-            this.database = database;
-        }
+        internal LiteDbLoginRepository(LiteDatabase database) => this.database = database;
 
         public void Store(LoginResult loginResult)
         {

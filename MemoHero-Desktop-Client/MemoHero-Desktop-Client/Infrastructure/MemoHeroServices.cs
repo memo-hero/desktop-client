@@ -7,6 +7,9 @@ namespace MemoHeroDesktopClient.Infrastructure
     static class MemoHeroServices
     {
         internal static MemoHeroCore Core = new MemoHeroCore();
-        internal static LocalizationService TranslationService = new LocalizationService(ClientBackServiceProvider.serializer);
+        internal static LocalizationService TranslationService = new LocalizationService(
+            ClientBackServiceProvider.serializer,
+            new LocalizationRepository(ClientBackServiceProvider.LiteDatabase),
+            Core.GetLastLocale());
     }
 }

@@ -15,6 +15,9 @@ namespace ClientBack.Core
         private readonly LoginModule loginModule;
         private readonly CardsModule cardsModule;
         private readonly UserModule userModule;
+
+        public string GetLastLocale() => loginModule.GetUserFromLocalDb().user.Locale;
+
         private ISerializer serializer = new NewtonSoftSerializer();
 
         public List<Card> UserCards = new List<Card>();

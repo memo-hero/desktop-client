@@ -50,6 +50,13 @@ namespace MemoHeroDesktopClient.Common
         {
             login = new LoginSplash(this);
             mainMenuForm = new UI.MainWindow.MainMenu(this);
+            LocalizationService.LocalizationChanged += LocalizationService_LocalizationChanged;
+        }
+
+        private void LocalizationService_LocalizationChanged(object source, System.EventArgs args)
+        {
+            cardListControl.UpdateGrid();
+            dueCardsControl.UpdateGrid();
         }
 
         internal void InitializeControls()
@@ -118,10 +125,7 @@ namespace MemoHeroDesktopClient.Common
             dueCardsControl.UpdateGrid();
         }
 
-        internal void GetCardsFromServer()
-        {
-            UpdateCardListControl();
-        }
+        internal void GetCardsFromServer() => UpdateCardListControl();
 
         internal void StudyFilteredCards()
         {

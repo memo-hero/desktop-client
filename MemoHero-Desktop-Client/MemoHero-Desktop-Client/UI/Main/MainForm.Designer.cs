@@ -41,8 +41,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnServerSync = new DevExpress.XtraBars.BarButtonItem();
             this.btnAbout = new DevExpress.XtraBars.BarButtonItem();
             this.barItemLanguage = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSetLanguageEnglish = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSetLanguageSpanish = new DevExpress.XtraBars.BarButtonItem();
             this.pageUserStatus = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.pageGroupUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.pageGroupConfiguration = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -74,8 +74,8 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.btnServerSync,
             this.btnAbout,
             this.barItemLanguage,
-            this.barButtonItem1,
-            this.barButtonItem2});
+            this.btnSetLanguageEnglish,
+            this.btnSetLanguageSpanish});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 15;
             this.ribbonControl.Name = "ribbonControl";
@@ -188,21 +188,23 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             this.barItemLanguage.Caption = "Change Language";
             this.barItemLanguage.Id = 12;
             this.barItemLanguage.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSetLanguageEnglish),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSetLanguageSpanish)});
             this.barItemLanguage.Name = "barItemLanguage";
             // 
-            // barButtonItem1
+            // btnSetLanguageEnglish
             // 
-            this.barButtonItem1.Caption = "English";
-            this.barButtonItem1.Id = 13;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.btnSetLanguageEnglish.Caption = "English";
+            this.btnSetLanguageEnglish.Id = 13;
+            this.btnSetLanguageEnglish.Name = "btnSetLanguageEnglish";
+            this.btnSetLanguageEnglish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetLanguageEnglish_ItemClick);
             // 
-            // barButtonItem2
+            // btnSetLanguageSpanish
             // 
-            this.barButtonItem2.Caption = "Español";
-            this.barButtonItem2.Id = 14;
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnSetLanguageSpanish.Caption = "Español";
+            this.btnSetLanguageSpanish.Id = 14;
+            this.btnSetLanguageSpanish.Name = "btnSetLanguageSpanish";
+            this.btnSetLanguageSpanish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSetLanguageSpanish_ItemClick);
             // 
             // pageUserStatus
             // 
@@ -338,7 +340,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup pageGroupConfiguration;
         private DevExpress.XtraBars.BarSubItem barItemLanguage;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem btnSetLanguageEnglish;
+        private DevExpress.XtraBars.BarButtonItem btnSetLanguageSpanish;
     }
 }

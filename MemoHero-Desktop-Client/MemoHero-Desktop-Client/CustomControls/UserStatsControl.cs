@@ -17,14 +17,17 @@ namespace MemoHeroDesktopClient.CustomControls
             InitializeComponent();
             username = user.Nickname;
             UpdateTableStats(user);
-            LoadLocalizableControls();
+
+            localizationService.AddLocalizableControl(new LocalizableControlText(lblWelcome));
+            localizationService.LocalizationChanged += LocalizationService_LocalizationChanged;
+            UpdateWelcome();
         }
 
-        private void LoadLocalizableControls()
-        {
-            localizationService.AddLocalizableControl(new LocalizableControlText(lblWelcome));
-            lblWelcome.Text = string.Format(lblWelcome.Text, username);
-        }
+        private void UpdateWelcome() => lblWelcome.Text = string.Format(lblWelcome.Text, username);
+
+
+        private void LocalizationService_LocalizationChanged(object source, System.EventArgs args)
+            => UpdateWelcome();
 
         internal void UpdateTableStats(User user)
         {
