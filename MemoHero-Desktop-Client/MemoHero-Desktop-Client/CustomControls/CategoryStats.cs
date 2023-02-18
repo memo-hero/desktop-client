@@ -1,7 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,7 +11,7 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     internal partial class CategoryStats : UserControl
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
         private readonly Category category;
 
         public CategoryStats(KeyValuePair<Category, CategoryProperty> stats)

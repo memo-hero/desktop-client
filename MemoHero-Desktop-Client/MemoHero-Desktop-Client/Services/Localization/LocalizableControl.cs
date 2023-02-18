@@ -1,6 +1,7 @@
 ﻿using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Domain.Localization;
 
-namespace MemoHeroDesktopClient.Infrastructure.Translation
+namespace MemoHeroDesktopClient.Services.Localization
 {
     internal class LocalizableControl : ILocalizableControl
     {

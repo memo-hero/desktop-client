@@ -2,9 +2,11 @@
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Domain;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
+using MemoHeroDesktopClient.Services.Localization;
 using MemoHeroDesktopClient.UI.About;
 using System;
 using System.Linq;
@@ -14,7 +16,7 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 {
     internal partial class MainMenu : RibbonForm
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
         private readonly UICore uiCore;
 
         public MainMenu(UICore uiCore)

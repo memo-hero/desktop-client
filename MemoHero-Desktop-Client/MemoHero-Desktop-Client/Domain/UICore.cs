@@ -5,6 +5,7 @@ using ClientBack.Domain.User;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Domain.Events;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
@@ -15,13 +16,12 @@ using MemoHeroDesktopClient.UI.StudyCards;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static MemoHeroDesktopClient.Infrastructure.Translation.LocalizationService;
 
 namespace MemoHeroDesktopClient.Domain
 {
     internal class UICore
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
 
         // Forms
         internal readonly LoginSplash login;
@@ -49,7 +49,7 @@ namespace MemoHeroDesktopClient.Domain
         private CardListControl dueCardsControl;
         private CardListControl cardListControl;
 
-        internal static LocalizationService LocalizationService => localizationService;
+        internal static ILocalization LocalizationService => localizationService;
 
         public UICore()
         {

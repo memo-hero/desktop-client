@@ -1,6 +1,6 @@
 ﻿using ClientBack.Domain.Study;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,7 +8,7 @@ namespace MemoHeroDesktopClient.Common
 {
     internal static class MessagesRepository
     {
-        private static readonly LocalizationService localization = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localization = MemoHeroServices.TranslationService;
 
         internal static void ShowServiceOffline() => MessageBox.Show(
             GetText(LocalizedMessage.NO_SERVICE_MESSAGE),

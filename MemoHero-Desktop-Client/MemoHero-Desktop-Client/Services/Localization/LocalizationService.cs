@@ -3,12 +3,14 @@ using ClientBack.Infrastructure.HTTP;
 using DevExpress.Utils.Extensions;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Domain.Events;
+using MemoHeroDesktopClient.Domain.Localization;
+using MemoHeroDesktopClient.Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MemoHeroDesktopClient.Infrastructure.Translation
+namespace MemoHeroDesktopClient.Services.Localization
 {
-    internal class LocalizationService
+    internal class LocalizationService : ILocalization
     {
         private readonly Dictionary<LocalizedControl, ILocalizableControl> localizableControls = new Dictionary<LocalizedControl, ILocalizableControl>();
         private readonly ISerializer serializer;
@@ -16,8 +18,7 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
         private Dictionary<string, string> localizationContent = new Dictionary<string, string>();
         private ISOCode isoCode = ISOCode.ENGLISH;
 
-        internal delegate void LocalizationChangeHandler(object source, LocalizationChangedEventArgs args);
-        internal event LocalizationChangeHandler LocalizationChanged;
+        public event LocalizationChangeHandler LocalizationChanged;
 
         public LocalizationService(ISerializer serializer, ILocalizationRepository repository, string locale)
         {
@@ -34,12 +35,12 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
                 if (!repository.LocalizationExists(locale))
                 {
                     var content = serializer.Deserialize<Dictionary<string, string>>(FileManager.GetDefaultLanguageContent(locale));
-                    repository.StoreLocalization(new Localization(locale) { content = content });
+                    repository.StoreLocalization(new LocalizationContent(locale) { content = content });
                 }
             });
         }
 
-        internal void AddLocalizableControl(ILocalizableControl control)
+        public void AddLocalizableControl(ILocalizableControl control)
         {
             if (IsControlInListAlready(control)) UpdateControlInList(control);
             else AddControlToList(control);
@@ -65,21 +66,19 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
             else localizationContent = localization.content;
         }
 
-        internal void SetISOCode(ISOCode isoCode)
+        public void SetISOCode(ISOCode isoCode)
         {
             if (this.isoCode == isoCode) return;
             this.isoCode = isoCode;
-            LoadLocalization(Extensions.GetDescription(isoCode));
+            LoadLocalization(isoCode.GetDescription());
             LocalizeControls();
             OnLocalizationChanged(isoCode);
         }
 
         internal virtual void OnLocalizationChanged(ISOCode isoCode) => LocalizationChanged(this, new LocalizationChangedEventArgs(isoCode));
 
-        internal void LoadLanguage(Dictionary<string, string> newContent) => newContent.ToList().ForEach(x => localizationContent.Add(x.Key, x.Value));
-
-        internal string LocalizeMessage(LocalizedMessage message) => localizationContent[GetKey(message)];
-        internal string LocalizeCategory(Category message) => localizationContent[GetKey(message)];
+        public string LocalizeMessage(LocalizedMessage message) => localizationContent[GetKey(message)];
+        public string LocalizeCategory(Category message) => localizationContent[GetKey(message)];
 
         private string GetKey(LocalizedMessage message) => $"{ isoCode }_{ message }";
         private string GetKey(LocalizedControl control) => $"{ isoCode }_{ control }";

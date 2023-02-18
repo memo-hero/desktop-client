@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MemoHeroDesktopClient.Infrastructure.Translation
+namespace MemoHeroDesktopClient.Domain.Localization
 {
     internal enum LocalizedControl
     {

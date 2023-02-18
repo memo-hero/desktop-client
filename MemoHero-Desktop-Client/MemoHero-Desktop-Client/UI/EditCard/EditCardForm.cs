@@ -3,8 +3,10 @@ using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.Localization;
 using System;
 using System.Linq;
 
@@ -12,7 +14,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
 {
     public partial class EditCardForm : XtraForm
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
         private readonly CardFormControl cardFormControl;
 
         internal delegate void EditCardHandler(object source, EditCardArgs args);

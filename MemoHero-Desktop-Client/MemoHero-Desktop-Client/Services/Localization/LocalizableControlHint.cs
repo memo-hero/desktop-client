@@ -1,4 +1,4 @@
-﻿namespace MemoHeroDesktopClient.Infrastructure.Translation
+﻿namespace MemoHeroDesktopClient.Services.Localization
 {
     internal class LocalizableControlHint : LocalizableControl
     {

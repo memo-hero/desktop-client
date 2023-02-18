@@ -2,8 +2,9 @@
 using ClientBack.Domain.User;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.Localization;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,7 +12,7 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     public partial class StudyStatsControl : UserControl
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
 
         public StudyStatsControl()
         {

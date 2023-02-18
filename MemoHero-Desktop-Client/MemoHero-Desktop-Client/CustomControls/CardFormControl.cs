@@ -2,8 +2,10 @@
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     internal partial class CardFormControl : UserControl
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
 
         private Card card;
         

@@ -6,8 +6,10 @@ using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Domain;
 using MemoHeroDesktopClient.Domain.Events;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.Localization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,7 +22,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
         internal delegate void UserResponseHandler(object source, UserResponseArgs args);
         internal event UserResponseHandler UserResponded;
 
-        private static readonly LocalizationService localization = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localization = MemoHeroServices.TranslationService;
         private readonly StudyStatsControl studyStatsControl;
         private readonly User user;
         private readonly Queue<Card> cards;

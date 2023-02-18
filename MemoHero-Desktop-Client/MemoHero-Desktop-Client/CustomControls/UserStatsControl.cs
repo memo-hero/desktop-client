@@ -1,7 +1,9 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.Localization;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -9,7 +11,7 @@ namespace MemoHeroDesktopClient.CustomControls
 {
     public partial class UserStatsControl : UserControl
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
         private static string username;
 
         public UserStatsControl(User user)

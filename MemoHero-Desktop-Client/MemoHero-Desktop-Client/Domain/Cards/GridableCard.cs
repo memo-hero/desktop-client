@@ -1,14 +1,14 @@
 ﻿using ClientBack.Domain.Cards;
 using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
 
 namespace MemoHeroDesktopClient.Domain.Cards
 {
     internal class GridableCard
     {
-        private static readonly LocalizationService localizationService = MemoHeroServices.TranslationService;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
 
         public string Id { get; set; }
         public string Front { get; set; }

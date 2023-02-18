@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using MemoHeroDesktopClient.Domain.Localization;
 
 namespace MemoHeroDesktopClient.Infrastructure.Translation
 {
@@ -9,13 +10,13 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
 
         public LocalizationRepository(LiteDatabase database) => this.database = database;
 
-        public Localization RetrieveLocalization(string locale)
-            => database.GetCollection<Localization>(tableName).FindOne(x => x.id == locale);
+        public LocalizationContent RetrieveLocalization(string locale)
+            => database.GetCollection<LocalizationContent>(tableName).FindOne(x => x.id == locale);
 
-        public void StoreLocalization(Localization content)
-            => database.GetCollection<Localization>(tableName).Upsert(content);
+        public void StoreLocalization(LocalizationContent content)
+            => database.GetCollection<LocalizationContent>(tableName).Upsert(content);
 
         public bool LocalizationExists(string locale)
-         => database.GetCollection<Localization>(tableName).Exists(x => x.id == locale);
+         => database.GetCollection<LocalizationContent>(tableName).Exists(x => x.id == locale);
     }
 }

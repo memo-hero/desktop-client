@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Common\DateTimeHelper.cs" />
     <Compile Include="Common\MessagesRepository.cs" />
+    <Compile Include="Common\ReflectionUtils.cs" />
     <Compile Include="CustomControls\CardFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,31 +123,31 @@
     <Compile Include="Domain\EventArgs\CreateCardArgs.cs" />
     <Compile Include="Domain\EventArgs\StudyResultHandlerArgs.cs" />
     <Compile Include="Domain\EventArgs\UserLoginResultArgs.cs" />
+    <Compile Include="Domain\Events\LocalizationChangedEventArgs.cs" />
     <Compile Include="Domain\Exceptions\EnumValueNotFound.cs" />
+    <Compile Include="Domain\Localization\ILocalizableControl.cs" />
+    <Compile Include="Domain\Localization\ILocalization.cs" />
+    <Compile Include="Domain\Localization\ILocalizationRepository.cs" />
+    <Compile Include="Domain\Localization\ISOCode.cs" />
+    <Compile Include="Domain\Localization\LocalizationContent.cs" />
+    <Compile Include="Domain\Localization\LocalizedControl.cs" />
+    <Compile Include="Domain\Localization\LocalizedMessage.cs" />
     <Compile Include="Domain\UICore.cs" />
     <Compile Include="Infrastructure\FileManager.cs" />
-    <Compile Include="Infrastructure\ILocalizationRepository.cs" />
-    <Compile Include="Infrastructure\Localization.cs" />
     <Compile Include="Infrastructure\LocalizationRepository.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="Common\Extensions.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizationChangedEventArgs.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizedControl.cs" />
-    <Compile Include="Infrastructure\Translation\ILocalizableControl.cs" />
-    <Compile Include="Infrastructure\Translation\ISOCode.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizableControl.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizableControlCaption.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizableControlHint.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizableControlText.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizedMessage.cs" />
-    <Compile Include="Infrastructure\Translation\ReflectionUtils.cs" />
-    <Compile Include="Infrastructure\Translation\LocalizationService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\ExceptionHandler\ExceptionHandlerService.cs" />
+    <Compile Include="Services\Localization\LocalizableControl.cs" />
+    <Compile Include="Services\Localization\LocalizableControlCaption.cs" />
+    <Compile Include="Services\Localization\LocalizableControlHint.cs" />
+    <Compile Include="Services\Localization\LocalizableControlText.cs" />
+    <Compile Include="Services\Localization\LocalizationService.cs" />
     <Compile Include="UI\About\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,8 +227,8 @@
     <EmbeddedResource Include="UI\StudyCards\StudyCardsForm.resx">
       <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Infrastructure\Translation\Localizations\EN.json" />
-    <None Include="Infrastructure\Translation\Localizations\ES.json" />
+    <None Include="Services\Localization\Localizations\EN.json" />
+    <None Include="Services\Localization\Localizations\ES.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -304,8 +305,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Localization\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

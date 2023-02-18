@@ -1,5 +1,5 @@
 ﻿using MemoHeroDesktopClient.Common;
-using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Domain.Localization;
 using System;
 
 namespace MemoHeroDesktopClient.Domain.Events
