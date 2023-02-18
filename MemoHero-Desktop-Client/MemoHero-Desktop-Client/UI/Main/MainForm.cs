@@ -4,7 +4,6 @@ using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Domain;
 using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.Services.Localization;
 using MemoHeroDesktopClient.UI.About;
@@ -81,7 +80,4 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         private void btnSetLanguageSpanish_ItemClick(object sender, ItemClickEventArgs e)
             => localizationService.SetISOCode(ISOCode.SPANISH);
     }
-
-    
-
 }

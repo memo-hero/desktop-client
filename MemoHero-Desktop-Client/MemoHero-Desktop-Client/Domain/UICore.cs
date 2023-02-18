@@ -7,7 +7,6 @@ using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.Services.FileManagement;
 using MemoHeroDesktopClient.UI.EditCard;
@@ -22,35 +21,27 @@ namespace MemoHeroDesktopClient.Domain
 {
     internal class UICore
     {
-        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
-
         // Forms
         internal readonly LoginSplash login;
+
+        internal EditCardForm editCardForm;
         internal UI.MainWindow.MainMenu mainMenuForm;
         internal NewCardForm newCardForm;
-        internal EditCardForm editCardForm;
         internal StudyCardsForm studyCardsForm;
-
-        // Events
-        internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
-        internal event UserLoginHandler UserLoggedIn;
-
-        internal delegate void StudyResultHandler(object source, StudyResultHandlerArgs args);
-        internal event StudyResultHandler StudyResult;
+        private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
+        // Controls
+        private readonly Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
 
         private readonly MemoHeroCore memoCore = MemoHeroServices.Core;
+
+        private CardListControl cardListControl;
+
+        private CardListControl dueCardsControl;
 
         // User Data
         private User user;
 
-        // Controls
-        private Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
-
         private UserStatsControl userStatsControl;
-        private CardListControl dueCardsControl;
-        private CardListControl cardListControl;
-
-        internal static ILocalization LocalizationService => localizationService;
 
         public UICore()
         {
@@ -59,12 +50,54 @@ namespace MemoHeroDesktopClient.Domain
             LocalizationService.LocalizationChanged += LocalizationService_LocalizationChanged;
         }
 
-        private void LocalizationService_LocalizationChanged(object source, LocalizationChangedEventArgs args)
+        internal delegate void StudyResultHandler(object source, StudyResultHandlerArgs args);
+
+        // Events
+        internal delegate void UserLoginHandler(object source, UserLoginResultArgs args);
+
+        internal event StudyResultHandler StudyResult;
+
+        internal event UserLoginHandler UserLoggedIn;
+        internal static ILocalization LocalizationService => localizationService;
+        internal async void CheckService()
         {
-            cardListControl.UpdateGrid();
-            dueCardsControl.UpdateGrid();
-            user.Locale = args.ISOCode;
-            memoCore.UpdateLocale();
+            if (await memoCore.IsServiceOnline()) return;
+
+            MessagesRepository.ShowServiceOffline();
+            login.Close();
+        }
+
+        internal void CloseApplication() => login.Close();
+
+        internal async Task DeleteSelectedCard()
+        {
+            var selectedCard = cardListControl.GetSelectedCard();
+            if (selectedCard == null) return;
+
+            var response = MessagesRepository.ShowDeleteCardConfirmation();
+            if (response == DialogResult.OK)
+            {
+                if (await memoCore.DeleteCard(selectedCard))
+                {
+                    await UpdateCardListControl();
+                    UpdateDueCardsControl();
+                }
+            }
+        }
+
+        internal void ExportCards()
+        {
+            var cards = memoCore.ExportCards();
+            if (cards != null) FileManager.SaveFile(cards);
+        }
+
+        internal async Task GetCardsFromServer() => await UpdateCardListControl();
+
+        internal async Task ImportCards()
+        {
+            var content = FileManager.OpenFile();
+            await memoCore.ImportCards(content);
+            UpdateDueCardsControl();
         }
 
         internal void InitializeControls()
@@ -90,89 +123,11 @@ namespace MemoHeroDesktopClient.Domain
             panel.Controls.Add(cardListControl);
         }
 
-        internal async Task ImportCards()
+        internal void Logout()
         {
-            var content = FileManager.OpenFile();
-            await memoCore.ImportCards(content);
-            UpdateDueCardsControl();
-        }
-
-        internal void ExportCards()
-        {
-            var cards = memoCore.ExportCards();
-            if (cards != null) FileManager.SaveFile(cards);
-        }
-
-        internal async Task DeleteSelectedCard()
-        {
-            var selectedCard = cardListControl.GetSelectedCard();
-            if (selectedCard == null) return;
-
-            var response = MessagesRepository.ShowDeleteCardConfirmation();
-            if (response == DialogResult.OK)
-            {
-                if (await memoCore.DeleteCard(selectedCard))
-                {
-                    await UpdateCardListControl();
-                    UpdateDueCardsControl();
-                }
-            }
-        }
-
-        private async Task UpdateCardListControl()
-        {
-            await memoCore.GetUserCards();
-            cardListControl.SetDataSource(ref memoCore.UserCards);
-            cardListControl.UpdateGrid();
-        }
-
-        private async void UpdateDueCardsControl()
-        {
-            await memoCore.GetUserDueCards();
-            dueCardsControl.SetDataSource(ref memoCore.DueCards);
-            dueCardsControl.UpdateGrid();
-        }
-
-        internal async Task GetCardsFromServer() => await UpdateCardListControl();
-
-        internal void StudyFilteredCards()
-        {
-            var cards = dueCardsControl.GetCards();
-            using (studyCardsForm = new StudyCardsForm(this, ref user, new Queue<Card>(cards), new StudyStatsControl()))
-            {
-                studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
-                studyCardsForm.ShowDialog();
-                UpdateDueCardsControl();
-            }
-        }
-
-        private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
-        {
-            await ExceptionHandlerService.Execute(async () =>
-            {
-                var result = await memoCore.StudyCard(args.Card, args.Quality);
-                user.Stats = result.UserStats;
-                userStatsControl.UpdateTableStats(user);
-                OnStudyResult(result);
-            });
-        }
-
-        protected virtual void OnStudyResult(StudyResult result) => StudyResult(this, new StudyResultHandlerArgs(result));
-
-        internal void UpdatePanel(string currentPageName)
-        {
-            foreach (var control in customControls)
-            {
-                control.Value.Visible = control.Key == currentPageName;
-            }
-        }
-
-        internal void ShowNewCardForm()
-        {
-            newCardForm = new NewCardForm();
-            newCardForm.CardCreated += NewCardWindow_CardCreated;
-
-            newCardForm.ShowDialog();
+            ClearState();
+            login.loginButton.Enabled = true;
+            login.Show();
         }
 
         internal void ShowEditCardForm()
@@ -185,42 +140,12 @@ namespace MemoHeroDesktopClient.Domain
             editCardForm.ShowDialog();
         }
 
-        private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
+        internal void ShowNewCardForm()
         {
-            var card = await memoCore.CreateCardAsync(args.newCard);
-            dueCardsControl.UpdateGrid();
-        }
+            newCardForm = new NewCardForm();
+            newCardForm.CardCreated += NewCardWindow_CardCreated;
 
-        private async void EditCardWindow_CardEdited(object source, EditCardArgs args)
-        {
-            if (await memoCore.UpdateCardAsync(args.editedCard))
-            {
-                cardListControl.UpdateCard(args.editedCard);
-                UpdateDueCardsControl();
-            };
-        }
-
-        internal void Logout()
-        {
-            ClearState();
-            login.loginButton.Enabled = true;
-            login.Show();
-        }
-
-        private void ClearState()
-        {
-            user = null;
-            customControls.Clear();
-            memoCore.Logout();
-            mainMenuForm.Dispose();
-        }
-
-        internal async void CheckService()
-        {
-            if (await memoCore.IsServiceOnline()) return;
-
-            MessagesRepository.ShowServiceOffline();
-            login.Close();
+            newCardForm.ShowDialog();
         }
 
         internal async void StartLoginProcess(bool manualLogin)
@@ -251,8 +176,82 @@ namespace MemoHeroDesktopClient.Domain
             OnUserLoggedIn(true);
         }
 
+        internal void StudyFilteredCards()
+        {
+            var cards = dueCardsControl.GetCards();
+            using (studyCardsForm = new StudyCardsForm(this, ref user, new Queue<Card>(cards), new StudyStatsControl()))
+            {
+                studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
+                studyCardsForm.ShowDialog();
+                UpdateDueCardsControl();
+            }
+        }
+
+        internal void UpdatePanel(string currentPageName)
+        {
+            foreach (var control in customControls)
+            {
+                control.Value.Visible = control.Key == currentPageName;
+            }
+        }
+
+        protected virtual void OnStudyResult(StudyResult result) => StudyResult(this, new StudyResultHandlerArgs(result));
+
         protected virtual void OnUserLoggedIn(bool failed) => UserLoggedIn(this, new UserLoginResultArgs(failed));
 
-        internal void CloseApplication() => login.Close();
+        private void ClearState()
+        {
+            user = null;
+            customControls.Clear();
+            memoCore.Logout();
+            mainMenuForm.Dispose();
+        }
+
+        private async void EditCardWindow_CardEdited(object source, EditCardArgs args)
+        {
+            if (await memoCore.UpdateCardAsync(args.editedCard))
+            {
+                cardListControl.UpdateCard(args.editedCard);
+                UpdateDueCardsControl();
+            };
+        }
+
+        private void LocalizationService_LocalizationChanged(object source, LocalizationChangedEventArgs args)
+        {
+            cardListControl.UpdateGrid();
+            dueCardsControl.UpdateGrid();
+            user.Locale = args.ISOCode;
+            memoCore.UpdateLocale();
+        }
+        private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
+        {
+            var card = await memoCore.CreateCardAsync(args.newCard);
+            dueCardsControl.UpdateGrid();
+        }
+
+        private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
+        {
+            await ExceptionHandlerService.Execute(async () =>
+            {
+                var result = await memoCore.StudyCard(args.Card, args.Quality);
+                user.Stats = result.UserStats;
+                userStatsControl.UpdateTableStats(user);
+                OnStudyResult(result);
+            });
+        }
+
+        private async Task UpdateCardListControl()
+        {
+            await memoCore.GetUserCards();
+            cardListControl.SetDataSource(ref memoCore.UserCards);
+            cardListControl.UpdateGrid();
+        }
+
+        private async void UpdateDueCardsControl()
+        {
+            await memoCore.GetUserDueCards();
+            dueCardsControl.SetDataSource(ref memoCore.DueCards);
+            dueCardsControl.UpdateGrid();
+        }
     }
 }
