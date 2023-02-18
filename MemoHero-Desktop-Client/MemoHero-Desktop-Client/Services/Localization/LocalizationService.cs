@@ -4,7 +4,7 @@ using DevExpress.Utils.Extensions;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Services.FileManagement;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 
-namespace MemoHeroDesktopClient.Infrastructure
+namespace MemoHeroDesktopClient.Services.FileManagement
 {
     static internal class FileManager
     {

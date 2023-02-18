@@ -133,7 +133,6 @@
     <Compile Include="Domain\Localization\LocalizedControl.cs" />
     <Compile Include="Domain\Localization\LocalizedMessage.cs" />
     <Compile Include="Domain\UICore.cs" />
-    <Compile Include="Infrastructure\FileManager.cs" />
     <Compile Include="Infrastructure\LocalizationRepository.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="Common\Extensions.cs" />
@@ -143,6 +142,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\ExceptionHandler\ExceptionHandlerService.cs" />
+    <Compile Include="Services\FileManagement\FileManager.cs" />
     <Compile Include="Services\Localization\LocalizableControl.cs" />
     <Compile Include="Services\Localization\LocalizableControlCaption.cs" />
     <Compile Include="Services\Localization\LocalizableControlHint.cs" />
