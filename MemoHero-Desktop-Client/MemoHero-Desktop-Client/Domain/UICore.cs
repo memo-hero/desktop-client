@@ -6,7 +6,7 @@ using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Services;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.Services.FileManagement;
 using MemoHeroDesktopClient.UI.EditCard;

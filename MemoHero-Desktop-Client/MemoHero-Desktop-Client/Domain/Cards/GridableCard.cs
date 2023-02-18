@@ -1,7 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Services;
 using System;
 
 namespace MemoHeroDesktopClient.Domain.Cards

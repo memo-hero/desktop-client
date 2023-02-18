@@ -1,6 +1,6 @@
 ﻿using ClientBack.Domain.Study;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Services;
 using System.Linq;
 using System.Windows.Forms;
 

@@ -3,7 +3,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Domain;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Services;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.Services.Localization;
 using MemoHeroDesktopClient.UI.About;

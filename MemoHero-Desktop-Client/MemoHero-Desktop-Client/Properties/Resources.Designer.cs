@@ -73,16 +73,6 @@ namespace MemoHeroDesktopClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap card_background {
-            get {
-                object obj = ResourceManager.GetObject("card-background", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap card_background_2 {
             get {
                 object obj = ResourceManager.GetObject("card-background-2", resourceCulture);
@@ -96,16 +86,6 @@ namespace MemoHeroDesktopClient.Properties {
         internal static System.Drawing.Bitmap card_create_32 {
             get {
                 object obj = ResourceManager.GetObject("card-create-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap card_create_52 {
-            get {
-                object obj = ResourceManager.GetObject("card-create-52", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,36 +116,6 @@ namespace MemoHeroDesktopClient.Properties {
         internal static System.Drawing.Bitmap computers_512 {
             get {
                 object obj = ResourceManager.GetObject("computers-512", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap delete_card_24 {
-            get {
-                object obj = ResourceManager.GetObject("delete-card-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap download_backup_24 {
-            get {
-                object obj = ResourceManager.GetObject("download-backup-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap edit_card_24 {
-            get {
-                object obj = ResourceManager.GetObject("edit-card-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,59 +163,9 @@ namespace MemoHeroDesktopClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_logout_26 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-logout-26", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_logout_52 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-logout-52", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_logout_521 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-logout-521", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap import_32 {
             get {
                 object obj = ResourceManager.GetObject("import-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap import_backup_24 {
-            get {
-                object obj = ResourceManager.GetObject("import-backup-24", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap import_backup_24_1_ {
-            get {
-                object obj = ResourceManager.GetObject("import-backup-24(1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -296,16 +196,6 @@ namespace MemoHeroDesktopClient.Properties {
         internal static System.Drawing.Bitmap logout_32 {
             get {
                 object obj = ResourceManager.GetObject("logout-32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap new_card_24 {
-            get {
-                object obj = ResourceManager.GetObject("new-card-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

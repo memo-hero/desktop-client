@@ -4,8 +4,8 @@ using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services;
 using MemoHeroDesktopClient.Services.Localization;
 using System.Linq;
 

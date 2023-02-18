@@ -4,7 +4,7 @@ using MemoHeroDesktopClient.Domain.Localization;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.Localization;
 
-namespace MemoHeroDesktopClient.Infrastructure
+namespace MemoHeroDesktopClient.Services
 {
     static class MemoHeroServices
     {

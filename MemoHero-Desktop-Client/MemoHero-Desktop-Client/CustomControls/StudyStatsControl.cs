@@ -3,7 +3,7 @@ using ClientBack.Domain.User;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure;
+using MemoHeroDesktopClient.Services;
 using MemoHeroDesktopClient.Services.Localization;
 using System.Linq;
 using System.Windows.Forms;
