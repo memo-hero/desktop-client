@@ -1,4 +1,5 @@
-﻿using LiteDB;
+﻿using ClientBack.Domain.Login;
+using LiteDB;
 
 namespace ClientBack.Infrastructure.Repository
 {

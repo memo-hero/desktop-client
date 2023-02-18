@@ -1,7 +1,7 @@
 ﻿using ClientBack.Infrastructure.LoginProvider;
 using System;
 
-namespace ClientBack.Infrastructure.Repository
+namespace ClientBack.Domain.Login
 {
     public class Login
     {

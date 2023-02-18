@@ -1,6 +1,6 @@
-﻿using ClientBack.Infrastructure.HTTP;
+﻿using ClientBack.Domain.Login;
+using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.LoginProvider;
-using ClientBack.Infrastructure.Repository;
 using ClientBack.Infrastructure.Services;
 using System;
 using System.Threading.Tasks;

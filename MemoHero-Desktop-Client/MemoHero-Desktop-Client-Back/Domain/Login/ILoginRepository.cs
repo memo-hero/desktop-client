@@ -1,4 +1,4 @@
-﻿namespace ClientBack.Infrastructure.Repository
+﻿namespace ClientBack.Domain.Login
 {
     internal interface ILoginRepository
     {

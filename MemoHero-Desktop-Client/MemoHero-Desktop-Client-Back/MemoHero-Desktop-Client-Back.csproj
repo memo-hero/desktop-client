@@ -56,6 +56,7 @@
     <Compile Include="Domain\Cards\Card.cs" />
     <Compile Include="Domain\Cards\Category.cs" />
     <Compile Include="Domain\Exceptions\CannotConnectToRemoteService.cs" />
+    <Compile Include="Domain\Login\ILoginRepository.cs" />
     <Compile Include="Domain\Study\StudyResult.cs" />
     <Compile Include="Domain\User\User.cs" />
     <Compile Include="Infrastructure\Helpers\HashTool.cs" />
@@ -75,7 +76,6 @@
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />
     <Compile Include="Infrastructure\LoginProvider\ILoginService.cs" />
     <Compile Include="Infrastructure\LoginProvider\LoginResult.cs" />
-    <Compile Include="Infrastructure\Repository\ILoginRepository.cs" />
     <Compile Include="Infrastructure\Repository\LiteDbLoginRepository.cs" />
     <Compile Include="Infrastructure\Repository\Login.cs" />
     <Compile Include="Infrastructure\Services\ClientBackServiceProvider.cs" />
