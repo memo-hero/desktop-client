@@ -140,7 +140,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Services\ExceptionHandler\ExceptionHandlerService.cs" />
+    <Compile Include="Services\ExceptionHandler\ExceptionHandler.cs" />
     <Compile Include="Services\FileManagement\FileManager.cs" />
     <Compile Include="Services\Localization\LocalizableControl.cs" />
     <Compile Include="Services\Localization\LocalizableControlCaption.cs" />

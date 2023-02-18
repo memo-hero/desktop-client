@@ -59,13 +59,6 @@ namespace MemoHeroDesktopClient.Domain
 
         internal event UserLoginHandler UserLoggedIn;
         internal static ILocalization LocalizationService => localizationService;
-        internal async void CheckService()
-        {
-            if (await memoCore.IsServiceOnline()) return;
-
-            MessagesRepository.ShowServiceOffline();
-            login.Close();
-        }
 
         internal void CloseApplication() => login.Close();
 
@@ -225,13 +218,13 @@ namespace MemoHeroDesktopClient.Domain
         }
         private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
         {
-            var card = await memoCore.CreateCardAsync(args.newCard);
+            await memoCore.CreateCardAsync(args.newCard);
             dueCardsControl.UpdateGrid();
         }
 
         private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
         {
-            await ExceptionHandlerService.Execute(async () =>
+            await ExceptionHandler.Execute(async () =>
             {
                 var result = await memoCore.StudyCard(args.Card, args.Quality);
                 user.Stats = result.UserStats;

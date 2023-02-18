@@ -1,5 +1,11 @@
-﻿using MemoHeroDesktopClient.Domain;
+﻿using ClientBack.Core;
+using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Domain;
+using MemoHeroDesktopClient.Services;
+using MemoHeroDesktopClient.Services.ExceptionHandler;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient
@@ -10,16 +16,19 @@ namespace MemoHeroDesktopClient
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static async Task Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var uiCore = new UICore();
-            uiCore.CheckService();
-            uiCore.StartLoginProcess(false);
-
-            Application.Run(uiCore.login);
+            if (!ExceptionHandler.Execute(MemoHeroCore.IsLocalDbAvailable)) return;
+            if (await ExceptionHandler.Execute(MemoHeroCore.IsServiceOnline))
+            {
+                var uiCore = new UICore();
+                uiCore.StartLoginProcess(false);
+                Application.Run(uiCore.login);
+            }
+            else MessagesRepository.ShowServiceOffline();
         }
     }
 }

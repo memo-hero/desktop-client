@@ -23,7 +23,11 @@ namespace ClientBack.Infrastructure.HTTP
             this.serializer = serializer;
         }
 
-        public async Task<bool> IsServiceOnline() => await IsPostSuccessful(new RestRequest("healthz"));
+        public async Task<bool> IsServiceOnline()
+        {
+            logger.Log($"Trying to connect to { baseUrl }", Severity.INFO);
+            return await IsPostSuccessful(new RestRequest("healthz"));
+        }
 
         public async Task<StoredUser> CreateUser(NewUser newUser)
         {
@@ -105,67 +109,26 @@ namespace ClientBack.Infrastructure.HTTP
 
         private async Task<T> MakePost<T>(RestRequest request)
         {
-            try
-            {
-                var result = await client.PostAsync(request);
-                return serializer.Deserialize<T>(result.Content);
-            }
-            catch (Exception ex)
-            {
-                logger.Log(ex);
-                CheckForUnavailableService(ex);
-                return default;
-            }
+            var result = await client.PostAsync(request);
+            return serializer.Deserialize<T>(result.Content);
         }
 
         private async Task<bool> IsPostSuccessful(RestRequest request)
         {
-            try
-            {
-                var result = await client.PostAsync(request);
-                return result.IsSuccessful;
-            }
-            catch (Exception ex)
-            {
-                logger.Log(ex);
-                return false;
-            }
+            var result = await client.PostAsync(request);
+            return result.IsSuccessful;
         }
 
         private async Task<T> MakeGet<T>(RestRequest request)
         {
-            try
-            {
-                var result = await client.GetAsync(request);
-                return serializer.Deserialize<T>(result.Content);
-            }
-            catch (Exception ex)
-            {
-                logger.Log(ex);
-                CheckForUnavailableService(ex);
-                return default;
-            }
+            var result = await client.GetAsync(request);
+            return serializer.Deserialize<T>(result.Content);
         }
 
         private async Task<bool> IsDeleteSuccessful(RestRequest request)
         {
-            try
-            {
-                var result = await client.DeleteAsync(request);
-                return result.IsSuccessful;
-            }
-            catch (Exception ex)
-            {
-                logger.Log(ex);
-                CheckForUnavailableService(ex);
-                return default;
-            }
-        }
-
-        private void CheckForUnavailableService(Exception exception)
-        {
-            if (exception.InnerException.Message == "Unable to connect to the remote server")
-                throw new CannotConnectToRemoteService(exception.Message);
+            var result = await client.DeleteAsync(request);
+            return result.IsSuccessful;
         }
     }
 }

@@ -82,6 +82,7 @@
     <Compile Include="Infrastructure\Repository\LiteDbLoginRepository.cs" />
     <Compile Include="Infrastructure\Services\ClientBackServiceProvider.cs" />
     <Compile Include="Infrastructure\Services\ConsoleLogger.cs" />
+    <Compile Include="Infrastructure\Services\ExceptionHandler.cs" />
     <Compile Include="Infrastructure\Services\LiteDBLiteDatabase.cs" />
     <Compile Include="Infrastructure\Services\LiteDbLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,10 +8,15 @@ namespace ClientBack.Infrastructure.Services
     {
         private readonly LiteDatabase database;
         private readonly string tableName = "logs";
+        private readonly Severity minimumSeverity = Severity.INFO;
 
         public LiteDbLogger(LiteDatabase database) => this.database = database;
 
-        public void Log(Log log) => database.GetCollection<Log>(tableName).Upsert(log);
+        public void Log(Log log)
+        {
+            if (minimumSeverity > log.Severity) return;
+            database.GetCollection<Log>(tableName).Upsert(log);
+        }
 
         public void Log(string message, Severity severity) => Log(new Log(message, severity));
 

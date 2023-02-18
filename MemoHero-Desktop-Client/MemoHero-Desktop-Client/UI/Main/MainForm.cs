@@ -61,13 +61,13 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void btnStudy_ItemClick(object sender, ItemClickEventArgs e) => uiCore.StudyFilteredCards();
 
-        private async void btnServerSync_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandlerService.Execute(uiCore.GetCardsFromServer);
+        private async void btnServerSync_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandler.Execute(uiCore.GetCardsFromServer);
 
-        private async void btnDeleteCard_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandlerService.Execute(uiCore.DeleteSelectedCard);
+        private async void btnDeleteCard_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandler.Execute(uiCore.DeleteSelectedCard);
 
         private void btnExport_ItemClick(object sender, ItemClickEventArgs e) => uiCore.ExportCards();
 
-        private async void btnImport_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandlerService.Execute(uiCore.ImportCards);
+        private async void btnImport_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandler.Execute(uiCore.ImportCards);
 
         private void btnAbout_ItemClick(object sender, ItemClickEventArgs e)
         {

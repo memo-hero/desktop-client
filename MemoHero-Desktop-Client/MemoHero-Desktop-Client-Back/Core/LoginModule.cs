@@ -1,5 +1,5 @@
-﻿using ClientBack.Domain.Login;
-using ClientBack.Infrastructure.HTTP;
+﻿using ClientBack.Domain.Logger;
+using ClientBack.Domain.Login;
 using ClientBack.Infrastructure.LoginProvider;
 using ClientBack.Infrastructure.Services;
 using System;
@@ -9,15 +9,18 @@ namespace ClientBack.Core
 {
     internal class LoginModule
     {
+        private static readonly ILogger logger = ClientBackServiceProvider.logger;
         private readonly string envVarName = "memohero-lastlogin-user";
         private readonly ILoginService loginService = ClientBackServiceProvider.LoginService;
         private readonly ILoginRepository repository = ClientBackServiceProvider.LoginRepository;
 
         internal bool IsLoggedIn()
         {
+            logger.Log("Retrieving environment variable...", Severity.INFO);
             var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
             if (lastUser == null) return false;
 
+            logger.Log("Retrieving user from local db...", Severity.INFO);
             var login = repository.Retrieve(lastUser);
             if (login == null) return false;
             return login.Expiration > DateTime.Now;
@@ -25,7 +28,10 @@ namespace ClientBack.Core
 
         internal LoginResult GetUserFromLocalDb()
         {
+            logger.Log("Retrieving environment variable...", Severity.INFO);
             var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
+            
+            logger.Log("Retrieving user from local db...", Severity.INFO);
             var login = repository.Retrieve(lastUser);
 
             return new LoginResult
@@ -37,6 +43,7 @@ namespace ClientBack.Core
 
         internal async Task<LoginResult> Login()
         {
+            logger.Log("Retrieving environment variable...", Severity.INFO);
             var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
 
             LoginResult loginResult;
@@ -50,6 +57,7 @@ namespace ClientBack.Core
 
         private async Task<LoginResult> ExistingUserLoginAsync(string lastUser)
         {
+            logger.Log("Retrieving login from local db...", Severity.INFO);
             var login = repository.Retrieve(lastUser);
 
             if (login == null) return await NewUserLoginAsync();
@@ -72,13 +80,15 @@ namespace ClientBack.Core
 
         private async Task<LoginResult> InternalLogin()
         {
-            var result = await loginService.Login();
+            logger.Log("Invoking Auth0 Service...", Severity.INFO);
+            var result = await ExceptionHandler.Execute(loginService.Login);
             repository.Store(result);
             return result;
         }
 
         internal void Logout()
         {
+            logger.Log("Loging out...", Severity.INFO);
             loginService.Logout();
             var lastUser = Environment.GetEnvironmentVariable(envVarName, EnvironmentVariableTarget.User);
             repository.RemoveLastLogin(lastUser);
@@ -86,6 +96,7 @@ namespace ClientBack.Core
 
         internal void UpdateLoginLocale(string newLocale)
         {
+            logger.Log("Updating user locale...", Severity.INFO);
             var login = GetUserFromLocalDb();
             login.user.Locale = newLocale;
             repository.Store(login);

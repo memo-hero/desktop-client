@@ -1,4 +1,5 @@
 ﻿using ClientBack.Domain.Cards;
+using ClientBack.Domain.Exceptions;
 using ClientBack.Domain.Study;
 using ClientBack.Domain.User;
 using ClientBack.Infrastructure.Helpers;
@@ -20,7 +21,7 @@ namespace ClientBack.Core
 
         public string GetLastLocale() => loginModule.GetUserFromLocalDb().user.Locale;
 
-        private ISerializer serializer = new NewtonSoftSerializer();
+        private readonly ISerializer serializer = new NewtonSoftSerializer();
 
         public List<Card> UserCards = new List<Card>();
         public List<Card> DueCards;
@@ -32,10 +33,13 @@ namespace ClientBack.Core
             userModule = new UserModule(ClientBackServiceProvider.RestClient);
         }
 
-        public async Task<bool> IsServiceOnline()
+        public static bool IsLocalDbAvailable()
+            => ClientBackServiceProvider.LiteDatabase.Engine.Info() != null;
+
+        public static async Task<bool> IsServiceOnline() => await ExceptionHandler.Execute(async () =>
         {
             return await ClientBackServiceProvider.RestClient.IsServiceOnline();
-        }
+        });
 
         public bool IsLoggedIn()
         {
@@ -60,16 +64,26 @@ namespace ClientBack.Core
         public async Task<bool> GetUserCards()
         {
             UserCards = await cardsModule.GetUserCards(currentUser.Id);
+            if (UserCards == null) throw new CannotConnectToRemoteService();
+
             return true;
         }
 
         public async Task<bool> GetUserDueCards()
         {
             DueCards = await cardsModule.GetDueCards(currentUser.Id);
+            if (DueCards == null) throw new CannotConnectToRemoteService();
+
             return true;
         }
 
-        public async Task<User> GetUserInfo(User user) => await userModule.GetUserInfo(user);
+        public async Task<User> GetUserInfo(User user)
+        {
+            user = await userModule.GetUserInfo(user);
+            if (user == null) throw new CannotConnectToRemoteService();
+            
+            return user;
+        }
 
         public void Logout()
         {
