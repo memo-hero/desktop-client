@@ -55,6 +55,7 @@
     <Compile Include="Core\UserModule.cs" />
     <Compile Include="Domain\Cards\Card.cs" />
     <Compile Include="Domain\Cards\Category.cs" />
+    <Compile Include="Domain\Exceptions\CannotConnectToRemoteService.cs" />
     <Compile Include="Domain\User\User.cs" />
     <Compile Include="Infrastructure\Helpers\HashTool.cs" />
     <Compile Include="Domain\User\CategoryProperty.cs" />

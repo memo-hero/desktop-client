@@ -17,6 +17,13 @@ namespace MemoHeroDesktopClient.Common
             MessageBoxIcon.Error
         );
 
+        internal static void ShowUnexpectedError(string message) => MessageBox.Show(
+            string.Format(GetText(LocalizedMessage.UNEXPECTED_ERROR_MESSAGE), message),
+            GetText(LocalizedMessage.UNEXPECTED_ERROR_CAPTION),
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error
+        );
+
         internal static void ShowHPLeftMessage() => MessageBox.Show(
             GetText(LocalizedMessage.NO_SERVICE_MESSAGE),
             GetText(LocalizedMessage.NO_SERVICE_CAPTION),

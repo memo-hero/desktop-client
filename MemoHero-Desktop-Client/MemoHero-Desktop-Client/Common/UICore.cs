@@ -1,15 +1,18 @@
 ﻿using ClientBack.Core;
 using ClientBack.Domain.Cards;
+using ClientBack.Domain.Exceptions;
 using ClientBack.Domain.User;
 using ClientBack.Infrastructure.HTTP;
 using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.UI.EditCard;
 using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
 using MemoHeroDesktopClient.UI.StudyCards;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static MemoHeroDesktopClient.Infrastructure.Translation.LocalizationService;
 
@@ -85,10 +88,10 @@ namespace MemoHeroDesktopClient.Common
             panel.Controls.Add(cardListControl);
         }
 
-        internal void ImportCards()
+        internal async Task ImportCards()
         {
             var content = FileManager.OpenFile();
-            memoCore.ImportCards(content);
+            await memoCore.ImportCards(content);
             UpdateDueCardsControl();
         }
 
@@ -98,7 +101,7 @@ namespace MemoHeroDesktopClient.Common
             if(cards != null) FileManager.SaveFile(cards);
         }
 
-        internal async void DeleteSelectedCard()
+        internal async Task DeleteSelectedCard()
         {
             var selectedCard = cardListControl.GetSelectedCard();
             if (selectedCard == null) return;
@@ -108,13 +111,13 @@ namespace MemoHeroDesktopClient.Common
             {
                 if (await memoCore.DeleteCard(selectedCard))
                 {
-                    UpdateCardListControl();
+                    await UpdateCardListControl();
                     UpdateDueCardsControl();
                 }
             }
         }
 
-        private async void UpdateCardListControl()
+        private async Task UpdateCardListControl()
         {
             await memoCore.GetUserCards();
             cardListControl.SetDataSource(ref memoCore.UserCards);
@@ -128,7 +131,7 @@ namespace MemoHeroDesktopClient.Common
             dueCardsControl.UpdateGrid();
         }
 
-        internal void GetCardsFromServer() => UpdateCardListControl();
+        internal async Task GetCardsFromServer() => await UpdateCardListControl();
 
         internal void StudyFilteredCards()
         {
@@ -143,10 +146,12 @@ namespace MemoHeroDesktopClient.Common
 
         private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
         {
-            var result = await memoCore.StudyCard(args.Card, args.Quality);
-            user.Stats = result.UserStats;
-            userStatsControl.UpdateTableStats(user);
-            OnStudyResult(result);
+            await ExceptionHandlerService.Execute(async () => {
+                var result = await memoCore.StudyCard(args.Card, args.Quality);
+                user.Stats = result.UserStats;
+                userStatsControl.UpdateTableStats(user);
+                OnStudyResult(result);
+            });
         }
 
         protected virtual void OnStudyResult(StudyResult result) => StudyResult(this, new StudyResultHandlerArgs(result));

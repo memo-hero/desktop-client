@@ -62,10 +62,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             UpdateStatsPanel();
         }
 
-        private void UpdateStatsPanel()
-        {
-            studyStatsControl.UpdateStats(user.Stats, currentCard.Category);
-        }
+        private void UpdateStatsPanel() => studyStatsControl.UpdateStats(user.Stats, currentCard.Category);
 
         private void LoadLocalizableControls()
         {

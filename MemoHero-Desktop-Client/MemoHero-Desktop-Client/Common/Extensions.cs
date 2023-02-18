@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using MemoHeroDesktopClient.Domain.Exceptions;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace MemoHeroDesktopClient.Common
                 }
             }
 
-            throw new ArgumentException("Not found.", nameof(description));
+            throw new EnumValueNotFound(description);
         }
     }
 }

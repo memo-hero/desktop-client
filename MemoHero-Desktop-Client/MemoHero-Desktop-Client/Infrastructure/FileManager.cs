@@ -36,9 +36,6 @@ namespace MemoHeroDesktopClient.Infrastructure
 
         internal static string GetDefaultLanguageContent(string locale)
         {
-            //if (locale == "EN")
-            //    return new StreamReader(new MemoryStream(Properties.Resources.EN), Encoding.GetEncoding(65000)).ReadToEnd();
-
             var fileContent = Properties.Resources.ResourceManager.GetObject(locale.ToUpper());
             return new StreamReader(new MemoryStream((byte[])fileContent), Encoding.GetEncoding(65000)).ReadToEnd();
         }

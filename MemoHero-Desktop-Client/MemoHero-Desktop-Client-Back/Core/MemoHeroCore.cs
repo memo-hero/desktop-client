@@ -5,6 +5,7 @@ using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ClientBack.Core
@@ -97,12 +98,13 @@ namespace ClientBack.Core
             return false;
         }
 
-        public async void ImportCards(string content)
+        public async Task ImportCards(string content)
         {
             if (string.IsNullOrWhiteSpace(content)) return;
 
             var cards = serializer.Deserialize<List<Card>>(content);
-            cards.ForEach(async x => await CreateCardAsync(x));
+            var tasks = cards.Select(x => CreateCardAsync(x));
+            await Task.WhenAll(tasks);
             await GetUserDueCards();
         }
 

@@ -12,6 +12,8 @@
   "ENGLISH_LEVEL_UP_CAPTION": "Level Up!",
   "ENGLISH_CONFIRM_CARD_DELETION_MESSAGE": "Are you sure you want to delete the selected card?",
   "ENGLISH_CONFIRM_CARD_DELETION_CAPTION": "Deleting card",
+  "ENGLISH_UNEXPECTED_ERROR_MESSAGE": "An unexpected error happened:\n{0}",
+  "ENGLISH_UNEXPECTED_ERROR_CAPTION": "Error",
   "ENGLISH_BTN_LOGOUT": "Log Out",
   "ENGLISH_BTN_STUDY": "Study Cards",
   "ENGLISH_BTN_SERVER_SYNC": "Sync with server",

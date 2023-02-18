@@ -121,6 +121,7 @@
     <Compile Include="CustomControls\UserStatsControl.Designer.cs">
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Exceptions\EnumValueNotFound.cs" />
     <Compile Include="Infrastructure\FileManager.cs" />
     <Compile Include="Infrastructure\ILocalizationRepository.cs" />
     <Compile Include="Infrastructure\Localization.cs" />
@@ -142,6 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\ExceptionHandler\ExceptionHandlerService.cs" />
     <Compile Include="UI\About\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,5 +303,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

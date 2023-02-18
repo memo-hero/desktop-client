@@ -1,12 +1,15 @@
-﻿using DevExpress.Utils.Extensions;
+﻿using ClientBack.Domain.Exceptions;
+using DevExpress.Utils.Extensions;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
+using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.UI.About;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient.UI.MainWindow
@@ -59,13 +62,13 @@ namespace MemoHeroDesktopClient.UI.MainWindow
 
         private void btnStudy_ItemClick(object sender, ItemClickEventArgs e) => uiCore.StudyFilteredCards();
 
-        private void btnServerSync_ItemClick(object sender, ItemClickEventArgs e) => uiCore.GetCardsFromServer();
+        private async void btnServerSync_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandlerService.Execute(uiCore.GetCardsFromServer);
 
-        private void btnDeleteCard_ItemClick(object sender, ItemClickEventArgs e) => uiCore.DeleteSelectedCard();
+        private async void btnDeleteCard_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandlerService.Execute(uiCore.DeleteSelectedCard);
 
         private void btnExport_ItemClick(object sender, ItemClickEventArgs e) => uiCore.ExportCards();
 
-        private void btnImport_ItemClick(object sender, ItemClickEventArgs e) => uiCore.ImportCards();
+        private async void btnImport_ItemClick(object sender, ItemClickEventArgs e) => await ExceptionHandlerService.Execute(uiCore.ImportCards);
 
         private void btnAbout_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -73,13 +76,12 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         }
 
         private void btnSetLanguageEnglish_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            localizationService.SetISOCode(LocalizationService.ISOCode.ENGLISH);
-        }
+            => localizationService.SetISOCode(LocalizationService.ISOCode.ENGLISH);
 
         private void btnSetLanguageSpanish_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            localizationService.SetISOCode(LocalizationService.ISOCode.SPANISH);
-        }
+            => localizationService.SetISOCode(LocalizationService.ISOCode.SPANISH);
     }
+
+    
+
 }

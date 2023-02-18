@@ -1,4 +1,5 @@
 ﻿using ClientBack.Domain.Cards;
+using ClientBack.Domain.Exceptions;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -107,7 +108,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                CheckForUnavailableService(ex);
                 return default;
             }
         }
@@ -121,7 +122,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                CheckForUnavailableService(ex);
                 return default;
             }
         }
@@ -135,7 +136,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                CheckForUnavailableService(ex);
                 return default;
             }
         }
@@ -149,9 +150,15 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                CheckForUnavailableService(ex);
                 return default;
             }
+        }
+
+        private void CheckForUnavailableService(Exception exception)
+        {
+            if (exception.InnerException.Message == "Unable to connect to the remote server")
+                throw new CannotConnectToRemoteService(exception.Message);
         }
     }
 }
