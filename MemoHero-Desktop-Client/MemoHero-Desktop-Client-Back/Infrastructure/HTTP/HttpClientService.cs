@@ -1,6 +1,8 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.Exceptions;
+using ClientBack.Domain.Logger;
 using ClientBack.Domain.Study;
+using ClientBack.Infrastructure.Services;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,7 @@ namespace ClientBack.Infrastructure.HTTP
     {
         private static RestClient client;
         private readonly ISerializer serializer;
+        private readonly ILogger logger = ClientBackServiceProvider.logger;
         private readonly string baseUrl = "http://localhost:8080/";
 
         public HttpClientService(ISerializer serializer)
@@ -109,6 +112,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
+                logger.Log(ex.Message);
                 CheckForUnavailableService(ex);
                 return default;
             }
@@ -123,8 +127,8 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                CheckForUnavailableService(ex);
-                return default;
+                logger.Log(ex.Message);
+                return false;
             }
         }
 
@@ -137,6 +141,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
+                logger.Log(ex.Message);
                 CheckForUnavailableService(ex);
                 return default;
             }
@@ -151,6 +156,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
+                logger.Log(ex.Message);
                 CheckForUnavailableService(ex);
                 return default;
             }

@@ -34,8 +34,7 @@ namespace ClientBack.Core
 
         public async Task<bool> IsServiceOnline()
         {
-            var client = ClientBackServiceProvider.RestClient;
-            return await client.IsServiceOnline();
+            return await ClientBackServiceProvider.RestClient.IsServiceOnline();
         }
 
         public bool IsLoggedIn()
