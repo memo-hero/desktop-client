@@ -1,8 +1,8 @@
 ﻿using ClientBack.Domain.Cards;
 using DevExpress.Utils.Extensions;
 using DevExpress.XtraEditors;
-using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
+using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using System.Linq;

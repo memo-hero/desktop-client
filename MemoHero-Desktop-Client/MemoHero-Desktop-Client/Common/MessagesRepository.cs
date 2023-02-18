@@ -1,4 +1,4 @@
-﻿using ClientBack.Infrastructure.HTTP;
+﻿using ClientBack.Domain.Study;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using System.Linq;
@@ -31,7 +31,6 @@ namespace MemoHeroDesktopClient.Common
             MessageBoxIcon.Error
         );
         
-
         internal static void ShowLevelUpMessage(StudyResult studyresult)
         {
             var categoryEnum = studyresult.Category.Keys.First();

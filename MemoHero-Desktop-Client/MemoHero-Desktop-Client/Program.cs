@@ -1,4 +1,4 @@
-﻿using MemoHeroDesktopClient.Common;
+﻿using MemoHeroDesktopClient.Domain;
 using System;
 using System.Windows.Forms;
 

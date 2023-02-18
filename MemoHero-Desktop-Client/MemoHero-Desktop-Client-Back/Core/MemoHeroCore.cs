@@ -1,4 +1,5 @@
 ﻿using ClientBack.Domain.Cards;
+using ClientBack.Domain.Study;
 using ClientBack.Domain.User;
 using ClientBack.Infrastructure.Helpers;
 using ClientBack.Infrastructure.HTTP;

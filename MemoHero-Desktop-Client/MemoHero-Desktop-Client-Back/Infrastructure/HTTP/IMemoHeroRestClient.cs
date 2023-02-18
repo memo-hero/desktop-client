@@ -1,4 +1,5 @@
 ﻿using ClientBack.Domain.Cards;
+using ClientBack.Domain.Study;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

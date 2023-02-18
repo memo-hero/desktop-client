@@ -1,4 +1,5 @@
-﻿using MemoHeroDesktopClient.Common;
+﻿using MemoHeroDesktopClient.Domain;
+using MemoHeroDesktopClient.Domain.Events;
 using System;
 
 namespace MemoHeroDesktopClient.UI.Login

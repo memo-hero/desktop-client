@@ -1,15 +1,13 @@
-﻿using ClientBack.Domain.Exceptions;
-using DevExpress.Utils.Extensions;
+﻿using DevExpress.Utils.Extensions;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
-using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Domain;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
 using MemoHeroDesktopClient.UI.About;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MemoHeroDesktopClient.UI.MainWindow

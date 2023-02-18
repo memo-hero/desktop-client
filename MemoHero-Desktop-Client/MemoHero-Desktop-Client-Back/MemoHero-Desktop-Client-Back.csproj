@@ -56,6 +56,7 @@
     <Compile Include="Domain\Cards\Card.cs" />
     <Compile Include="Domain\Cards\Category.cs" />
     <Compile Include="Domain\Exceptions\CannotConnectToRemoteService.cs" />
+    <Compile Include="Domain\Study\StudyResult.cs" />
     <Compile Include="Domain\User\User.cs" />
     <Compile Include="Infrastructure\Helpers\HashTool.cs" />
     <Compile Include="Domain\User\CategoryProperty.cs" />
@@ -70,7 +71,6 @@
     <Compile Include="Infrastructure\Helpers\NewtonSoftSerializer.cs" />
     <Compile Include="Infrastructure\HTTP\NewUser.cs" />
     <Compile Include="Infrastructure\HTTP\StoredUser.cs" />
-    <Compile Include="Infrastructure\HTTP\StudyResult.cs" />
     <Compile Include="Infrastructure\HTTP\UpdatedCard.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />
     <Compile Include="Infrastructure\LoginProvider\ILoginService.cs" />

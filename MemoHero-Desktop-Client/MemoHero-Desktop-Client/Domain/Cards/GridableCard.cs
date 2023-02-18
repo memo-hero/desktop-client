@@ -1,9 +1,10 @@
 ﻿using ClientBack.Domain.Cards;
+using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using System;
 
-namespace MemoHeroDesktopClient.Common
+namespace MemoHeroDesktopClient.Domain.Cards
 {
     internal class GridableCard
     {

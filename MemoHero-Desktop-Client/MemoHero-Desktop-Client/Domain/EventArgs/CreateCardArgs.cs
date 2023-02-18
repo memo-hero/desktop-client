@@ -1,7 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
 using System;
 
-namespace MemoHeroDesktopClient.Common
+namespace MemoHeroDesktopClient.Domain.Events
 {
     internal class CreateCardArgs : EventArgs
     {

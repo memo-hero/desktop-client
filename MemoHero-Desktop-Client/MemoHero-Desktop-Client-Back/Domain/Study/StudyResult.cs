@@ -1,9 +1,10 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.User;
+using ClientBack.Infrastructure.HTTP;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace ClientBack.Infrastructure.HTTP
+namespace ClientBack.Domain.Study
 {
     public class StudyResult
     {

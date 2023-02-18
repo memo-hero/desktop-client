@@ -1,5 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.Exceptions;
+using ClientBack.Domain.Study;
 using RestSharp;
 using System;
 using System.Collections.Generic;

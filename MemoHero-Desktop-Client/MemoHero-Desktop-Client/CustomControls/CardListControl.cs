@@ -1,6 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
 using DevExpress.XtraGrid.Views.Base;
-using MemoHeroDesktopClient.Common;
+using MemoHeroDesktopClient.Domain.Cards;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

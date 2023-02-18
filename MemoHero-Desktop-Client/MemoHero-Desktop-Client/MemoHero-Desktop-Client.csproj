@@ -88,9 +88,6 @@
   <ItemGroup>
     <Compile Include="Common\DateTimeHelper.cs" />
     <Compile Include="Common\MessagesRepository.cs" />
-    <Compile Include="Common\StudyResultHandlerArgs.cs" />
-    <Compile Include="Common\UICore.cs" />
-    <Compile Include="Common\UserLoginResultArgs.cs" />
     <Compile Include="CustomControls\CardFormControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,7 +118,12 @@
     <Compile Include="CustomControls\UserStatsControl.Designer.cs">
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Domain\Cards\GridableCard.cs" />
+    <Compile Include="Domain\EventArgs\CreateCardArgs.cs" />
+    <Compile Include="Domain\EventArgs\StudyResultHandlerArgs.cs" />
+    <Compile Include="Domain\EventArgs\UserLoginResultArgs.cs" />
     <Compile Include="Domain\Exceptions\EnumValueNotFound.cs" />
+    <Compile Include="Domain\UICore.cs" />
     <Compile Include="Infrastructure\FileManager.cs" />
     <Compile Include="Infrastructure\ILocalizationRepository.cs" />
     <Compile Include="Infrastructure\Localization.cs" />
@@ -163,7 +165,6 @@
     <Compile Include="UI\Login\LoginSplash.Designer.cs">
       <DependentUpon>LoginSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\GridableCard.cs" />
     <Compile Include="UI\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,7 +173,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\CreateCardArgs.cs" />
     <Compile Include="UI\NewCard\NewCardForm.cs">
       <SubType>Form</SubType>
     </Compile>

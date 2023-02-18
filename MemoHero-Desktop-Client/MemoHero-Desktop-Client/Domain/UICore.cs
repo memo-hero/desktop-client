@@ -1,9 +1,10 @@
 ﻿using ClientBack.Core;
 using ClientBack.Domain.Cards;
-using ClientBack.Domain.Exceptions;
+using ClientBack.Domain.Study;
 using ClientBack.Domain.User;
-using ClientBack.Infrastructure.HTTP;
+using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.CustomControls;
+using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Infrastructure;
 using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static MemoHeroDesktopClient.Infrastructure.Translation.LocalizationService;
 
-namespace MemoHeroDesktopClient.Common
+namespace MemoHeroDesktopClient.Domain
 {
     internal class UICore
     {
@@ -40,7 +41,7 @@ namespace MemoHeroDesktopClient.Common
 
         // User Data
         private User user;
-        
+
         // Controls
         private Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
 
@@ -98,7 +99,7 @@ namespace MemoHeroDesktopClient.Common
         internal void ExportCards()
         {
             var cards = memoCore.ExportCards();
-            if(cards != null) FileManager.SaveFile(cards);
+            if (cards != null) FileManager.SaveFile(cards);
         }
 
         internal async Task DeleteSelectedCard()
@@ -146,7 +147,8 @@ namespace MemoHeroDesktopClient.Common
 
         private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)
         {
-            await ExceptionHandlerService.Execute(async () => {
+            await ExceptionHandlerService.Execute(async () =>
+            {
                 var result = await memoCore.StudyCard(args.Card, args.Quality);
                 user.Stats = result.UserStats;
                 userStatsControl.UpdateTableStats(user);
@@ -168,7 +170,7 @@ namespace MemoHeroDesktopClient.Common
         {
             newCardForm = new NewCardForm();
             newCardForm.CardCreated += NewCardWindow_CardCreated;
-            
+
             newCardForm.ShowDialog();
         }
 
@@ -176,7 +178,7 @@ namespace MemoHeroDesktopClient.Common
         {
             var selectedCard = cardListControl.GetSelectedCard();
             if (selectedCard == null) return;
-            
+
             editCardForm = new EditCardForm(selectedCard);
             editCardForm.CardEdited += EditCardWindow_CardEdited;
             editCardForm.ShowDialog();
@@ -241,7 +243,7 @@ namespace MemoHeroDesktopClient.Common
                 await memoCore.GetUserDueCards();
                 mainMenuForm.Show();
                 login.Hide();
-                
+
                 return;
             }
 
@@ -250,9 +252,6 @@ namespace MemoHeroDesktopClient.Common
 
         protected virtual void OnUserLoggedIn(bool failed) => UserLoggedIn(this, new UserLoginResultArgs(failed));
 
-        internal void CloseApplication()
-        {
-            login.Close();
-        }
+        internal void CloseApplication() => login.Close();
     }
 }

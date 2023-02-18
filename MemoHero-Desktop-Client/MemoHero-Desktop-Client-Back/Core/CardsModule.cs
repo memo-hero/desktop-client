@@ -1,7 +1,7 @@
 ﻿using ClientBack.Domain.Cards;
+using ClientBack.Domain.Study;
 using ClientBack.Domain.User;
 using ClientBack.Infrastructure.HTTP;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,7 +26,8 @@ namespace ClientBack.Core
 
         internal async Task<bool> UpdateCard(User currentUser, Card updatedCard) => await restClient.UpdateCard(currentUser.Id, new UpdatedCard(updatedCard));
 
-        internal async Task<StudyResult> StudyCard(User currentUser, Card card, int quality) => await restClient.StudyCard(currentUser.Id, card.Id, quality);
+        internal async Task<StudyResult> StudyCard(User currentUser, Card card, int quality)
+            => await restClient.StudyCard(currentUser.Id, card.Id, quality);
 
         internal async Task<List<Card>> GetDueCards(string userId) => await restClient.GetUserDueCards(userId);
 

@@ -1,7 +1,7 @@
-﻿using ClientBack.Infrastructure.HTTP;
+﻿using ClientBack.Domain.Study;
 using System;
 
-namespace MemoHeroDesktopClient.Common
+namespace MemoHeroDesktopClient.Domain.Events
 {
     internal class StudyResultHandlerArgs : EventArgs
     {
