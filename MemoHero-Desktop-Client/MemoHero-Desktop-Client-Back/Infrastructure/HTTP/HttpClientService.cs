@@ -112,7 +112,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                logger.Log(ex);
                 CheckForUnavailableService(ex);
                 return default;
             }
@@ -127,7 +127,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                logger.Log(ex);
                 return false;
             }
         }
@@ -141,7 +141,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                logger.Log(ex);
                 CheckForUnavailableService(ex);
                 return default;
             }
@@ -156,7 +156,7 @@ namespace ClientBack.Infrastructure.HTTP
             }
             catch (Exception ex)
             {
-                logger.Log(ex.Message);
+                logger.Log(ex);
                 CheckForUnavailableService(ex);
                 return default;
             }
