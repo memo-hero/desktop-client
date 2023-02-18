@@ -120,10 +120,10 @@
       <DependentUpon>UserStatsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\Cards\GridableCard.cs" />
-    <Compile Include="Domain\EventArgs\CreateCardArgs.cs" />
-    <Compile Include="Domain\EventArgs\StudyResultHandlerArgs.cs" />
-    <Compile Include="Domain\EventArgs\UserLoginResultArgs.cs" />
+    <Compile Include="Domain\Events\CreateCardArgs.cs" />
     <Compile Include="Domain\Events\LocalizationChangedEventArgs.cs" />
+    <Compile Include="Domain\Events\StudyResultHandlerArgs.cs" />
+    <Compile Include="Domain\Events\UserLoginResultArgs.cs" />
     <Compile Include="Domain\Exceptions\EnumValueNotFound.cs" />
     <Compile Include="Domain\Localization\ILocalizableControl.cs" />
     <Compile Include="Domain\Localization\ILocalization.cs" />
