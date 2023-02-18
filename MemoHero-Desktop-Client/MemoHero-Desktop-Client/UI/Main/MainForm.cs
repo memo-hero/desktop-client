@@ -74,10 +74,10 @@ namespace MemoHeroDesktopClient.UI.MainWindow
         }
 
         private void btnSetLanguageEnglish_ItemClick(object sender, ItemClickEventArgs e)
-            => localizationService.SetISOCode(LocalizationService.ISOCode.ENGLISH);
+            => localizationService.SetISOCode(ISOCode.ENGLISH);
 
         private void btnSetLanguageSpanish_ItemClick(object sender, ItemClickEventArgs e)
-            => localizationService.SetISOCode(LocalizationService.ISOCode.SPANISH);
+            => localizationService.SetISOCode(ISOCode.SPANISH);
     }
 
     

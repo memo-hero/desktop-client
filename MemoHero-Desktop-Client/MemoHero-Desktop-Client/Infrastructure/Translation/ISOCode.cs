@@ -2,14 +2,11 @@
 
 namespace MemoHeroDesktopClient.Infrastructure.Translation
 {
-    internal partial class LocalizationService
+    internal enum ISOCode
     {
-        internal enum ISOCode
-        {
-            [Description("EN")]
-            ENGLISH,
-            [Description("ES")]
-            SPANISH
-        }
+        [Description("EN")]
+        ENGLISH,
+        [Description("ES")]
+        SPANISH
     }
 }

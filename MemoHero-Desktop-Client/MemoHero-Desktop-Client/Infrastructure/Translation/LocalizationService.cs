@@ -2,13 +2,13 @@
 using ClientBack.Infrastructure.HTTP;
 using DevExpress.Utils.Extensions;
 using MemoHeroDesktopClient.Common;
-using System;
+using MemoHeroDesktopClient.Domain.Events;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MemoHeroDesktopClient.Infrastructure.Translation
 {
-    internal partial class LocalizationService
+    internal class LocalizationService
     {
         private readonly Dictionary<LocalizedControl, ILocalizableControl> localizableControls = new Dictionary<LocalizedControl, ILocalizableControl>();
         private readonly ISerializer serializer;
@@ -25,12 +25,6 @@ namespace MemoHeroDesktopClient.Infrastructure.Translation
             this.repository = repository;
             StoreDefaultLocalization("EN", "ES");
             LoadLocalization(locale);
-        }
-
-        internal class LocalizationChangedEventArgs : EventArgs
-        {
-            internal string ISOCode;
-            public LocalizationChangedEventArgs(ISOCode isoCode) => ISOCode = Extensions.GetDescription(isoCode);
         }
 
         private void StoreDefaultLocalization(params string[] locales)

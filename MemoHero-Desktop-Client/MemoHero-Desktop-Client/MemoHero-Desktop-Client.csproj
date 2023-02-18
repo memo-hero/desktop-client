@@ -130,6 +130,7 @@
     <Compile Include="Infrastructure\LocalizationRepository.cs" />
     <Compile Include="Infrastructure\MemoHeroServices.cs" />
     <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Infrastructure\Translation\LocalizationChangedEventArgs.cs" />
     <Compile Include="Infrastructure\Translation\LocalizedControl.cs" />
     <Compile Include="Infrastructure\Translation\ILocalizableControl.cs" />
     <Compile Include="Infrastructure\Translation\ISOCode.cs" />
@@ -303,6 +304,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\Localization\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
