@@ -1,10 +1,8 @@
 ﻿using ClientBack.Core;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Domain;
-using MemoHeroDesktopClient.Services;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,14 +19,18 @@ namespace MemoHeroDesktopClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            UICore uiCore = null;
             if (!ExceptionHandler.Execute(MemoHeroCore.IsLocalDbAvailable)) return;
             if (await ExceptionHandler.Execute(MemoHeroCore.IsServiceOnline))
             {
-                var uiCore = new UICore();
+                uiCore = new UICore();
                 uiCore.StartLoginProcess(false);
                 Application.Run(uiCore.login);
             }
             else MessagesRepository.ShowServiceOffline();
+
+            if (uiCore != null)
+                await uiCore.PushLogsToServer();
         }
     }
 }

@@ -29,6 +29,15 @@ namespace ClientBack.Infrastructure.HTTP
             return await IsPostSuccessful(new RestRequest("healthz"));
         }
 
+        public async Task<bool> PushLogs(string userId, List<LogJson> logs)
+        {
+            var request = new RestRequest("users/{userId}/logs")
+                .AddUrlSegment("userId", userId)
+                .AddStringBody(serializer.Serialize(logs), DataFormat.Json);
+
+            return await IsPostSuccessful(request);
+        }
+
         public async Task<StoredUser> CreateUser(NewUser newUser)
         {
             var request = new RestRequest("users")

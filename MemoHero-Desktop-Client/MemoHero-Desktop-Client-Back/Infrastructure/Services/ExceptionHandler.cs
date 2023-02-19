@@ -1,6 +1,4 @@
-﻿using ClientBack.Domain.Study;
-using ClientBack.Infrastructure.HTTP;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace ClientBack.Infrastructure.Services

@@ -1,6 +1,8 @@
 ﻿using ClientBack.Domain.Logger;
 using LiteDB;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClientBack.Infrastructure.Services
 {
@@ -11,6 +13,11 @@ namespace ClientBack.Infrastructure.Services
         private readonly Severity minimumSeverity = Severity.INFO;
 
         public LiteDbLogger(LiteDatabase database) => this.database = database;
+
+        public List<Log> GetUnpushedLogs() => database
+                .GetCollection<Log>(tableName)
+                .Find(x => x.SentToServer == false)
+                .ToList();
 
         public void Log(Log log)
         {
@@ -24,7 +31,9 @@ namespace ClientBack.Infrastructure.Services
         {
             var message = $"{ exception.Message }\nStackTrace:\n{ exception.StackTrace }";
 
-            Log(new Log(message, Severity.EXCEPTION));
+            Log(new Log(message, Severity.ERROR));
         }
+
+        public void UpdateLogs(List<Log> logs) => logs.ForEach(x => Log(x));
     }
 }

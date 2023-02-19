@@ -9,6 +9,8 @@ namespace ClientBack.Domain.Logger
         public Severity Severity { get; set; }
         public bool SentToServer { get; set; }
 
+        public Log() { }
+
         public Log(string message, Severity severity)
         {
             Id = DateTime.Now;
@@ -22,7 +24,7 @@ namespace ClientBack.Domain.Logger
     {
         INFO,
         WARNING,
-        SEVERE,
-        EXCEPTION,
+        FATAL,
+        ERROR,
     }
 }

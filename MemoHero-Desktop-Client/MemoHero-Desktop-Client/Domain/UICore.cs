@@ -29,6 +29,7 @@ namespace MemoHeroDesktopClient.Domain
         internal NewCardForm newCardForm;
         internal StudyCardsForm studyCardsForm;
         private static readonly ILocalization localizationService = MemoHeroServices.TranslationService;
+
         // Controls
         private readonly Dictionary<string, UserControl> customControls = new Dictionary<string, UserControl>();
 
@@ -245,6 +246,11 @@ namespace MemoHeroDesktopClient.Domain
             await memoCore.GetUserDueCards();
             dueCardsControl.SetDataSource(ref memoCore.DueCards);
             dueCardsControl.UpdateGrid();
+        }
+
+        internal async Task PushLogsToServer()
+        {
+            await memoCore.PushLogs();
         }
     }
 }

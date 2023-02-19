@@ -1,5 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.Exceptions;
+using ClientBack.Domain.Logger;
 using ClientBack.Domain.Study;
 using ClientBack.Domain.User;
 using ClientBack.Infrastructure.Helpers;
@@ -14,10 +15,11 @@ namespace ClientBack.Core
 {
     public class MemoHeroCore
     {
-        private User currentUser;
+        private static readonly ILogger logger = ClientBackServiceProvider.logger;
         private readonly LoginModule loginModule;
         private readonly CardsModule cardsModule;
         private readonly UserModule userModule;
+        private User currentUser;
 
         public string GetLastLocale() => loginModule.GetUserFromLocalDb().user.Locale;
 
@@ -144,6 +146,20 @@ namespace ClientBack.Core
         public void UpdateLocale()
         {
             loginModule.UpdateLoginLocale(currentUser.Locale);
+        }
+
+        public async Task<bool> PushLogs()
+        {
+            var logs = logger.GetUnpushedLogs();
+            var logsJson = logs.Select(x => new LogJson(x)).ToList();
+            if (await ClientBackServiceProvider.RestClient.PushLogs(currentUser.Id, logsJson))
+            {
+                logs.ForEach(x => x.SentToServer = true);
+                logger.UpdateLogs(logs);
+                return true;
+            }
+
+            return false;
         }
     }
 }

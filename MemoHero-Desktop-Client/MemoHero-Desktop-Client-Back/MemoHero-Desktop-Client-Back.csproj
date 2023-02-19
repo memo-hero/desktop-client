@@ -71,6 +71,7 @@
     <Compile Include="Infrastructure\HTTP\IMemoHeroRestClient.cs" />
     <Compile Include="Domain\User\UserStats.cs" />
     <Compile Include="Infrastructure\HTTP\ISerializer.cs" />
+    <Compile Include="Infrastructure\HTTP\LogJson.cs" />
     <Compile Include="Infrastructure\HTTP\NewCard.cs" />
     <Compile Include="Infrastructure\Helpers\NewtonSoftSerializer.cs" />
     <Compile Include="Infrastructure\HTTP\NewUser.cs" />
