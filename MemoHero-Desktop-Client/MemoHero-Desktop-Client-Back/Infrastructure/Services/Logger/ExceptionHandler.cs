@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ClientBack.Infrastructure.Services
+namespace ClientBack.Infrastructure.Services.Logger
 {
     internal static class ExceptionHandler
     {

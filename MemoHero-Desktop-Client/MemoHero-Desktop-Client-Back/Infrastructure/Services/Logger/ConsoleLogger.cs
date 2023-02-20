@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ClientBack.Infrastructure.Services
+namespace ClientBack.Infrastructure.Services.Logger
 {
     public class ConsoleLogger : ILogger
     {

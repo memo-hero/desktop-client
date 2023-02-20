@@ -2,6 +2,7 @@
 using ClientBack.Domain.Login;
 using ClientBack.Infrastructure.LoginProvider;
 using ClientBack.Infrastructure.Services;
+using ClientBack.Infrastructure.Services.Logger;
 using System;
 using System.Threading.Tasks;
 

@@ -4,6 +4,7 @@ using ClientBack.Domain.Study;
 using ClientBack.Domain.User;
 using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.Services;
+using ClientBack.Infrastructure.Services.Logger;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

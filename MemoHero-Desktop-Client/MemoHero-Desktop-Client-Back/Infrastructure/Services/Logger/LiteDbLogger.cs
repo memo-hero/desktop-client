@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ClientBack.Infrastructure.Services
+namespace ClientBack.Infrastructure.Services.Logger
 {
     public class LiteDbLogger : ILogger
     {

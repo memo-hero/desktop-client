@@ -6,6 +6,7 @@ using ClientBack.Domain.User;
 using ClientBack.Infrastructure.Helpers;
 using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.Services;
+using ClientBack.Infrastructure.Services.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
