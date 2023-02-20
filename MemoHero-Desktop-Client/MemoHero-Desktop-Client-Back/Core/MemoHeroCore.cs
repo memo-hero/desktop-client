@@ -21,7 +21,12 @@ namespace ClientBack.Core
         private readonly UserModule userModule;
         private User currentUser;
 
-        public string GetLastLocale() => loginModule.GetUserFromLocalDb().user.Locale;
+        public string GetLastLocale()
+        {
+            var result = loginModule.GetUserFromLocalDb();
+            if (result != null) return result.user.Locale;
+            else return "EN";
+        }
 
         private readonly ISerializer serializer = new NewtonSoftSerializer();
 

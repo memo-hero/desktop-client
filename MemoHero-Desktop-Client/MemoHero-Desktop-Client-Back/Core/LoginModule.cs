@@ -34,6 +34,8 @@ namespace ClientBack.Core
             logger.Log("Retrieving user from local db...", Severity.INFO);
             var login = repository.Retrieve(lastUser);
 
+            if (login == null) return null;
+
             return new LoginResult
             {
                 user = login.User,
