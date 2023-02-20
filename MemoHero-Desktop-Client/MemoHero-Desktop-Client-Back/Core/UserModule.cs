@@ -16,7 +16,6 @@ namespace ClientBack.Core
 
         internal async Task<User> GetUserInfo(User user)
         {
-            user.Id = HashTool.SHA256_hash(user.Email);
             var storedUser = await restClient.RetrieveUser(user.Id);
             if (storedUser == null) storedUser = await restClient.CreateUser(new NewUser(user.Id));
 

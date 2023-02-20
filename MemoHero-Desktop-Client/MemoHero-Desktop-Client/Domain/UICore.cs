@@ -82,7 +82,7 @@ namespace MemoHeroDesktopClient.Domain
         internal void ExportCards()
         {
             var cards = memoCore.ExportCards();
-            if (cards != null) FileManager.SaveFile(cards);
+            if (!string.IsNullOrWhiteSpace(cards)) FileManager.SaveFile(cards);
         }
 
         internal async Task GetCardsFromServer() => await UpdateCardListControl();
@@ -173,6 +173,8 @@ namespace MemoHeroDesktopClient.Domain
         internal void StudyFilteredCards()
         {
             var cards = dueCardsControl.GetCards();
+            if (cards.Count == 0) return;
+
             using (studyCardsForm = new StudyCardsForm(this, ref user, new Queue<Card>(cards), new StudyStatsControl()))
             {
                 studyCardsForm.UserResponded += StudyCardsForm_UserResponded;

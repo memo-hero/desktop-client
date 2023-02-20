@@ -1,5 +1,4 @@
 ﻿using ClientBack.Domain.User;
-using ClientBack.Infrastructure.Helpers;
 using ClientBack.Infrastructure.LoginProvider;
 
 namespace ClientBack
@@ -13,7 +12,7 @@ namespace ClientBack
         {
             return new User
             {
-                Id = HashTool.SHA256_hash(user.Email),
+                Id = user.Id,
                 Nickname = user.Nickname,
                 Email = user.Email,
                 Picture = user.Picture,

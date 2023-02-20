@@ -49,8 +49,11 @@ namespace ClientBack.Infrastructure.HTTP
         public async Task<StoredUser> RetrieveUser(string userId)
         {
             var request = new RestRequest("users/{user}").AddUrlSegment("user", userId);
+            var result = await MakeGet(request);
 
-            return await MakeGet<StoredUser>(request);
+            if (result.IsSuccessStatusCode) return serializer.Deserialize<StoredUser>(result.Content);
+
+            return null;
         }
 
         public async Task<List<Card>> GetUserCards(string userId)
@@ -133,6 +136,8 @@ namespace ClientBack.Infrastructure.HTTP
             var result = await client.GetAsync(request);
             return serializer.Deserialize<T>(result.Content);
         }
+
+        private async Task<RestResponse> MakeGet(RestRequest request) => await client.GetAsync(request);
 
         private async Task<bool> IsDeleteSuccessful(RestRequest request)
         {

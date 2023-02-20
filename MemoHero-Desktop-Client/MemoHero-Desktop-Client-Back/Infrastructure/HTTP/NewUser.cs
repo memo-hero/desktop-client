@@ -3,9 +3,9 @@
     public class NewUser
     {
         public string id;
-        public NewUser(string email)
+        public NewUser(string id)
         {
-            id = email;
+            this.id = id;
         }
     }
 }

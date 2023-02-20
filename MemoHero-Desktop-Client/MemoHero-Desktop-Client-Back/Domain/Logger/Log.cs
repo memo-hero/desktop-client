@@ -13,7 +13,7 @@ namespace ClientBack.Domain.Logger
 
         public Log(string message, Severity severity)
         {
-            Id = DateTime.Now;
+            Id = DateTime.Now.ToUniversalTime();
             Message = message;
             Severity = severity;
             SentToServer = false;

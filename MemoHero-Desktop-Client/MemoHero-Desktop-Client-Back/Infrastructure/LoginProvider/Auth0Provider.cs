@@ -1,6 +1,8 @@
 ﻿using Auth0.OidcClient;
 using ClientBack.Infrastructure.LoginProvider;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace ClientBack
 {
@@ -26,17 +28,50 @@ namespace ClientBack
 
         public async Task<LoginResult> Login()
         {
-            var loginResult = await client.LoginAsync();
+            // Due to multithreading issues, the auth0 client needs to run as single threaded
+            var tcs = new TaskCompletionSource<IdentityModel.OidcClient.LoginResult>();
+            var thread = new Thread(delegate ()
+            {
+                var dispatcher = Dispatcher.CurrentDispatcher;
+                dispatcher.InvokeAsync(async delegate
+                {
+                    var loginResult = await client.LoginAsync();
+                    tcs.SetResult(loginResult);
+                    dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
+                });
+
+                Dispatcher.Run();
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+
+            var result = tcs.Task.Result;
+
             return new LoginResult
             {
-                user = loginResult.IsError ? null : new Auth0User(loginResult.User),
-                expiration = loginResult.AccessTokenExpiration
+                user = result.IsError ? null : new Auth0User(result.User),
+                expiration = result.AccessTokenExpiration
             };
         }
 
-        public async void Logout()
+        public void Logout()
         {
-            await client.LogoutAsync();
+            // Due to multithreading issues, the auth0 client needs to run as single threaded
+            var thread = new Thread(delegate ()
+            {
+                var dispatcher = Dispatcher.CurrentDispatcher;
+                dispatcher.InvokeAsync(async delegate
+                {
+                    await client.LogoutAsync();
+                    dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
+                });
+
+                Dispatcher.Run();
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
     }
 }

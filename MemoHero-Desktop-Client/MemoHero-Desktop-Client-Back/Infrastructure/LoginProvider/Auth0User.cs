@@ -5,6 +5,7 @@ namespace ClientBack.Infrastructure.LoginProvider
 {
     public class Auth0User
     {
+        public string Id { get; set; }
         public string GivenName { get; set; }
         public string FamilyName { get; set; }
         public string Nickname { get; set; }
@@ -19,6 +20,7 @@ namespace ClientBack.Infrastructure.LoginProvider
         internal Auth0User(ClaimsPrincipal user)
         {
             var claims = user.Claims.ToList();
+            Id = claims.Find(x => x.Type == "sub")?.Value ?? "";
             GivenName = claims.Find(x => x.Type == "given_name")?.Value ?? "";
             FamilyName = claims.Find(x => x.Type == "family_name")?.Value ?? "";
             Nickname = claims.Find(x => x.Type == "nickname")?.Value ?? "";

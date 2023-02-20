@@ -16,7 +16,7 @@ namespace ClientBack.Infrastructure.Repository
 
             col.Upsert(new Login
             {
-                Id = loginResult.user.Email,
+                Id = loginResult.user.Id,
                 Expiration = loginResult.expiration,
                 User = loginResult.user
             });
@@ -26,15 +26,16 @@ namespace ClientBack.Infrastructure.Repository
         {
             var col = database.GetCollection<Login>(tableName);
 
-            var login = col.FindOne(x => x.Id == lastUser);
+            var login = col.FindOne(x => x.User.Email == lastUser);
             return login;
         }
 
         public void RemoveLastLogin(string lastUser)
         {
             var col = database.GetCollection<Login>(tableName);
+            var login = col.FindOne(x => x.User.Email == lastUser);
 
-            col.Delete(lastUser);
+            col.Delete(login.Id);
         }
     }
 }

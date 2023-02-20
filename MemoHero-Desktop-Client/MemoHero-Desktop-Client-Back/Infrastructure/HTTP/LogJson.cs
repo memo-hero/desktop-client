@@ -21,7 +21,7 @@ namespace ClientBack.Infrastructure.HTTP
 
         private long DateTimeToNano(DateTime dateTime)
         {
-            var epochTime = dateTime.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
+            var epochTime = dateTime.ToUniversalTime().Ticks - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).Ticks;
             return epochTime *= 100;
         }
     }
