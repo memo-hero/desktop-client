@@ -10,9 +10,13 @@ namespace ClientBack.Infrastructure.Services.Logger
     {
         private readonly LiteDatabase database;
         private readonly string tableName = "logs";
-        private readonly Severity minimumSeverity = Severity.INFO;
+        private readonly LiteDbLoggerConfiguration configuration;
 
-        public LiteDbLogger(LiteDatabase database) => this.database = database;
+        public LiteDbLogger(LiteDatabase database, LiteDbLoggerConfiguration configuration)
+        {
+            this.database = database;
+            this.configuration = configuration;
+        }
 
         public List<Log> GetUnpushedLogs() => database
                 .GetCollection<Log>(tableName)
@@ -21,7 +25,7 @@ namespace ClientBack.Infrastructure.Services.Logger
 
         public void Log(Log log)
         {
-            if (minimumSeverity > log.Severity) return;
+            if (configuration.MinimumSeverity > log.Severity) return;
             database.GetCollection<Log>(tableName).Upsert(log);
         }
 

@@ -8,18 +8,15 @@ namespace ClientBack
 {
     internal class Auth0Provider : ILoginService
     {
-        private const string domain = "dev-qxkjr-8h.us.auth0.com";
-        private const string clientId = "tpUZcdeRhUZqSOseouBJjDdijnhuE3Tt";
-        private const string redirectUri = "https://dev-qxkjr-8h.us.auth0.com/desktop-client";
         private readonly Auth0Client client;
 
-        internal Auth0Provider()
+        internal Auth0Provider(Auth0ClientConfiguration configuration)
         {
             var clientOptions = new Auth0ClientOptions
             {
-                Domain = domain,
-                ClientId = clientId,
-                RedirectUri = redirectUri
+                Domain = configuration.Domain,
+                ClientId = configuration.ClientId,
+                RedirectUri = configuration.RedirectUri
             };
 
             clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;

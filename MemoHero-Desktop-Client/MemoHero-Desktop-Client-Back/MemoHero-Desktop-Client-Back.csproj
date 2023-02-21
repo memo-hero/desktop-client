@@ -58,6 +58,7 @@
     <Compile Include="Domain\Exceptions\CannotConnectToRemoteService.cs" />
     <Compile Include="Domain\Logger\ILogger.cs" />
     <Compile Include="Domain\Logger\Log.cs" />
+    <Compile Include="Domain\Logger\Severity.cs" />
     <Compile Include="Domain\Login\ILoginRepository.cs" />
     <Compile Include="Domain\Login\Login.cs" />
     <Compile Include="Domain\Study\StudyResult.cs" />
@@ -77,15 +78,22 @@
     <Compile Include="Infrastructure\HTTP\NewUser.cs" />
     <Compile Include="Infrastructure\HTTP\StoredUser.cs" />
     <Compile Include="Infrastructure\HTTP\UpdatedCard.cs" />
+    <Compile Include="Infrastructure\LoginProvider\Auth0ClientConfiguration.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />
     <Compile Include="Infrastructure\LoginProvider\ILoginService.cs" />
     <Compile Include="Infrastructure\LoginProvider\LoginResult.cs" />
     <Compile Include="Infrastructure\Repository\LiteDbLoginRepository.cs" />
     <Compile Include="Infrastructure\Services\ClientBackServiceProvider.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\ConfigurationEnum.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\ConfigurationService.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\EnumExtensions.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\FlagsmithClient.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\IConfigurationProvider.cs" />
     <Compile Include="Infrastructure\Services\Logger\ConsoleLogger.cs" />
     <Compile Include="Infrastructure\Services\Logger\ExceptionHandler.cs" />
     <Compile Include="Infrastructure\Services\Logger\LiteDBLiteDatabase.cs" />
     <Compile Include="Infrastructure\Services\Logger\LiteDbLogger.cs" />
+    <Compile Include="Infrastructure\Services\Logger\LiteDbLoggerConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\LoginProvider\Auth0User.cs" />
   </ItemGroup>
@@ -95,6 +103,9 @@
   <ItemGroup>
     <PackageReference Include="Auth0.OidcClient.WinForms">
       <Version>3.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="Flagsmith">
+      <Version>4.2.1</Version>
     </PackageReference>
     <PackageReference Include="LiteDB">
       <Version>4.1.4</Version>

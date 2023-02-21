@@ -19,12 +19,4 @@ namespace ClientBack.Domain.Logger
             SentToServer = false;
         }
     }
-
-    public enum Severity
-    {
-        INFO,
-        WARNING,
-        FATAL,
-        ERROR,
-    }
 }

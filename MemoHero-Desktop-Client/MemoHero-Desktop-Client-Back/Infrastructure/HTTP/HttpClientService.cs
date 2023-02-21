@@ -1,10 +1,6 @@
 ﻿using ClientBack.Domain.Cards;
-using ClientBack.Domain.Exceptions;
-using ClientBack.Domain.Logger;
 using ClientBack.Domain.Study;
-using ClientBack.Infrastructure.Services;
 using RestSharp;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,20 +10,14 @@ namespace ClientBack.Infrastructure.HTTP
     {
         private static RestClient client;
         private readonly ISerializer serializer;
-        private readonly ILogger logger = ClientBackServiceProvider.logger;
-        private readonly string baseUrl = "http://localhost:8080/";
 
-        public HttpClientService(ISerializer serializer)
+        public HttpClientService(ISerializer serializer, HttpClientConfiguration configuration)
         {
-            client = new RestClient(baseUrl);
+            client = new RestClient(configuration.BaseUrl);
             this.serializer = serializer;
         }
 
-        public async Task<bool> IsServiceOnline()
-        {
-            logger.Log($"Trying to connect to { baseUrl }", Severity.INFO);
-            return await IsPostSuccessful(new RestRequest("healthz"));
-        }
+        public async Task<bool> IsServiceOnline() => await IsPostSuccessful(new RestRequest("healthz"));
 
         public async Task<bool> PushLogs(string userId, List<LogJson> logs)
         {
