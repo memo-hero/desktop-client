@@ -14,6 +14,9 @@ using MemoHeroDesktopClient.UI.Login;
 using MemoHeroDesktopClient.UI.NewCard;
 using MemoHeroDesktopClient.UI.StudyCards;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,6 +26,7 @@ namespace MemoHeroDesktopClient.Domain
     {
         // Forms
         internal readonly LoginSplash login;
+        internal PrivateFontCollection fontCollection;
 
         internal EditCardForm editCardForm;
         internal UI.MainWindow.MainMenu mainMenuForm;
@@ -175,6 +179,7 @@ namespace MemoHeroDesktopClient.Domain
             var cards = dueCardsControl.GetCards();
             if (cards.Count == 0) return;
 
+            LoadFont();
             using (studyCardsForm = new StudyCardsForm(this, ref user, new Queue<Card>(cards), new StudyStatsControl()))
             {
                 studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
@@ -254,5 +259,17 @@ namespace MemoHeroDesktopClient.Domain
         {
             await memoCore.PushLogs();
         }
+
+        private void LoadFont()
+        {
+            fontCollection = new PrivateFontCollection();
+            int fontLength = Properties.Resources.Weber_Hand.Length;
+            byte[] fontdata = Properties.Resources.Weber_Hand;
+            var data = Marshal.AllocCoTaskMem(fontLength);
+            Marshal.Copy(fontdata, 0, data, fontLength);
+            fontCollection.AddMemoryFont(data, fontLength);
+        }
+
+        internal FontFamily GetCustomFont() => fontCollection.Families[0];
     }
 }

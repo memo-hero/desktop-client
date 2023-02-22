@@ -67,6 +67,7 @@
     <Compile Include="Domain\User\CategoryProperty.cs" />
     <Compile Include="Infrastructure\HTTP\CategoryProperties.cs" />
     <Compile Include="Infrastructure\HTTP\CreateCardResult.cs" />
+    <Compile Include="Infrastructure\HTTP\HttpClientConfiguration.cs" />
     <Compile Include="Infrastructure\HTTP\HttpClientService.cs" />
     <Compile Include="Domain\Cards\StudyMetadata.cs" />
     <Compile Include="Infrastructure\HTTP\IMemoHeroRestClient.cs" />

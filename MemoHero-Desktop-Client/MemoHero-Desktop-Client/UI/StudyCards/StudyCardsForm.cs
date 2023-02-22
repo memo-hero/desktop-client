@@ -7,13 +7,14 @@ using MemoHeroDesktopClient.CustomControls;
 using MemoHeroDesktopClient.Domain;
 using MemoHeroDesktopClient.Domain.Events;
 using MemoHeroDesktopClient.Domain.Localization;
-using MemoHeroDesktopClient.Infrastructure.Translation;
 using MemoHeroDesktopClient.Services;
 using MemoHeroDesktopClient.Services.Localization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace MemoHeroDesktopClient.UI.StudyCards
 {
@@ -34,7 +35,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.user = user;
             this.cards = cards;
             this.studyStatsControl = studyStatsControl;
-            InitializeLabel();
+            InitializeLabel(uiCore.GetCustomFont());
             ShowNextCard();
             InitializeStatsPanel();
             LoadLocalizableControls();
@@ -49,14 +50,16 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             if (args.studyResult.DidLevelUp) MessagesRepository.ShowLevelUpMessage(args.studyResult);
         }
 
-        private void InitializeLabel()
+        private void InitializeLabel(FontFamily fontFamily)
         {
+            lblCardFront.Font = new Font(fontFamily, lblCardFront.Font.Size);
             lblCardFront.Parent = pictureCard;
-            lblCardFront.Location = new System.Drawing.Point(10, 50);
+            lblCardFront.Location = new Point(10, 50);
             lblCardFront.BackColor = Color.Transparent;
 
+            lblCardBack.Font = new Font(fontFamily, lblCardBack.Font.Size);
             lblCardBack.Parent = pictureCard;
-            lblCardBack.Location = new System.Drawing.Point(10,170);
+            lblCardBack.Location = new Point(10,170);
             lblCardBack.BackColor = Color.Transparent;
         }
 

@@ -169,4 +169,7 @@
   <data name="ES" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\services\localization\localizations\es.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Weber_Hand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Weber Hand ITC Std Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

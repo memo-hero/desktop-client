@@ -23,7 +23,7 @@ namespace ClientBack
             client = new Auth0Client(clientOptions);
         }
 
-        public async Task<LoginResult> Login()
+        public Task<LoginResult> Login()
         {
             // Due to multithreading issues, the auth0 client needs to run as single threaded
             var tcs = new TaskCompletionSource<IdentityModel.OidcClient.LoginResult>();
@@ -45,11 +45,11 @@ namespace ClientBack
 
             var result = tcs.Task.Result;
 
-            return new LoginResult
+            return Task.FromResult(new LoginResult
             {
                 user = result.IsError ? null : new Auth0User(result.User),
                 expiration = result.AccessTokenExpiration
-            };
+            });
         }
 
         public void Logout()

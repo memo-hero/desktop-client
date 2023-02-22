@@ -241,6 +241,7 @@
       <DependentUpon>StudyCardsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MemoHero-Desktop-Client_TemporaryKey.pfx" />
+    <None Include="Resources\Weber Hand ITC Std Regular.ttf" />
     <None Include="Services\Localization\Localizations\EN.json" />
     <None Include="Services\Localization\Localizations\ES.json" />
     <None Include="Properties\Settings.settings">

@@ -6,7 +6,6 @@ using ClientBack.Domain.User;
 using ClientBack.Infrastructure.Helpers;
 using ClientBack.Infrastructure.HTTP;
 using ClientBack.Infrastructure.Services;
-using ClientBack.Infrastructure.Services.Configuration;
 using ClientBack.Infrastructure.Services.Logger;
 using System;
 using System.Collections.Generic;
@@ -96,6 +95,7 @@ namespace ClientBack.Core
 
         public void Logout()
         {
+            ClientBackServiceProvider.logger.Log("Logging out...", Severity.INFO);
             currentUser = null;
             UserCards = new List<Card>();
             loginModule.Logout();
@@ -125,6 +125,7 @@ namespace ClientBack.Core
         {
             if (string.IsNullOrWhiteSpace(content)) return;
 
+            ClientBackServiceProvider.logger.Log("Importing cards...", Severity.INFO);
             var cards = serializer.Deserialize<List<Card>>(content);
             var tasks = cards.Select(x => CreateCardAsync(x));
             await Task.WhenAll(tasks);
@@ -134,6 +135,7 @@ namespace ClientBack.Core
         public string ExportCards()
         {
             if (UserCards.Count == 0) return string.Empty;
+            ClientBackServiceProvider.logger.Log("Exporting cards...", Severity.INFO);
             return serializer.Serialize(UserCards);
         }
 
@@ -147,16 +149,19 @@ namespace ClientBack.Core
 
         public async Task<bool> DeleteCard(Card card)
         {
+            ClientBackServiceProvider.logger.Log("Deleting card...", Severity.INFO);
             return await cardsModule.DeleteCard(currentUser, card);
         }
 
         public void UpdateLocale()
         {
+            ClientBackServiceProvider.logger.Log("Updating user locale", Severity.INFO);
             loginModule.UpdateLoginLocale(currentUser.Locale);
         }
 
         public async Task<bool> PushLogs()
         {
+            ClientBackServiceProvider.logger.Log("Pushing logs to server...", Severity.INFO);
             var logs = logger.GetUnpushedLogs();
             var logsJson = logs.Select(x => new LogJson(x)).ToList();
             if (await ClientBackServiceProvider.RestClient.PushLogs(currentUser.Id, logsJson))
