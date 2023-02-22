@@ -1,4 +1,5 @@
 ﻿using ClientBack.Core;
+using ClientBack.Infrastructure.Services;
 using MemoHeroDesktopClient.Common;
 using MemoHeroDesktopClient.Domain;
 using MemoHeroDesktopClient.Services.ExceptionHandler;
@@ -19,18 +20,26 @@ namespace MemoHeroDesktopClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            UICore uiCore = null;
-            if (!ExceptionHandler.Execute(MemoHeroCore.IsLocalDbAvailable)) return;
-            if (await ExceptionHandler.Execute(MemoHeroCore.IsServiceOnline))
+            try
             {
-                uiCore = new UICore();
-                uiCore.StartLoginProcess(false);
-                Application.Run(uiCore.login);
-            }
-            else MessagesRepository.ShowServiceOffline();
+                UICore uiCore = null;
+                if (!ExceptionHandler.Execute(MemoHeroCore.IsLocalDbAvailable)) return;
+                if (await ExceptionHandler.Execute(MemoHeroCore.IsServiceOnline))
+                {
+                    uiCore = new UICore();
+                    uiCore.StartLoginProcess(false);
+                    Application.Run(uiCore.login);
+                }
+                else MessagesRepository.ShowServiceOffline();
 
-            if (uiCore != null)
-                await uiCore.PushLogsToServer();
+                if (uiCore != null)
+                    await uiCore.PushLogsToServer();
+            }
+            catch (Exception ex)
+            {
+                MessagesRepository.ShowUnexpectedError(ex.Message);
+                ClientBackServiceProvider.logger.Log(ex);
+            }
         }
     }
 }
