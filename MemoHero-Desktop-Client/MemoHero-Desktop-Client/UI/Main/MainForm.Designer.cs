@@ -114,7 +114,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // btnCreateCard
             // 
             this.btnCreateCard.Caption = "Create new card";
-            this.btnCreateCard.Hint = "Create Card";
             this.btnCreateCard.Id = 3;
             this.btnCreateCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_create_32;
             this.btnCreateCard.Name = "btnCreateCard";
@@ -125,7 +124,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // btnDeleteCard
             // 
             this.btnDeleteCard.Caption = "Delete selected card";
-            this.btnDeleteCard.Hint = "Delete Card";
             this.btnDeleteCard.Id = 4;
             this.btnDeleteCard.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.card_delete_52;
             this.btnDeleteCard.Name = "btnDeleteCard";
@@ -136,7 +134,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // btnImport
             // 
             this.btnImport.Caption = "Import Collection";
-            this.btnImport.Hint = "Import Backup";
             this.btnImport.Id = 5;
             this.btnImport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.import_32;
             this.btnImport.Name = "btnImport";
@@ -147,7 +144,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // btnExport
             // 
             this.btnExport.Caption = "Export Collection";
-            this.btnExport.Hint = "Export Backup";
             this.btnExport.Id = 6;
             this.btnExport.ImageOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.export_32;
             this.btnExport.Name = "btnExport";
@@ -177,7 +173,6 @@ namespace MemoHeroDesktopClient.UI.MainWindow
             // 
             // btnAbout
             // 
-            this.btnAbout.Hint = "About";
             this.btnAbout.Id = 10;
             this.btnAbout.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAbout.ImageOptions.SvgImage")));
             this.btnAbout.Name = "btnAbout";
