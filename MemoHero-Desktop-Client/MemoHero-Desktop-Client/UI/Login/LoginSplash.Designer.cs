@@ -62,6 +62,7 @@ namespace MemoHeroDesktopClient.UI.Login
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.loginButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
             this.Name = "LoginSplash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

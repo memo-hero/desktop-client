@@ -29,6 +29,7 @@ namespace MemoHeroDesktopClient.UI.About
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.lblYear = new System.Windows.Forms.Label();
@@ -86,6 +87,7 @@ namespace MemoHeroDesktopClient.UI.About
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pictureLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AboutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";

@@ -12,9 +12,7 @@ using MemoHeroDesktopClient.Services.Localization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace MemoHeroDesktopClient.UI.StudyCards
 {

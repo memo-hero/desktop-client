@@ -84,6 +84,7 @@ namespace MemoHeroDesktopClient.UI.NewCard
             this.Controls.Add(this.createPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
             this.Name = "NewCardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Card";

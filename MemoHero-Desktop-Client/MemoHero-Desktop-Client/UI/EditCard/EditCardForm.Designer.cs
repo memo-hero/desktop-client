@@ -94,6 +94,7 @@ namespace MemoHeroDesktopClient.UI.EditCard
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.editPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
             this.Name = "EditCardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Card";

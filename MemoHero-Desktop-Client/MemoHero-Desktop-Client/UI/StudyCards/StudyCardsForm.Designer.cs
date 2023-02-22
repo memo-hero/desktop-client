@@ -40,8 +40,8 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.btnResponse0 = new DevExpress.XtraEditors.SimpleButton();
             this.btnReveal = new DevExpress.XtraEditors.SimpleButton();
             this.groupStats = new DevExpress.XtraEditors.GroupControl();
-            this.pictureCard = new System.Windows.Forms.PictureBox();
             this.panelStats = new System.Windows.Forms.Panel();
+            this.pictureCard = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).BeginInit();
             this.groupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupStats)).BeginInit();
@@ -191,6 +191,14 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.groupStats.TabIndex = 4;
             this.groupStats.Text = "Your Stats";
             // 
+            // panelStats
+            // 
+            this.panelStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelStats.Location = new System.Drawing.Point(2, 23);
+            this.panelStats.Name = "panelStats";
+            this.panelStats.Size = new System.Drawing.Size(396, 169);
+            this.panelStats.TabIndex = 0;
+            // 
             // pictureCard
             // 
             this.pictureCard.Image = global::MemoHeroDesktopClient.Properties.Resources.card_background_2;
@@ -200,14 +208,6 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.pictureCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureCard.TabIndex = 0;
             this.pictureCard.TabStop = false;
-            // 
-            // panelStats
-            // 
-            this.panelStats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStats.Location = new System.Drawing.Point(2, 23);
-            this.panelStats.Name = "panelStats";
-            this.panelStats.Size = new System.Drawing.Size(396, 169);
-            this.panelStats.TabIndex = 0;
             // 
             // StudyCardsForm
             // 
@@ -220,6 +220,7 @@ namespace MemoHeroDesktopClient.UI.StudyCards
             this.Controls.Add(this.lblCardFront);
             this.Controls.Add(this.pictureCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.IconOptions.Image = global::MemoHeroDesktopClient.Properties.Resources.Logo;
             this.Name = "StudyCardsForm";
             this.Text = "StudyCardsForm";
             ((System.ComponentModel.ISupportInitialize)(this.groupControl)).EndInit();
