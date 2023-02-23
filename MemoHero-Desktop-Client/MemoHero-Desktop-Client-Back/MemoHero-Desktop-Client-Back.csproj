@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06389211-5A25-4BDE-A00E-7EF275873642}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientBack</RootNamespace>
+    <AssemblyName>ClientBack</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\CardsModule.cs" />
+    <Compile Include="Core\LoginModule.cs" />
+    <Compile Include="Core\MemoHeroCore.cs" />
+    <Compile Include="Core\UserModule.cs" />
+    <Compile Include="Domain\Cards\Card.cs" />
+    <Compile Include="Domain\Cards\Category.cs" />
+    <Compile Include="Domain\Exceptions\CannotConnectToRemoteService.cs" />
+    <Compile Include="Domain\Logger\ILogger.cs" />
+    <Compile Include="Domain\Logger\Log.cs" />
+    <Compile Include="Domain\Logger\Severity.cs" />
+    <Compile Include="Domain\Login\ILoginRepository.cs" />
+    <Compile Include="Domain\Login\Login.cs" />
+    <Compile Include="Domain\Study\StudyResult.cs" />
+    <Compile Include="Domain\User\User.cs" />
+    <Compile Include="Infrastructure\Helpers\HashTool.cs" />
+    <Compile Include="Domain\User\CategoryProperty.cs" />
+    <Compile Include="Infrastructure\HTTP\CategoryProperties.cs" />
+    <Compile Include="Infrastructure\HTTP\CreateCardResult.cs" />
+    <Compile Include="Infrastructure\HTTP\HttpClientConfiguration.cs" />
+    <Compile Include="Infrastructure\HTTP\HttpClientService.cs" />
+    <Compile Include="Domain\Cards\StudyMetadata.cs" />
+    <Compile Include="Infrastructure\HTTP\IMemoHeroRestClient.cs" />
+    <Compile Include="Domain\User\UserStats.cs" />
+    <Compile Include="Infrastructure\HTTP\ISerializer.cs" />
+    <Compile Include="Infrastructure\HTTP\LogJson.cs" />
+    <Compile Include="Infrastructure\HTTP\NewCard.cs" />
+    <Compile Include="Infrastructure\Helpers\NewtonSoftSerializer.cs" />
+    <Compile Include="Infrastructure\HTTP\NewUser.cs" />
+    <Compile Include="Infrastructure\HTTP\StoredUser.cs" />
+    <Compile Include="Infrastructure\HTTP\UpdatedCard.cs" />
+    <Compile Include="Infrastructure\LoginProvider\Auth0ClientConfiguration.cs" />
+    <Compile Include="Infrastructure\LoginProvider\Auth0Provider.cs" />
+    <Compile Include="Infrastructure\LoginProvider\ILoginService.cs" />
+    <Compile Include="Infrastructure\LoginProvider\LoginResult.cs" />
+    <Compile Include="Infrastructure\Repository\LiteDbLoginRepository.cs" />
+    <Compile Include="Infrastructure\Services\ClientBackServiceProvider.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\ConfigurationEnum.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\ConfigurationService.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\EnumExtensions.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\FlagsmithClient.cs" />
+    <Compile Include="Infrastructure\Services\Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Infrastructure\Services\Logger\ConsoleLogger.cs" />
+    <Compile Include="Infrastructure\Services\Logger\ExceptionHandler.cs" />
+    <Compile Include="Infrastructure\Services\Logger\LiteDBLiteDatabase.cs" />
+    <Compile Include="Infrastructure\Services\Logger\LiteDbLogger.cs" />
+    <Compile Include="Infrastructure\Services\Logger\LiteDbLoggerConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\LoginProvider\Auth0User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Auth0.OidcClient.WinForms">
+      <Version>3.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="Flagsmith">
+      <Version>4.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="LiteDB">
+      <Version>4.1.4</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json.Bson">
+      <Version>1.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>108.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

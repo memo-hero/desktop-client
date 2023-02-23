@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6BD80A8-DDE6-4CB2-985D-9A18B642543B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MemoHeroDesktopClient</RootNamespace>
+    <AssemblyName>MemoHeroDesktopClient</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Victor\Downloads\proyecto\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>MemoHero</ProductName>
+    <PublisherName>Victor Grycuk</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MemoHeroDesktopClient.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>589927AC3903DA170EE12320C9C8D91A3CCB6982</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MemoHero-Desktop-Client_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\DateTimeHelper.cs" />
+    <Compile Include="Common\MessagesRepository.cs" />
+    <Compile Include="Common\ReflectionUtils.cs" />
+    <Compile Include="CustomControls\CardFormControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CardFormControl.Designer.cs">
+      <DependentUpon>CardFormControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CardListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CardListControl.Designer.cs">
+      <DependentUpon>CardListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CategoryStats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\CategoryStats.Designer.cs">
+      <DependentUpon>CategoryStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\StudyStatsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\StudyStatsControl.Designer.cs">
+      <DependentUpon>StudyStatsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\UserStatsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\UserStatsControl.Designer.cs">
+      <DependentUpon>UserStatsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Cards\GridableCard.cs" />
+    <Compile Include="Domain\Events\CreateCardArgs.cs" />
+    <Compile Include="Domain\Events\LocalizationChangedEventArgs.cs" />
+    <Compile Include="Domain\Events\StudyResultHandlerArgs.cs" />
+    <Compile Include="Domain\Events\UserLoginResultArgs.cs" />
+    <Compile Include="Domain\Exceptions\EnumValueNotFound.cs" />
+    <Compile Include="Domain\Localization\ILocalizableControl.cs" />
+    <Compile Include="Domain\Localization\ILocalization.cs" />
+    <Compile Include="Domain\Localization\ILocalizationRepository.cs" />
+    <Compile Include="Domain\Localization\ISOCode.cs" />
+    <Compile Include="Domain\Localization\LocalizationContent.cs" />
+    <Compile Include="Domain\Localization\LocalizedControl.cs" />
+    <Compile Include="Domain\Localization\LocalizedMessage.cs" />
+    <Compile Include="Domain\UICore.cs" />
+    <Compile Include="Infrastructure\LocalizationRepository.cs" />
+    <Compile Include="Common\Extensions.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ExceptionHandler\ExceptionHandler.cs" />
+    <Compile Include="Services\FileManagement\FileManager.cs" />
+    <Compile Include="Services\Localization\LocalizableControl.cs" />
+    <Compile Include="Services\Localization\LocalizableControlCaption.cs" />
+    <Compile Include="Services\Localization\LocalizableControlHint.cs" />
+    <Compile Include="Services\Localization\LocalizableControlText.cs" />
+    <Compile Include="Services\Localization\LocalizationService.cs" />
+    <Compile Include="Services\MemoHeroServices.cs" />
+    <Compile Include="UI\About\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\About\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditCard\EditCardArgs.cs" />
+    <Compile Include="UI\EditCard\EditCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditCard\EditCardForm.Designer.cs">
+      <DependentUpon>EditCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Login\LoginSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Login\LoginSplash.Designer.cs">
+      <DependentUpon>LoginSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Main\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Main\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\NewCard\NewCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewCard\NewCardForm.Designer.cs">
+      <DependentUpon>NewCardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StudyCards\StudyCardsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StudyCards\StudyCardsForm.Designer.cs">
+      <DependentUpon>StudyCardsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StudyCards\UserResponseArgs.cs" />
+    <EmbeddedResource Include="CustomControls\CardFormControl.resx">
+      <DependentUpon>CardFormControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CardListControl.resx">
+      <DependentUpon>CardListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CategoryStats.resx">
+      <DependentUpon>CategoryStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\StudyStatsControl.resx">
+      <DependentUpon>StudyStatsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\UserStatsControl.resx">
+      <DependentUpon>UserStatsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UI\About\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditCard\EditCardForm.resx">
+      <DependentUpon>EditCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Login\LoginSplash.resx">
+      <DependentUpon>LoginSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Main\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewCard\NewCardForm.resx">
+      <DependentUpon>NewCardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StudyCards\StudyCardsForm.resx">
+      <DependentUpon>StudyCardsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="MemoHero-Desktop-Client_TemporaryKey.pfx" />
+    <None Include="Resources\Weber Hand ITC Std Regular.ttf" />
+    <None Include="Services\Localization\Localizations\EN.json" />
+    <None Include="Services\Localization\Localizations\ES.json" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Auth0.OidcClient.WinForms">
+      <Version>3.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="LiteDB">
+      <Version>4.1.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MemoHero-Desktop-Client-Back\MemoHero-Desktop-Client-Back.csproj">
+      <Project>{06389211-5a25-4bde-a00e-7ef275873642}</Project>
+      <Name>MemoHero-Desktop-Client-Back</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+    <Content Include="Logo.ico" />
+    <None Include="Resources\science-512.png" />
+    <None Include="Resources\languages-512.png" />
+    <None Include="Resources\history-512.png" />
+    <None Include="Resources\computers-512.png" />
+    <None Include="Resources\art-512.png" />
+    <None Include="Resources\sync-32.png" />
+    <None Include="Resources\study-32.png" />
+    <None Include="Resources\export-32.png" />
+    <None Include="Resources\import-32.png" />
+    <None Include="Resources\card-create-32.png" />
+    <None Include="Resources\logout-32.png" />
+    <None Include="Resources\card-edit-52.png" />
+    <None Include="Resources\card-delete-52.png" />
+    <None Include="Resources\card-background-2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
