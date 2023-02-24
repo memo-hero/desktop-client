@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace ClientBack.Infrastructure.LoginProvider
@@ -28,7 +29,14 @@ namespace ClientBack.Infrastructure.LoginProvider
             Picture = claims.Find(x => x.Type == "picture").Value;
             Locale = claims.Find(x => x.Type == "locale")?.Value ?? "";
             Email = claims.Find(x => x.Type == "email").Value;
-            Verified = claims.Find(x => x.Type == "email_verified").Value == "True";
+            Verified = GetClaimValue(claims, "email_verified", "True") == "True";
+        }
+
+        private string GetClaimValue(List<Claim> claims, string name, string defaultValue)
+        {
+            var claim = claims.Find(x => x.Type == name);
+            if (claim == null) return defaultValue;
+            else return claim.Value;
         }
     }
 }

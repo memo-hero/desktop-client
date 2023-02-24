@@ -56,6 +56,7 @@
     <Compile Include="Domain\Cards\Card.cs" />
     <Compile Include="Domain\Cards\Category.cs" />
     <Compile Include="Domain\Exceptions\CannotConnectToRemoteService.cs" />
+    <Compile Include="Domain\Exceptions\LoginUserIsNullException.cs" />
     <Compile Include="Domain\Logger\ILogger.cs" />
     <Compile Include="Domain\Logger\Log.cs" />
     <Compile Include="Domain\Logger\Severity.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="Infrastructure\Services\Configuration\EnumExtensions.cs" />
     <Compile Include="Infrastructure\Services\Configuration\FlagsmithClient.cs" />
     <Compile Include="Infrastructure\Services\Configuration\IConfigurationProvider.cs" />
-    <Compile Include="Infrastructure\Services\Logger\ConsoleLogger.cs" />
     <Compile Include="Infrastructure\Services\Logger\ExceptionHandler.cs" />
     <Compile Include="Infrastructure\Services\Logger\LiteDBLiteDatabase.cs" />
     <Compile Include="Infrastructure\Services\Logger\LiteDbLogger.cs" />

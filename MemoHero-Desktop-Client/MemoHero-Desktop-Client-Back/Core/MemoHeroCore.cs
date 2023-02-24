@@ -58,14 +58,24 @@ namespace ClientBack.Core
         {
             currentUser = loginModule.GetUserFromLocalDb().ToUser();
 
+            if (currentUser != null)
+            {
+                ClientBackServiceProvider.logger.Log($"User { currentUser.Id } logged in.", Severity.INFO);
+                logger.SetUser(currentUser);
+            }
+
             return currentUser;
         }
 
         public async Task<User> Login()
         {
-            var result = await loginModule.Login();
+            var result = await ExceptionHandler.Execute(loginModule.Login);
+            if (result == null) return null;
+
             currentUser = result?.ToUser();
-            
+            logger.SetUser(currentUser);
+
+            ClientBackServiceProvider.logger.Log($"User { currentUser.Id } logged in.", Severity.INFO);
             return currentUser;
         }
 
@@ -89,13 +99,14 @@ namespace ClientBack.Core
         {
             user = await userModule.GetUserInfo(user);
             if (user == null) throw new CannotConnectToRemoteService();
-            
+
             return user;
         }
 
-        public void Logout()
+        public async void Logout()
         {
-            ClientBackServiceProvider.logger.Log("Logging out...", Severity.INFO);
+            ClientBackServiceProvider.logger.Log($"User { currentUser.Id } logged out.", Severity.INFO);
+            await PushLogs();
             currentUser = null;
             UserCards = new List<Card>();
             loginModule.Logout();
@@ -161,6 +172,8 @@ namespace ClientBack.Core
 
         public async Task<bool> PushLogs()
         {
+            if (currentUser == null) return false;
+
             ClientBackServiceProvider.logger.Log("Pushing logs to server...", Severity.INFO);
             var logs = logger.GetUnpushedLogs();
             var logsJson = logs.Select(x => new LogJson(x)).ToList();

@@ -13,7 +13,7 @@ namespace ClientBack.Infrastructure.HTTP
 
         public LogJson(Log log)
         {
-            timestamp = DateTimeToNano(log.Id);
+            timestamp = DateTimeToNano(log.DateTime);
             message = $"app_version={ Assembly.GetExecutingAssembly().GetName().Version } { log.Message }";
             source = "MEMOHERO_DESKTOP";
             severity = log.Severity;
