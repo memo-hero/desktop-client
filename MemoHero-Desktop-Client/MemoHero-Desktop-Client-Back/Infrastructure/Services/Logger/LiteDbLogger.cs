@@ -22,7 +22,7 @@ namespace ClientBack.Infrastructure.Services.Logger
 
         public List<Log> GetUnpushedLogs() => database
                 .GetCollection<Log>(tableName)
-                .Find(x => x.Id == currentUser.Id && x.SentToServer == false)
+                .Find(x => x.userId == currentUser.Id && x.SentToServer == false)
                 .ToList();
 
         public void Log(Log log)

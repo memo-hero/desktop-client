@@ -59,8 +59,8 @@ namespace ClientBack.Core
 
             if (currentUser != null)
             {
-                ClientBackServiceProvider.logger.Log($"User { currentUser.Id } logged in.", Severity.INFO);
                 logger.SetUser(currentUser);
+                ClientBackServiceProvider.logger.Log($"User { currentUser.Id } logged in.", Severity.INFO);
             }
 
             return currentUser;

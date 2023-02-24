@@ -5,6 +5,7 @@ namespace ClientBack.Domain.Logger
     public class Log
     {
         public string Id { get; set; }
+        public string userId { get; set; }
         public DateTime DateTime { get; set; }
         public string Message { get; set; }
         public Severity Severity { get; set; }
@@ -14,8 +15,9 @@ namespace ClientBack.Domain.Logger
 
         public Log(User.User user, string message, Severity severity)
         {
-            Id = user.Id;
+            userId = user.Id;
             DateTime = DateTime.Now.ToUniversalTime();
+            Id = $"{DateTime.Ticks }-{ userId }";
             Message = message;
             Severity = severity;
             SentToServer = false;
