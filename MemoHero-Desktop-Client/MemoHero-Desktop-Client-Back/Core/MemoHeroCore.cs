@@ -25,8 +25,7 @@ namespace ClientBack.Core
         public string GetLastLocale()
         {
             var result = loginModule.GetUserFromLocalDb();
-            if (result != null) return result.user.Locale;
-            else return "EN";
+            return result?.user?.Locale ?? "EN";
         }
 
         private readonly ISerializer serializer = new NewtonSoftSerializer();
