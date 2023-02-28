@@ -60,7 +60,7 @@ namespace ClientBack
                 var dispatcher = Dispatcher.CurrentDispatcher;
                 dispatcher.InvokeAsync(async delegate
                 {
-                    await client.LogoutAsync();
+                    await client.LogoutAsync(federated: true);
                     dispatcher.BeginInvokeShutdown(DispatcherPriority.Normal);
                 });
 
