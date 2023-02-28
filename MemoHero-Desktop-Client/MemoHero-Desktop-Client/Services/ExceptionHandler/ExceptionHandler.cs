@@ -23,6 +23,21 @@ namespace MemoHeroDesktopClient.Services.ExceptionHandler
             return;
         }
 
+        public static void Execute(Action method)
+        {
+            try { method.Invoke(); }
+            catch (CannotConnectToRemoteService)
+            {
+                MessagesRepository.ShowServiceOffline();
+            }
+            catch (Exception ex)
+            {
+                MessagesRepository.ShowUnexpectedError(ex.Message);
+            }
+
+            return;
+        }
+
         public static T Execute<T>(Func<T> method)
         {
             try { return method.Invoke(); }

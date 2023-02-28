@@ -142,6 +142,7 @@ namespace MemoHeroDesktopClient.Domain
         {
             newCardForm = new NewCardForm();
             newCardForm.CardCreated += NewCardWindow_CardCreated;
+            newCardForm.StartPosition = FormStartPosition.CenterParent;
 
             newCardForm.ShowDialog();
         }
@@ -183,6 +184,7 @@ namespace MemoHeroDesktopClient.Domain
             using (studyCardsForm = new StudyCardsForm(this, ref user, new Queue<Card>(cards), new StudyStatsControl()))
             {
                 studyCardsForm.UserResponded += StudyCardsForm_UserResponded;
+                studyCardsForm.StartPosition = FormStartPosition.CenterParent;
                 studyCardsForm.ShowDialog();
                 UpdateDueCardsControl();
             }
@@ -210,11 +212,14 @@ namespace MemoHeroDesktopClient.Domain
 
         private async void EditCardWindow_CardEdited(object source, EditCardArgs args)
         {
-            if (await memoCore.UpdateCardAsync(args.editedCard))
+            await ExceptionHandler.Execute(async () =>
             {
-                cardListControl.UpdateCard(args.editedCard);
-                UpdateDueCardsControl();
-            };
+                if (await memoCore.UpdateCardAsync(args.editedCard))
+                {
+                    cardListControl.UpdateCard(args.editedCard);
+                    UpdateDueCardsControl();
+                };
+            });
         }
 
         private void LocalizationService_LocalizationChanged(object source, LocalizationChangedEventArgs args)
@@ -226,8 +231,11 @@ namespace MemoHeroDesktopClient.Domain
         }
         private async void NewCardWindow_CardCreated(object source, CreateCardArgs args)
         {
-            await memoCore.CreateCardAsync(args.newCard);
-            dueCardsControl.UpdateGrid();
+            await ExceptionHandler.Execute(async () =>
+            {
+                await memoCore.CreateCardAsync(args.newCard);
+                dueCardsControl.UpdateGrid();
+            });
         }
 
         private async void StudyCardsForm_UserResponded(object source, UserResponseArgs args)

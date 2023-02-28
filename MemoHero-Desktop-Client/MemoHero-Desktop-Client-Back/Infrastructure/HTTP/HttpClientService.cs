@@ -1,6 +1,8 @@
 ﻿using ClientBack.Domain.Cards;
 using ClientBack.Domain.Study;
+using ClientBack.Infrastructure.Services;
 using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -25,7 +27,16 @@ namespace ClientBack.Infrastructure.HTTP
                 .AddUrlSegment("userId", userId)
                 .AddStringBody(serializer.Serialize(logs), DataFormat.Json);
 
-            return await IsPostSuccessful(request);
+            try
+            {
+                return await IsPostSuccessful(request);
+            }
+            catch (Exception ex)
+            {
+                ClientBackServiceProvider.logger.Log(ex);
+                // We shouldnt show a message that the logs couldnt be pushed, not important for the user
+                return false;
+            }
         }
 
         public async Task<StoredUser> CreateUser(NewUser newUser)

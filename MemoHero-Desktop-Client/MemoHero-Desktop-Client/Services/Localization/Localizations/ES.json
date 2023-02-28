@@ -12,6 +12,8 @@
   "SPANISH_LEVEL_UP_CAPTION": "Nuevo nivel!",
   "SPANISH_CONFIRM_CARD_DELETION_MESSAGE": "Estás seguro que querés eliminar la tarjeta seleccionada?",
   "SPANISH_CONFIRM_CARD_DELETION_CAPTION": "Borrando tarjeta",
+  "SPANISH_UNEXPECTED_ERROR_MESSAGE": "An unexpected error happened:\n{0}",
+  "SPANISH_UNEXPECTED_ERROR_CAPTION": "Error",
   "SPANISH_BTN_LOGOUT": "Cerrar sesión",
   "SPANISH_BTN_STUDY": "Estudiar tarjetas",
   "SPANISH_BTN_SERVER_SYNC": "Sincronizar con servidor",

@@ -105,10 +105,10 @@ namespace ClientBack.Core
         public async void Logout()
         {
             ClientBackServiceProvider.logger.Log($"User { currentUser.Id } logged out.", Severity.INFO);
+            loginModule.Logout();
             await PushLogs();
             currentUser = null;
             UserCards = new List<Card>();
-            loginModule.Logout();
         }
 
         public async Task<Card> CreateCardAsync(Card newCard)

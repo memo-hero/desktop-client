@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientBack.Domain.Exceptions;
+using System;
 using System.Threading.Tasks;
 
 namespace ClientBack.Infrastructure.Services.Logger
@@ -11,6 +12,8 @@ namespace ClientBack.Infrastructure.Services.Logger
             catch (Exception ex)
             {
                 ClientBackServiceProvider.logger.Log(ex);
+                if (ex.Message == "An error occurred while sending the request.")
+                    throw new CannotConnectToRemoteService();
             }
 
             return default;
