@@ -1,5 +1,4 @@
 ﻿using ClientBack.Domain.User;
-using ClientBack.Infrastructure.Helpers;
 using ClientBack.Infrastructure.HTTP;
 using System.Threading.Tasks;
 
@@ -17,7 +16,7 @@ namespace ClientBack.Core
         internal async Task<User> GetUserInfo(User user)
         {
             var storedUser = await restClient.RetrieveUser(user.Id);
-            if (storedUser == null) storedUser = await restClient.CreateUser(new NewUser(user.Id));
+            if (storedUser == null) storedUser = await restClient.CreateUser(user.Id);
 
             user.Stats = storedUser.Stats;
             return user;

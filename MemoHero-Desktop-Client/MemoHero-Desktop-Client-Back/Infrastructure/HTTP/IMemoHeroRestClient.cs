@@ -7,7 +7,7 @@ namespace ClientBack.Infrastructure.HTTP
 {
     interface IMemoHeroRestClient
     {
-        Task<StoredUser> CreateUser(NewUser newUser);
+        Task<StoredUser> CreateUser(string userId);
         Task<StoredUser> RetrieveUser(string userId);
         Task<List<Card>> GetUserCards(string userId);
         Task<CreateCardResult> CreateCard(string id, NewCard newCard);

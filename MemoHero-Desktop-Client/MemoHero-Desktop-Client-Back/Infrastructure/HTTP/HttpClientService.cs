@@ -39,11 +39,10 @@ namespace ClientBack.Infrastructure.HTTP
             }
         }
 
-        public async Task<StoredUser> CreateUser(NewUser newUser)
+        public async Task<StoredUser> CreateUser(string userId)
         {
-            var request = new RestRequest("users")
-                .AddStringBody(serializer.Serialize(newUser), DataFormat.Json);
-            
+            var request = new RestRequest("users/{user}").AddUrlSegment("user", userId);
+
             return await client.PostAsync<StoredUser>(request);
         }
 
