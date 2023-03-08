@@ -25,8 +25,8 @@ namespace MemoHeroDesktopClient.Common
         );
 
         internal static void ShowHPLeftMessage() => MessageBox.Show(
-            GetText(LocalizedMessage.NO_SERVICE_MESSAGE),
-            GetText(LocalizedMessage.NO_SERVICE_CAPTION),
+            GetText(LocalizedMessage.NO_HP_LEFT_MESSAGE),
+            GetText(LocalizedMessage.NO_HP_LEFT_CAPTION),
             MessageBoxButtons.OK,
             MessageBoxIcon.Error
         );
